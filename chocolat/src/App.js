@@ -2,20 +2,25 @@ import React, {Component} from 'react';
 import logo from './logo.svg';
 // import './App.css';
 // import './Cart.js';
-import './Home.js';
-import './NavBar.js';
-// import './Search.js';
+// import './Home.js';
+import NavBar from './NavBar';
+import Search from './Search';
 // import './Login.js';
 // import './TreatList';
 
 class App extends Component {
-  // state = {
 
-  // }
+  state = {
+    treats: [],
+    searchTerm: "",
+    username: ""
 
+  }
+
+  // Accessing an array of treats from the backend
   componentDidMount() {
     fetch('http://localhost:3000/treats')
-      .then(res => res.json())
+      .then(resp => resp.json())
       .then((treatsArr) => {
         this.setState({
           treats: treatsArr
@@ -23,11 +28,26 @@ class App extends Component {
       })
   }
 
+  // Search Feature 
+  changeSearchTerm = (theSearchedInput) => {
+    this.setState({
+      searchTerm: theSearchedInput
+    })
+  }
+
+
   render() {
     return (
       <div className="App">
         {/* <Header /> */}
-        
+        {/* NAV BAR */}
+        <NavBar />
+
+        {/* SEARCH */}
+        <Search
+          searchTerm={this.state.searchTerm}
+          changeSearchTerm={this.changeSearchTerm} 
+        />
       </div>
     );
   }
