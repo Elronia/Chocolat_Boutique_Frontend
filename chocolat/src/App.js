@@ -5,8 +5,10 @@ import logo from './logo.svg';
 // import Home from './Home.js';
 import NavBar from './NavBar';
 import Search from './Search';
-// import Login from './Login.js';
+import LoginForm from './LoginForm.js';
 import TreatList from './TreatList';
+
+// import { Route, Switch, Link, NavLink } from 'react-router-dom';
 
 class App extends Component {
 
@@ -40,16 +42,18 @@ class App extends Component {
       <div className="App">
         {/* <Header /> */}
         {/* NAV BAR */}
-        <NavBar />
-
+        <NavBar
+          // loggedIn={loggedIn}
+          // handleLogOut={this.handleLogOut}
+          // username={this.state.user.username}
+        />
         {/* SEARCH */}
-        {/* <Search
+        <Search
           searchTerm={this.state.searchTerm}
           changeSearchTerm={this.changeSearchTerm} 
-        /> */}
-        <TreatList 
-          treats={this.state.treats}/>
-      <p>Home</p>
+        />
+        
+        <TreatList treats={this.state.treats}/>
       </div>
     );
   }
