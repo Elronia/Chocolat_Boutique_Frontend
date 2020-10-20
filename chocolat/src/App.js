@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import logo from './logo.svg';
 // import './App.css';
-// import './Cart.js';
-// import './Home.js';
+// import Cart from './Cart.js';
+// import Home from './Home.js';
 import NavBar from './NavBar';
 import Search from './Search';
-// import './Login.js';
-// import './TreatList';
+// import Login from './Login.js';
+import TreatList from './TreatList';
 
 class App extends Component {
 
@@ -14,7 +14,6 @@ class App extends Component {
     treats: [],
     searchTerm: "",
     username: ""
-
   }
 
   // Accessing an array of treats from the backend
@@ -44,10 +43,13 @@ class App extends Component {
         <NavBar />
 
         {/* SEARCH */}
-        <Search
+        {/* <Search
           searchTerm={this.state.searchTerm}
           changeSearchTerm={this.changeSearchTerm} 
-        />
+        /> */}
+        <TreatList 
+          treats={this.state.treats}/>
+      <p>Home</p>
       </div>
     );
   }
