@@ -1,12 +1,14 @@
 import React, {Component} from 'react';
 import logo from './logo.svg';
-// import './App.css';
+// import '../styling/App.css';
+import './App.css';
 // import Cart from './Cart.js';
 // import Home from './Home.js';
 import NavBar from './NavBar';
 import Search from './Search';
 import LoginForm from './LoginForm.js';
 import TreatList from './TreatList';
+import './TreatList.css';
 
 // import { Route, Switch, Link, NavLink } from 'react-router-dom';
 
@@ -36,6 +38,8 @@ class App extends Component {
     })
   }
 
+  handleResponse=()=>{}
+
 
   render() {
     return (
@@ -43,15 +47,15 @@ class App extends Component {
         {/* <Header /> */}
         {/* NAV BAR */}
         <NavBar
+          searchTerm={this.state.searchTerm}
+          changeSearchTerm={this.changeSearchTerm}
           // loggedIn={loggedIn}
           // handleLogOut={this.handleLogOut}
           // username={this.state.user.username}
         />
         {/* SEARCH */}
-        <Search
-          searchTerm={this.state.searchTerm}
-          changeSearchTerm={this.changeSearchTerm} 
-        />
+        
+        {/* <LoginForm handleResponse={this.}/> */}
         
         <TreatList treats={this.state.treats}/>
       </div>
