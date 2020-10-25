@@ -20,8 +20,34 @@ img {
   height: auto;
 }
 
-.side-by-side{
+#page-container{
   display:flex;
   flex-direction: row;
   justify-content: center;
+  flex-wrap: wrap;
+  /* margin: 15px; */
 }
+
+.treat-list-images{
+  display:flex;
+  flex-direction: column;
+  margin: 15px;
+}
+
+#page-container > div{
+  display:flex;
+  flex-direction: column;
+  margin: 30px;
+}
+
+.side-by-side{
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    /* margin: 15px; */
+}
+
+/* #treats-page-container {
+  margin-top: 10px;
+} */

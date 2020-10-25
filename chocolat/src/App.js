@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import logo from './logo.svg';
+// import logo from './logo.svg';
 // import '../styling/App.css';
 import './App.css';
 // import Cart from './Cart.js';
@@ -15,11 +15,22 @@ import './TreatList.css';
 class App extends Component {
 
   state = {
+    // All treats in [{..., user: {...}}, {..., user: {...}}, ...] format
     treats: [],
-    searchTerm: "",
-    username: ""
-  }
 
+    // Current logged in user
+    user: {
+      id: "",
+      username: "",
+      email: ""
+    },
+
+    // Current logged in user's token
+    token: "",
+
+    // For infinite scroll
+  };
+  
   // Accessing an array of treats from the backend
   componentDidMount() {
     fetch('http://localhost:3000/treats')
@@ -38,8 +49,17 @@ class App extends Component {
     })
   }
 
-  handleResponse=()=>{}
-
+  // Handles the response of fetch to backend that sends back a result in the form of a { user: {}, token: "..."} object; if we get back an error object in the form of {error: ...}, then alert the user and return false, if not, set this.state.user to the user that we get back, and set this.state.token to the token we get back, then return true
+  handleResponse = (result) => {
+    if (result.error) {
+      alert(result.error);
+      return false;
+    } else {
+      this.setUser(result);
+      localStorage.token = result.token;
+      return true;
+    }
+  };
 
   render() {
     return (
