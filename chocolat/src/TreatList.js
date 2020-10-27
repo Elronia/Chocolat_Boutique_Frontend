@@ -3,7 +3,7 @@ import './TreatList.css';
 
 const TreatList = (props) => {
     //get info from props, from App.js
-        return(<div>	
+        return(<div className="container">	
             {props.treats.map((item, id) => (		
             <div>
                 <img src={item.image} width="350" height="250"/>

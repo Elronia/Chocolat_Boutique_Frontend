@@ -2,15 +2,18 @@ import React, {Component} from 'react';
 // import logo from './logo.svg';
 // import '../styling/App.css';
 import './App.css';
-// import Cart from './Cart.js';
-// import Home from './Home.js';
+import AboutPage from './AboutPage';
+import Home from './Home.js';
 import NavBar from './NavBar';
 import Search from './Search';
-import LoginForm from './LoginForm.js';
+import LoginForm from './LoginForm';
 import TreatList from './TreatList';
 import './TreatList.css';
+// import Cart from './Cart.js';
+// import CartPage from './CartPage';
+// import './NotFoundPage';
 
-// import { Route, Switch, Link, NavLink } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 class App extends Component {
 
@@ -30,7 +33,7 @@ class App extends Component {
 
     // For infinite scroll
   };
-  
+
   // Accessing an array of treats from the backend
   componentDidMount() {
     fetch('http://localhost:3000/treats')
@@ -74,10 +77,19 @@ class App extends Component {
           // username={this.state.user.username}
         />
         {/* SEARCH */}
-        
-        {/* <LoginForm handleResponse={this.}/> */}
-        
-        <TreatList treats={this.state.treats}/>
+        <Switch>
+          <Route path="/" exact component={Home}/>
+
+          <Route path="/shop" exact>
+            <TreatList treats={this.state.treats}/>
+          </Route>
+          {/* <Route path="/" exact render={() => <TreatList treats={this.state.treats}/>}/> */}
+          
+          <Route path="/account" exact render={() => <LoginForm/>}/>
+
+          {/* Catch-all for if none of the routes above matches */}
+          {/* <Route path="*" component={NotFoundPage}/> */}
+        </Switch>
       </div>
     );
   }

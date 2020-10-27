@@ -1,8 +1,8 @@
 import React from 'react';
 import Search from './Search';
 // import { NavBar } from 'react-router-dom'
-import { NavLink } from 'react-router-dom';
-import { Menu } from 'semantic-ui-react';
+import { NavLink, withRouter } from 'react-router-dom';
+import { Input, Menu } from 'semantic-ui-react';
 
 class NavBar extends React.Component {
 
@@ -19,11 +19,19 @@ class NavBar extends React.Component {
         <div>
             <Menu pointing secondary>
             <Menu.Item
+                as={NavLink} to="/"
                 name='home'
                 active={activeItem === 'home'}
                 onClick={this.handleItemClick}
             />
             <Menu.Item
+                as={NavLink} to="/shop"
+                name='Shop'
+                active={activeItem === 'Shop'}
+                onClick={this.handleItemClick}
+            />
+            <Menu.Item
+                as={NavLink} to="/about"
                 name='About'
                 active={activeItem === 'About'}
                 onClick={this.handleItemClick}
@@ -41,13 +49,15 @@ class NavBar extends React.Component {
               
           
             <Menu.Item
+                as={NavLink} to="/account"
                 name='Account'
-                active={activeItem === 'Login'}
+                active={activeItem === 'LoginForm'}
                 onClick={this.handleItemClick}
             />
             <Menu.Item
+                as={NavLink} to="/cart"
                 name='Cart'
-                active={activeItem === 'Login'}
+                active={activeItem === 'Cart'}
                 onClick={this.handleItemClick}
             />
           </Menu.Menu>

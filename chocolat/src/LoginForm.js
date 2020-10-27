@@ -1,13 +1,13 @@
 import React from "react";
-// import "../styling/LogInPage.css";
+// import "../styling/LoginForm.css";
 import { withRouter } from "react-router-dom";
 // import BackButton from "../component/BackButton";
 
 class LoginForm extends React.Component {
   state = {
     username: "",
-    password: "",
-    token: ""
+    password: ""
+    // token: ""
   };
 
   // For form control, set the state for username/password on each change detected
@@ -32,7 +32,7 @@ class LoginForm extends React.Component {
       .then((result) => {
         // Once result comes back, we handle the result by setting this.state.user and this.state.token in App.js accordingly, as well as storing the token we got back in localStorage so as to avoid logging the user out with page refresh; after that we bring the user to /home (/treats)
         if (this.props.handleResponse(result)) {
-          this.props.history.push("/treats");
+          this.props.history.push("/home");
         }
         return true;
       });
