@@ -3,7 +3,7 @@ import React from 'react'
 
 const Search = (props) => {
 
-    let handleChange = evt => {
+    let handleChange = (evt) => {
       props.changeSearchTerm(evt.target.value)
     }
 
@@ -13,8 +13,8 @@ const Search = (props) => {
           <input class="select" type="text" 
             placeholder="Search Chocolates by Name..." 
             value={props.searchTerm} 
-            onChange={handleChange}aria-label="Search" />
-            <i className="circular search link icon"></i>
+            onChange={handleChange} aria-label="Search" />
+          <i className="circular search link icon"></i>
         </div>
     );
   }

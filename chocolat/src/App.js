@@ -21,6 +21,8 @@ class App extends Component {
     // All treats in [{..., user: {...}}, {..., user: {...}}, ...] format
     treats: [],
 
+    searchTerm: "",
+
     // Current logged in user
     user: {
       id: "",
@@ -65,6 +67,11 @@ class App extends Component {
   };
 
   render() {
+    // console.log(this.props)
+    let filteredTreats = this.state.treats.filter((treatObj) => {
+      return treatObj.name.toLowerCase().includes(this.state.searchTerm.toLowerCase())
+    })
+
     return (
       <div className="App">
         {/* <Header /> */}
@@ -77,15 +84,25 @@ class App extends Component {
           // username={this.state.user.username}
         />
         {/* SEARCH */}
+        {/* < Search 
+          searchTerm={this.state.searchTerm}
+          changeSearchTerm={this.changeSearchTerm}
+        /> */}
         <Switch>
           <Route path="/" exact component={Home}/>
 
-          <Route path="/shop" exact>
-            <TreatList treats={this.state.treats}/>
-          </Route>
-          {/* <Route path="/" exact render={() => <TreatList treats={this.state.treats}/>}/> */}
+          <Route path="/shop" exact render={() => <TreatList treats={this.state.treats}/>}/>
+
+          <Route path="/about" exact render={() => <AboutPage/>}/>
           
           <Route path="/account" exact render={() => <LoginForm/>}/>
+
+          {/* <Route path="/cart" exact render={() => <Cart
+               cartArray={this.state.cartArray}
+               cartActions={this.props.cartActions}
+               removeTreat={this.removeTreat}
+               cartTotal={this.state.cartTotal}/>}/> */}
+          
 
           {/* Catch-all for if none of the routes above matches */}
           {/* <Route path="*" component={NotFoundPage}/> */}
