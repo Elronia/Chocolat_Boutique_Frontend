@@ -3,6 +3,8 @@ import Search from './Search';
 // import { NavBar } from 'react-router-dom'
 import { NavLink, withRouter } from 'react-router-dom';
 import { Input, Menu } from 'semantic-ui-react';
+// import logo from './logo.svg';
+// import '.Logo.css';
 
 class NavBar extends React.Component {
 
@@ -17,6 +19,10 @@ class NavBar extends React.Component {
 
         return (
         <div>
+            {/* <div>
+                <img src={logo} class="logo"/>
+            </div> */}
+
             <Menu pointing secondary>
             <Menu.Item
                 as={NavLink} to="/"
@@ -46,7 +52,7 @@ class NavBar extends React.Component {
                 <Search searchTerm={this.props.searchTerm}
                 changeSearchTerm={this.props.changeSearchTerm}/>
             </Menu.Item>
-              
+          
           
             <Menu.Item
                 as={NavLink} to="/account"

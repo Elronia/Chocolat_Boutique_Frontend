@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { Route, Switch } from 'react-router-dom';
 // import logo from './logo.svg';
 // import '../styling/App.css';
 import './App.css';
@@ -9,11 +10,11 @@ import Search from './Search';
 import LoginForm from './LoginForm';
 import TreatList from './TreatList';
 import './TreatList.css';
+import TreatInfo from './TreatInfo'
 // import Cart from './Cart.js';
 // import CartPage from './CartPage';
 // import './NotFoundPage';
 
-import { Route, Switch } from 'react-router-dom';
 
 class App extends Component {
 
@@ -22,7 +23,9 @@ class App extends Component {
     treats: [],
 
     searchTerm: "",
-
+    // Cart treats in [{ treat: treat, qty: }] format
+    cartArray: [], 
+    cartTotal: 0,
     // Current logged in user
     user: {
       id: "",
@@ -66,6 +69,17 @@ class App extends Component {
     }
   };
 
+
+  // removeItem = (treatObj) => {
+  //   let updatedCart = this.state.cartArray.filter((treat) => {
+  //     return treat !== treatObj 
+  //   })
+  //   this.setState({
+  //     cartArray: updatedCart
+  //   })
+  // }
+
+
   render() {
     // console.log(this.props)
     let filteredTreats = this.state.treats.filter((treatObj) => {
@@ -91,21 +105,29 @@ class App extends Component {
         <Switch>
           <Route path="/" exact component={Home}/>
 
-          <Route path="/shop" exact render={() => <TreatList treats={this.state.treats}/>}/>
+          <Route path="/shop" exact render={() => <TreatList 
+            treats={this.state.treats}/>}
+          />
+
+          {/* ITEM DETAIL */}
+          <Route path="/treats/:id" render={routeProps => {
+              return <TreatInfo match={routeProps.match}/>}} 
+          />
 
           <Route path="/about" exact render={() => <AboutPage/>}/>
           
           <Route path="/account" exact render={() => <LoginForm/>}/>
 
+          
+
           {/* <Route path="/cart" exact render={() => <Cart
                cartArray={this.state.cartArray}
                cartActions={this.props.cartActions}
-               removeTreat={this.removeTreat}
+               removeItem={this.removeItem}
                cartTotal={this.state.cartTotal}/>}/> */}
-          
 
           {/* Catch-all for if none of the routes above matches */}
-          {/* <Route path="*" component={NotFoundPage}/> */}
+          {/* <Route component={NotFoundPage}/> */}
         </Switch>
       </div>
     );
