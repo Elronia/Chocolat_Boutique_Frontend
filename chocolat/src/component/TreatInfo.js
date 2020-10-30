@@ -20,7 +20,7 @@ class TreatInfo extends React.Component {
     }
 
     handleClick = () => {
-        this.props.addTreatToCart(this.state.treats.id)
+        this.props.addItemToCart(this.state.treats.id)
     }
 
 

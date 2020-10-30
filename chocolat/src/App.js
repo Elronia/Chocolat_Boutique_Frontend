@@ -2,18 +2,18 @@ import React, {Component} from 'react';
 import { Route, Switch } from 'react-router-dom';
 // import logo from './logo.svg';
 // import '../styling/App.css';
-import './App.css';
-import AboutPage from './AboutPage';
-import Home from './Home.js';
-import NavBar from './NavBar';
-import Search from './Search';
-import LoginForm from './LoginForm';
+// import './App.css';
+import AboutPage from './component/AboutPage';
+import Home from './component/Home';
+import NavBar from './component/NavBar';
+import Search from './component/Search';
+import LoginForm from './component/LoginForm';
 import TreatList from './TreatList';
 import './TreatList.css';
-import TreatInfo from './TreatInfo'
-// import Cart from './Cart.js';
-// import CartPage from './CartPage';
-// import './NotFoundPage';
+import TreatInfo from './component/TreatInfo';
+import Cart from './component/Cart';
+import CartPage from './component/CartPage';
+import './component/NotFoundPage';
 
 
 class App extends Component {
@@ -52,6 +52,7 @@ class App extends Component {
 
   // Search Feature 
   changeSearchTerm = (theSearchedInput) => {
+// console.log(theSearchedInput)
     this.setState({
       searchTerm: theSearchedInput
     })
@@ -69,15 +70,57 @@ class App extends Component {
     }
   };
 
+  addItemToCart = (id) => {
+    // Find the item for this id in this.state.items
+    const itemMatch = this.state.treats.filter((treat) => {
+      return treat.id === id;
+    });
+    if (!itemMatch.length > 0) {
+      return console.warn(`Item with id ${id} could not be found to add to cart.`);
+    }
+    const treat = itemMatch[0];
+    // Check if it already exists in the cartArray
+    const match = this.state.cartArray.filter((cartItem) => {
+      return cartItem.treat.id === id;
+    });
+    if (match.length > 0) {
+      // Item is already in cart! Increment quantity
+      match[0].qty++;
+      this.setState({ cartArray: [...this.state.cartArray] })
+    } else {
+      // Item is not in cart, add to cart.
+      this.setState({ 
+        cartArray: [...this.state.cartArray, { treat, qty: 1 }]})
+    }
+  }
 
-  // removeItem = (treatObj) => {
-  //   let updatedCart = this.state.cartArray.filter((treat) => {
-  //     return treat !== treatObj 
-  //   })
-  //   this.setState({
-  //     cartArray: updatedCart
-  //   })
-  // }
+  componentDidUpdate(prevProps, prevState){
+    if(prevState.cartArray !== this.state.cartArray){
+      let total = this.state.cartArray.reduce((sum, product)=>
+        sum + product.treat.price, 0 );
+
+    this.setState({
+      cartTotal: total
+    })
+    // console.log("prevState", prevState)
+    // console.log("State",this.state)
+    } 
+  }
+
+  removeItem = (treatObj) => {
+    let updatedCart = this.state.cartArray.filter((treat) => {
+      return treat !== treatObj 
+    })
+    this.setState({
+      cartArray: updatedCart
+    })
+  }
+
+  clearItems = () => {
+    this.setState({
+      cartArray: []
+    });
+  }
 
 
   render() {
@@ -86,6 +129,8 @@ class App extends Component {
       return treatObj.name.toLowerCase().includes(this.state.searchTerm.toLowerCase())
     })
 
+    const cartActions = { addItemToCart: this.addItemToCart, deleteItemFromCart: this.deleteItemFromCart, calculateCartTotal: this.calculateCartTotal, addItemToCartDetail: this.addItemToCartDetail, clearItems: this.clearItems }
+    
     return (
       <div className="App">
         {/* <Header /> */}
@@ -97,22 +142,15 @@ class App extends Component {
           // handleLogOut={this.handleLogOut}
           // username={this.state.user.username}
         />
-        {/* SEARCH */}
-        {/* < Search 
-          searchTerm={this.state.searchTerm}
-          changeSearchTerm={this.changeSearchTerm}
-        /> */}
         <Switch>
           <Route path="/" exact component={Home}/>
 
           <Route path="/shop" exact render={() => <TreatList 
-            treats={this.state.treats}/>}
-          />
+            treats={filteredTreats}/>} />
 
           {/* ITEM DETAIL */}
           <Route path="/treats/:id" render={routeProps => {
-              return <TreatInfo match={routeProps.match}/>}} 
-          />
+              return <TreatInfo match={routeProps.match}/>}} />
 
           <Route path="/about" exact render={() => <AboutPage/>}/>
           
@@ -120,11 +158,11 @@ class App extends Component {
 
           
 
-          {/* <Route path="/cart" exact render={() => <Cart
-               cartArray={this.state.cartArray}
-               cartActions={this.props.cartActions}
-               removeItem={this.removeItem}
-               cartTotal={this.state.cartTotal}/>}/> */}
+          <Route path="/cart" exact render={() => 
+            <Cart cartArray={this.state.cartArray}
+                  cartActions={cartActions}
+                  removeItem={this.removeItem}
+                  cartTotal={this.state.cartTotal} />} />
 
           {/* Catch-all for if none of the routes above matches */}
           {/* <Route component={NotFoundPage}/> */}

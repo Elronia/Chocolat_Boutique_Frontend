@@ -2,7 +2,7 @@ import React from 'react';
 import Search from './Search';
 // import { NavBar } from 'react-router-dom'
 import { NavLink, withRouter } from 'react-router-dom';
-import { Input, Menu } from 'semantic-ui-react';
+import { Menu } from 'semantic-ui-react';
 // import logo from './logo.svg';
 // import '.Logo.css';
 
@@ -65,6 +65,7 @@ class NavBar extends React.Component {
                 name='Cart'
                 active={activeItem === 'Cart'}
                 onClick={this.handleItemClick}
+                // length = {this.props.cartArray.length} //<span className="span-cart">{this.props.cartArray.length}</span>
             />
           </Menu.Menu>
         </Menu>
