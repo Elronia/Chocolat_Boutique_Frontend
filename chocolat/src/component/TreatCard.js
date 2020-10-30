@@ -7,7 +7,7 @@ import '../TreatCard.css';
 
 class TreatCard extends React.Component {
     handleClick = () => {
-        this.props.cartActions.addItemToCart(this.props.items.id)
+        this.props.cartActions.addItemToCart(this.props.treats.id)
     }
     
     render() {
