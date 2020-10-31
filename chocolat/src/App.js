@@ -5,6 +5,7 @@ import { Route, Switch } from 'react-router-dom';
 // import './App.css';
 import AboutPage from './component/AboutPage';
 import Home from './component/Home';
+import HomeCarousel from './component/HomeCarousel';
 import NavBar from './component/NavBar';
 import Search from './component/Search';
 import LoginForm from './component/LoginForm';
@@ -142,6 +143,7 @@ class App extends Component {
           // handleLogOut={this.handleLogOut}
           // username={this.state.user.username}
         />
+
         <Switch>
           <Route path="/" exact component={Home}/>
 

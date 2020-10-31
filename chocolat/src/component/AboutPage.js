@@ -1,5 +1,5 @@
 import React from "react";
-// import "../styling/AboutPage.css";
+import "../styling/AboutPage.css";
 // import BackButton from "./BackButton";
 
 const AboutPage = () => {
@@ -11,6 +11,8 @@ const AboutPage = () => {
           <p>
             {" "}
             <b>Boutique de Chocolat</b> is an online store.
+          </p>
+          <p>
             Kreuther Handcrafted Chocolate is the creative collaboration between Chef Gabriel Kreuther and Pastry Chef Marc Aumont. After years of culinary partnership, including 10 years of working together at The Modern at The MoMA, the pair opened Kreuther Handcrafted Chocolate next door to restaurant Gabriel Kreuther in the winter of 2016.
           </p>
           <p>

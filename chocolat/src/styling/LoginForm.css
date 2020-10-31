@@ -1,0 +1,25 @@
+#log-in-form {
+    margin: auto;
+    margin-bottom: 20px;
+    width: 300px;
+    padding-top: 30px;
+  }
+  
+  #log-in-form .header {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    font-size: 20px;
+  }
+  
+  #log-in-form .ui.button {
+    color: white;
+    background-color: #f5d2fa;
+    font-size: 17px;
+  }
+  
+  #log-in-form .field label {
+    text-align: left;
+    font-size: 15px;
+    font-weight: 500;
+  }

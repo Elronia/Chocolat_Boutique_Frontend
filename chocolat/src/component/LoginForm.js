@@ -1,5 +1,5 @@
 import React from "react";
-// import "../styling/LoginForm.css";
+import '../styling/LoginForm.css';
 import { withRouter } from "react-router-dom";
 // import BackButton from "../component/BackButton";
 
@@ -44,7 +44,7 @@ class LoginForm extends React.Component {
     return (
       <>
         <form className="ui form" id="log-in-form" onSubmit={this.handleSubmit}>
-          <h4 className="ui dividing header">Log In</h4>
+          <h4 className="ui dividing header">LOGIN</h4>
           <div className="field">
             <label>Username</label>
             <input
@@ -65,9 +65,14 @@ class LoginForm extends React.Component {
               onChange={this.handleInput}
             />
           </div>
-          <button className="ui button" type="submit">
-            Log In
+          <button>
+            Sign In
           </button>
+          <div>
+            <button className="ui button" type="submit">
+              Create account
+            </button>
+          </div>
         </form>
 
         {/* <BackButton /> */}

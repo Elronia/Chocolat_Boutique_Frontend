@@ -3,7 +3,8 @@
     clear: both;
     display: table;
   }
-  .column{
+
+.column{
      /* border: 1px solid pink;  */
      float: left; 
      width: 50%; 
@@ -23,9 +24,9 @@
 
   body {
     background-color: #f5d2fa;
-  }
+  } 
   
-  /* .add {
+  .add {
     color: dad2db(191,149,90,0.95);
     font-size: 30px;
     font-weight: bold;
@@ -37,4 +38,6 @@
 
   p:hover {
     color:  dad2db(191,149,90,0.95);
-  } */
+  }  
+
+

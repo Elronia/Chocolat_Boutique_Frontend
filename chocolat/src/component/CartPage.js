@@ -1,5 +1,6 @@
 import React from 'react';
 import { Grid, Image, Header, Button } from "semantic-ui-react";
+import '../styling/CartPage.css'
 
 
 class CartPage extends React.Component {
@@ -57,7 +58,7 @@ class CartPage extends React.Component {
             <Grid.Column width={3}>
                 <h1 className="item">Item</h1>
                 <Image src={image} />
-                <h1>{name}</h1>
+                <h1 className="cart-desc">{name}</h1>
             </Grid.Column>
            
             <Grid.Column width={3}>
@@ -70,8 +71,8 @@ class CartPage extends React.Component {
             </Grid.Column>
 
             <Grid.Column width={2}>
-                <h1>Quantity</h1>
-                <div>
+                <h1 className="item">Quantity</h1>
+                <div className="qty-button">
                 <Header as="h1" textAlign="center">
                     <Button floated="left" onClick={this.decreaseItem}>
                         <span role="img"aria-label="minus">➖</span>
