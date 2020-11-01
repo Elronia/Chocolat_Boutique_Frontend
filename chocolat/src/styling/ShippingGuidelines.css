@@ -1,36 +1,35 @@
-#about-container {
+#shipping-container {
     width: 97%;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 20px;
   }
   
-  #about-container .segment {
+  #shipping-container .segment {
     padding: 35px;
     background-color: #f5d2fa;
   }
   
-  #about-container h1 {
+  #shipping-container h1 {
     text-align: center;
   }
   
-  #about-container div {
+  #shipping-container div {
     font-size: 16px;
     text-align: left;
     margin-bottom: 10px;
   }
   
-  #about-container .emphasized {
+  #shipping-container .emphasized {
     font-size: 20px;
     font-weight: normal;
     font-style: italic;
     margin-left: 25px;
     margin-right: 25px;
-    text-align: center;
+    text-align: left;
     font-weight: 450;
   }
   
-  #about-container .back-btn {
+  #shipping-container .back-btn {
     text-align: center;
   }
-  

@@ -3,10 +3,11 @@ import { Route, Switch } from 'react-router-dom';
 // import logo from './logo.svg';
 // import '../styling/App.css';
 // import './App.css';
-import AboutPage from './component/AboutPage';
+import NavBar from './component/NavBar';
 import Home from './component/Home';
 import HomeCarousel from './component/HomeCarousel';
-import NavBar from './component/NavBar';
+import ShippingGuidelines from './component/ShippingGuidelines';
+import AboutPage from './component/AboutPage';
 import Search from './component/Search';
 import LoginForm from './component/LoginForm';
 import TreatList from './TreatList';
@@ -154,11 +155,11 @@ class App extends Component {
           <Route path="/treats/:id" render={routeProps => {
               return <TreatInfo match={routeProps.match}/>}} />
 
+          <Route path="/shipping" exact render={() => <ShippingGuidelines/>}/>
+
           <Route path="/about" exact render={() => <AboutPage/>}/>
           
           <Route path="/account" exact render={() => <LoginForm/>}/>
-
-          
 
           <Route path="/cart" exact render={() => 
             <Cart cartArray={this.state.cartArray}

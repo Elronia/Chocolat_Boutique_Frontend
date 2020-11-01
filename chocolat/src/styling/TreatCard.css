@@ -31,9 +31,7 @@
     font-size: 30px;
     font-weight: bold;
     margin-left: 250px;
-    display:flex;
-  
-    
+    display:flex; 
   }
 
   p:hover {
@@ -41,3 +39,74 @@
   }  
 
 
+/* .item-name {
+  font-family: 'Gotham';
+  font-size: 120px;
+  color: #512c1d;
+  
+}
+.price1 {
+  padding-top: 510px;
+  font-size: 100px;
+  font-family: 'Gotham';
+  color: #512c1d;
+  display:flex;
+  align-self: flex-end;
+  margin-left: 45px;
+
+ 
+}
+
+.bean{
+  color: #1f1815;
+  font-size: 30px;
+ display:flex; 
+  align-items: center;
+ margin-left: 150px;
+ font-weight: bold;
+}
+
+.add1{
+  display: flex;
+ 
+  /* align-items: flex-start; */
+  /* font-size: 30px;
+  margin-top: 40px;
+  color: rgba(191,149,90,0.95);
+  font-weight: bold;
+  margin-left: 170px;
+  
+  
+}
+.max{
+  max-width: 450px;
+  margin-bottom: 40px;
+  
+  max-width: 150px; */
+/* }
+
+.desc {
+  font-size: 30px;
+
+  display:flex;
+  align-self: flex-end;
+ 
+  line-height: 150%;  
+}
+
+.child {
+  align-items:center;
+  display:flex;
+  border: 10px solid yellow;
+}
+.desc-info {
+  padding: 175px;
+  margin-top: 670px;
+  /* margin-right: 1400px; */
+/* }
+
+  .detail-name{
+    text-align: center;
+    /* margin-top: 440px; */
+    /* margin-left: 800px
+  }   */

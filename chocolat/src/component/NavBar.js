@@ -2,9 +2,9 @@ import React from 'react';
 import Search from './Search';
 // import { NavBar } from 'react-router-dom'
 import { NavLink, withRouter } from 'react-router-dom';
-import { Menu } from 'semantic-ui-react';
-// import logo from './logo.svg';
-// import '.Logo.css';
+import { Menu, Image } from 'semantic-ui-react';
+import logo from './BoutiqueLogo.png';
+
 
 class NavBar extends React.Component {
 
@@ -14,15 +14,14 @@ class NavBar extends React.Component {
 
     handleItemClick = (evt, { name }) => this.setState({ activeItem: name })
 
+    // handleLogoClick(evt, { name }) => this.setState({ activeItem: name })
+
+
     render() {
         const { activeItem } = this.state
 
         return (
         <div>
-            {/* <div>
-                <img src={logo} class="logo"/>
-            </div> */}
-
             <Menu pointing secondary>
             <Menu.Item
                 as={NavLink} to="/"
@@ -36,23 +35,36 @@ class NavBar extends React.Component {
                 active={activeItem === 'Shop'}
                 onClick={this.handleItemClick}
             />
+             <Menu.Item
+                as={NavLink} to="/shipping"
+                name='ShippingGuidelines'
+                active={activeItem === 'ShippingGuidelines'}
+                onClick={this.handleItemClick}
+            /> 
             <Menu.Item
                 as={NavLink} to="/about"
                 name='About'
                 active={activeItem === 'About'}
                 onClick={this.handleItemClick}
             /> 
+
+        <Menu.Menu position='right'>
+            <Menu.Item>
+                <Image as={NavLink} to="/"
+                    src={logo} size="medium" onClick={this.handleLogoClick}/>
+            </Menu.Item>
+        </Menu.Menu>
+            
           
-          <Menu.Menu position='right'>
+        <Menu.Menu position='right'>
             <Menu.Item style={{width: "15vw"}}
                 name='Search'
                 active={activeItem === 'Search'}
-                onClick={this.handleItemClick}
-                > 
+                onClick={this.handleItemClick}> 
                 <Search searchTerm={this.props.searchTerm}
                 changeSearchTerm={this.props.changeSearchTerm}/>
             </Menu.Item>
-          
+        </Menu.Menu>
           
             <Menu.Item
                 as={NavLink} to="/account"
@@ -67,7 +79,6 @@ class NavBar extends React.Component {
                 onClick={this.handleItemClick}
                 // length = {this.props.cartArray.length} //<span className="span-cart">{this.props.cartArray.length}</span>
             />
-          </Menu.Menu>
         </Menu>
       </div>
     )

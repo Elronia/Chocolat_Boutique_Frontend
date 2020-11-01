@@ -6,7 +6,7 @@ const AboutPage = () => {
   return (
     <div id="about-container">
       <div className="ui piled segment">
-        <h1 className="ui header">About</h1>
+        <h1 className="ui header">ABOUT</h1>
         <div className="emphasized">
           <p>
             {" "}
@@ -30,7 +30,6 @@ const AboutPage = () => {
           </p>
         </div> 
       </div>
-      {/* <BackButton /> */}
     </div>
   );
 };
