@@ -1,3 +1,8 @@
+.cart-head {
+  font-family: "Avenir Next", sans-serif;
+  font-weight: normal;
+  font-size: 35px;
+}
 .cart-price,.subtotal{
     margin-top: 50%;
     font-size: 30px;
@@ -7,9 +12,9 @@
     margin-top: 75%;
   }
 
-  .x {
-    margin-top: 190%;
-    font-size: 33px;
+.x {
+  margin-top: 190%;
+  font-size: 33px;
 } 
   
 .cart-head {

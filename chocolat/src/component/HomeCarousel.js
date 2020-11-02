@@ -9,7 +9,7 @@ class HomeCarousel extends Component {
         return (
             <div className="slider-container">
             <Carousel className="carousel-style" showArrows={true} infiniteLoop useKeyboardArrows autoPlay> 
-                <div className="slider-item-div">
+                <div>
                     <img src="https://res.cloudinary.com/dn1e07eul/image/upload/v1602955504/Chocolat/choc01_poises.jpg" />
                     <p className="legend"><h1>HANDCRAFTED PERFECTION</h1>Signature's Chef Selection</p>
                 </div>

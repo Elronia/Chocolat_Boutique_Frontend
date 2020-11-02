@@ -4,6 +4,18 @@ import '../styling/Cart.css'
 
 
 class Cart extends React.Component {
+    componentDidUpdate(prevProps, prevState){
+        // if(prevState.cartArray !== this.props.cartArray){
+        //   let total = this.props.cartArray.reduce((sum, product)=>
+        //     sum + product.treat.price, 0 );
+    
+        // this.setState({
+        //   cartTotal: total
+        // })
+        console.log("prevState", prevState)
+        // console.log("State",this.state)
+        // } 
+    }
 
     turnToItemSection = () => {
         return this.props.cartArray.map((treat) => (

@@ -15,7 +15,7 @@ class CartPage extends React.Component {
   
     increaseItem = () => {
         this.setState(prevState => {
-            // if (prevState.quantity < 9) {
+            // if (prevState.quantity < 10) {
                 return {
                     quantity: prevState.quantity + 1
                 }
@@ -75,7 +75,7 @@ class CartPage extends React.Component {
                 <div className="qty-button">
                 <Header as="h1" textAlign="center">
                     <Button floated="left" onClick={this.decreaseItem}>
-                        <span role="img"aria-label="minus">➖</span>
+                        <span role="img" aria-label="minus">➖</span>
                     </Button>
                     {this.state.quantity}
                     <Button floated="right" onClick={this.increaseItem}>
@@ -96,8 +96,8 @@ class CartPage extends React.Component {
 
             <Grid.Column width={1}>
                 <div className="x">
-                    <Header textAlign="center" onClick={()=>this.props.removeItem(this.props.item)}>
-                        X
+                    <Header textAlign="center" onClick={()=>this.props.removeItem(this.props.treat)}>
+                        Remove
                     </Header>
                 </div>
             </Grid.Column>

@@ -16,8 +16,8 @@ class TreatCard extends React.Component {
         return(
             <Link to={`/treats/${id}`}>
                 <img src={image} width="350" height="250"/>
-                <p>{name}</p>
-                <p>{`Price: $` + price + `.00`}</p>
+                <p className="info">{name}</p>
+                <p className="info">{`Price: $` + price + `.00`}</p>
             </Link> 
                 
             // <Grid centered columns={2}>

@@ -1,3 +1,9 @@
+.header {
+  font-family: "Avenir Next", sans-serif;
+  font-weight: normal;
+  font-size: 35px;
+}
+
 #shipping-container {
     width: 97%;
     margin-left: auto;
@@ -33,3 +39,6 @@
   #shipping-container .back-btn {
     text-align: center;
   }
+
+
+  

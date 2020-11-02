@@ -5,8 +5,8 @@ import "../styling/AboutPage.css";
 const AboutPage = () => {
   return (
     <div id="about-container">
-      <div className="ui piled segment">
-        <h1 className="ui header">ABOUT</h1>
+      <div>
+        <h1 className="header">ABOUT</h1>
         <div className="emphasized">
           <p>
             {" "}

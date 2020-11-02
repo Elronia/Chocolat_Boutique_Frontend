@@ -112,7 +112,7 @@ class App extends Component {
 
   removeItem = (treatObj) => {
     let updatedCart = this.state.cartArray.filter((treat) => {
-      return treat !== treatObj 
+      return treat.id !== treatObj.id
     })
     this.setState({
       cartArray: updatedCart

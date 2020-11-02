@@ -25,7 +25,8 @@
 
 .collection-header{
   display: inline-flex;
-  font-family: "Avenir-Next", sans-serif;
+  font-family: "Avenir Next", sans-serif;
+  font-weight: normal;
   font-size: 35px;
   flex-direction: column;
   flex-flow: wrap;

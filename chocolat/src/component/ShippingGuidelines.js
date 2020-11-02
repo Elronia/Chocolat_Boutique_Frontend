@@ -4,8 +4,8 @@ import '../styling/ShippingGuidelines.css';
 const ShippingGuidelines = () => {
     return (
       <div id="shipping-container">
-        <div className="ui piled segment">
-          <h1 className="ui header">SHIPPING GUIDELINES</h1>
+        <div>
+          <h1 className="header">SHIPPING GUIDELINES</h1>
           <div className="emphasized">
             <p>
               {" "}
