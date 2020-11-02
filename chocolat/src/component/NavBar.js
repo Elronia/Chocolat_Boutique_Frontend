@@ -4,6 +4,7 @@ import Search from './Search';
 import { NavLink, withRouter } from 'react-router-dom';
 import { Menu, Image } from 'semantic-ui-react';
 import logo from './BoutiqueLogo.png';
+import '../styling/NavBar.css';
 
 
 class NavBar extends React.Component {
@@ -23,7 +24,7 @@ class NavBar extends React.Component {
         return (
         <div>
             <Menu pointing secondary>
-            <Menu.Item
+            <Menu.Item className="item"
                 as={NavLink} to="/"
                 name='home'
                 active={activeItem === 'home'}
@@ -57,12 +58,12 @@ class NavBar extends React.Component {
             
           
         <Menu.Menu position='right'>
-            <Menu.Item style={{width: "15vw"}}
+            <Menu.Item className="item" style={{width: "15vw"}}
                 name='Search'
                 active={activeItem === 'Search'}
                 onClick={this.handleItemClick}> 
                 <Search searchTerm={this.props.searchTerm}
-                changeSearchTerm={this.props.changeSearchTerm}/>
+                    changeSearchTerm={this.props.changeSearchTerm}/>
             </Menu.Item>
         </Menu.Menu>
           

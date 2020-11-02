@@ -15,13 +15,13 @@ class CartPage extends React.Component {
   
     increaseItem = () => {
         this.setState(prevState => {
-            if (prevState.quantity < 9) {
+            // if (prevState.quantity < 9) {
                 return {
                     quantity: prevState.quantity + 1
                 }
-            } else {
-                return null
-            }
+            // } else {
+            //     return null
+            // }
         })
     }
 

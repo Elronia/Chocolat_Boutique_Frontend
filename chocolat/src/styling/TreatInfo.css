@@ -1,0 +1,38 @@
+.product-details-wrapper{
+    font-family: "Avenir-Next", sans-serif;
+    font-size: 16px;
+    padding: 40px;
+    max-width: 960px;
+    margin-left: auto;
+    /* margin-right: auto; */
+    border: 3px solid #73AD21;
+}
+.treat-name {
+    font-family: "Avenir-Next", sans-serif;
+    font-size: 22px;
+}
+
+.price {
+    /* padding-top: 510px; */
+    font-family: "Avenir-Next", sans-serif;
+    font-size: 28px;
+    display: flex;
+    /* align-self: flex-end;
+    margin-left: 45px; */
+  }
+
+.add-button {
+    width : 300px;
+    height : 44px;
+    background-color: black;
+    color: hsl(293, 80%, 90%);
+    /* border: none; */
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    margin: 20px;
+}
+/*This should make them change their color when they are hovered*/
+.add-button:hover {
+    background: hsl(293, 80%, 90%);
+    color: black;
+}

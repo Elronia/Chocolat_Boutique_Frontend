@@ -14,11 +14,12 @@ class TreatCard extends React.Component {
         let { id, name, price, image } = this.props.treats
 
         return(
-            <div>  
+            <Link to={`/treats/${id}`}>
                 <img src={image} width="350" height="250"/>
                 <p>{name}</p>
                 <p>{`Price: $` + price + `.00`}</p>
-            </div>
+            </Link> 
+                
             // <Grid centered columns={2}>
             //     <Grid.Column>
             //         <Link to={`/treats/${id}`}>

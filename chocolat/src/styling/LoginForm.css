@@ -1,4 +1,5 @@
 #log-in-form {
+    font-family: "Avenir-Next", sans-serif;
     margin: auto;
     margin-bottom: 20px;
     width: 300px;
@@ -12,11 +13,29 @@
     font-size: 20px;
   }
   
-  #log-in-form .ui.button {
-    color: white;
-    background-color: #f5d2fa;
+#log-in-form .ui.button {
+  color: white;
+  background-color: #f5d2fa;
+  font-size: 17px;
+}
+
+.signin-button {
+    width : 300px;
+    height : 44px;
+    background-color: black;
+    color: hsl(293, 80%, 90%);
+    font-family: "Avenir-Next", sans-serif;
     font-size: 17px;
-  }
+    /* border: none; */
+    /* margin: 20px; */
+}
+/*This should make them change their color when they are hovered*/
+.signin-button:hover {
+    background: hsl(293, 80%, 90%);
+    color: black;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+}
   
   #log-in-form .field label {
     text-align: left;

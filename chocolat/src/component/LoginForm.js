@@ -65,7 +65,7 @@ class LoginForm extends React.Component {
               onChange={this.handleInput}
             />
           </div>
-          <button>
+          <button className="signin-button">
             Sign In
           </button>
           <div>

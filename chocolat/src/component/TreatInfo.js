@@ -1,12 +1,14 @@
-import React from "react"
-import { Link } from 'react-router-dom'
-import { Grid } from 'semantic-ui-react'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { Grid } from 'semantic-ui-react';
+import '../styling/TreatInfo.css';
 
 class TreatInfo extends React.Component {
 
     state = {
-        treats: []
+        treat: {}
     }
+
 
     componentDidMount() {
         const id = this.props.match.params.id
@@ -14,20 +16,20 @@ class TreatInfo extends React.Component {
             .then(resp => resp.json())
             .then((treat) => {
                 this.setState({
-                    treats: treat
-                })
+                    treat: treat //you can put just treat
+                });
             })
     }
-
-    handleClick = () => {
-        this.props.addItemToCart(this.state.treats.id)
-    }
-
+    
+      handleClick = () => {
+          const { addItemToCart } = this.props
+          addItemToCart(this.state.treat.id)
+      }
 
     render() {
-        const { treats } = this.state
-        if (!treats) return <h3>Loading...</h3>
-        const { name, price, image, description } = this.state.treats
+        const { treat } = this.state
+        if (!treat) return <h3>Loading...</h3>
+        const { name, price, image, description } = this.state.treat
 
         return (
             <div>
@@ -36,20 +38,22 @@ class TreatInfo extends React.Component {
                     <Grid.Column width={8}>
                         <img src={image} />  
                     </Grid.Column>
-                   
-                    <div className="detail-name">
-                        <p className="treat-name" >{name}</p>
-                    </div>
                     
-                    <Grid.Column >
-                        <div>
-                            <p> {description}</p>
+                    <div className="product-details-wrapper">
+                        <div >
+                            <h1 className="treat-name"> {name} </h1> 
                         </div>
-                        <p>${price}.00</p>
+                    
+                        <Grid.Column >
+                            <div>
+                                <p> {description}</p>
+                            </div>
+                            <p className="price">${price}.00</p>
                       
-                        <button onClick={this.handleClick}>Add to Cart +</button>
-                        {/* onClick={this.handleClick} */}
-                    </Grid.Column>
+                            <button className="add-button" onClick={this.handleClick}> Add to Cart </button>
+                            {/* onClick={this.handleClick} */}
+                        </Grid.Column>
+                    </div>
                     
                 </Grid>
 

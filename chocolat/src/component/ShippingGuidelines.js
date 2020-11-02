@@ -1,5 +1,5 @@
-import React from "react";
-import "../styling/ShippingGuidelines.css";
+import React from 'react';
+import '../styling/ShippingGuidelines.css';
 
 const ShippingGuidelines = () => {
     return (

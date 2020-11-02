@@ -10,11 +10,12 @@ import ShippingGuidelines from './component/ShippingGuidelines';
 import AboutPage from './component/AboutPage';
 import Search from './component/Search';
 import LoginForm from './component/LoginForm';
-import TreatList from './TreatList';
-import './TreatList.css';
+import TreatList from './component/TreatList';
+import TreatCard from './component/TreatCard';
 import TreatInfo from './component/TreatInfo';
 import Cart from './component/Cart';
 import CartPage from './component/CartPage';
+import Footer from './component/Footer';
 import './component/NotFoundPage';
 
 
@@ -153,7 +154,8 @@ class App extends Component {
 
           {/* ITEM DETAIL */}
           <Route path="/treats/:id" render={routeProps => {
-              return <TreatInfo match={routeProps.match}/>}} />
+              return <TreatInfo match={routeProps.match}
+                addItemToCart={this.addItemToCart}/>}} />
 
           <Route path="/shipping" exact render={() => <ShippingGuidelines/>}/>
 
@@ -170,6 +172,8 @@ class App extends Component {
           {/* Catch-all for if none of the routes above matches */}
           {/* <Route component={NotFoundPage}/> */}
         </Switch>
+
+        <Footer/>
       </div>
     );
   }
