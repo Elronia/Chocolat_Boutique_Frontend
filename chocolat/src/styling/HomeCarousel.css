@@ -1,10 +1,10 @@
-.slider-container {
-    width: 100%;
+/* /* .slider-container {
+    width: 75%;
     height: 25vh !important;
     /* position:fixed;  add this code for position fixed */
-    top:100px; /* set top and left 0 */
-    left:0px;
-}  
+    /* top:100px; /* set top and left 0 */
+    /* left:0px;
+}   */
 .slider-item-div {
     padding: 20px;
     background-color: #f5d2fa;
@@ -13,15 +13,31 @@
     width: 100%;
     overflow: hidden;
 }
+
 .slider-item-div > img{
     max-width: 75%;
     object-fit: contain;
 }
+
 .carousel-style {
     height: 10% !important;
-}
+} 
+
 .legend {
+    font-family: "Avenir Next", sans-serif;
+    font-weight: normal;
+    font-size: 26px;
     background-color: white !important;
     color: black !important;
     opacity: 1 !important;
 }
+
+.carousel .thumb img {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.carousel .slide img {
+    max-height: 600px;  /* change this to whatever you want */
+    width: auto;
+} 

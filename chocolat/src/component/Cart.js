@@ -4,18 +4,22 @@ import '../styling/Cart.css'
 
 
 class Cart extends React.Component {
-    componentDidUpdate(prevProps, prevState){
-        // if(prevState.cartArray !== this.props.cartArray){
-        //   let total = this.props.cartArray.reduce((sum, product)=>
-        //     sum + product.treat.price, 0 );
+    // componentDidUpdate(prevProps, prevState){
+    //     // if(prevState.cartArray !== this.props.cartArray){
+    //     //   let total = this.props.cartArray.reduce((sum, product)=>
+    //     //     sum + product.treat.price, 0 );
     
-        // this.setState({
-        //   cartTotal: total
-        // })
-        console.log("prevState", prevState)
-        // console.log("State",this.state)
-        // } 
-    }
+    //     // this.setState({
+    //     //   cartTotal: total
+    //     // })
+    //     console.log("prevState", prevState)
+    //     // console.log("State",this.state)
+    //     // } 
+    // }
+
+    // this.props.cartArray.map((treat, index) => {
+    // })
+    //key={`${treat.id}-${index}`}
 
     turnToItemSection = () => {
         return this.props.cartArray.map((treat) => (
@@ -37,7 +41,6 @@ class Cart extends React.Component {
                     <h4>Total: ${this.props.cartTotal}.00</h4>
                     <hr/>
                     <h4>Subtotal: ${this.props.cartTotal}.00</h4>
-                    
                 </div>
             </div>
             {/* <CheckoutModal

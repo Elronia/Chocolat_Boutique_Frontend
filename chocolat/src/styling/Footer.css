@@ -1,5 +1,5 @@
 .main-footer{
-    font-family: "Avenir-Next", sans-serif;
+    font-family: "Avenir Next", sans-serif;
     font-size: 16px;
     padding: 40px;
     background-color: #f2f2f2;
@@ -21,14 +21,14 @@
 }
 
 .footer-li{
-    font-family: "Avenir-Next", sans-serif;
+    font-family: "Avenir Next", sans-serif;
     font-size: 16px;
     padding: 15px;
     color:  black
 }
 
 .contact{
-    font-family: "Avenir-Next", sans-serif;
+    font-family: "Avenir Next", sans-serif;
     font-size: 16px;
     color:  black;
 }
@@ -36,6 +36,7 @@
 .list-unstyled {
     margin: 0;
     list-style-type: none;
+    line-height: 55%
 }
 
 .footer-button {
@@ -46,7 +47,7 @@
     /* border: none; */
     -moz-border-radius: 2px;
     -webkit-border-radius: 2px;
-    margin: 20px;
+    margin: 100px;
 }
 /*This should make them change their color when they are hovered*/
 .footer-button:hover {

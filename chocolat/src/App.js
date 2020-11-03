@@ -37,7 +37,7 @@ class App extends Component {
     },
 
     // Current logged in user's token
-    token: "",
+    token: ""
 
     // For infinite scroll
   };
@@ -86,15 +86,18 @@ class App extends Component {
     const match = this.state.cartArray.filter((cartItem) => {
       return cartItem.treat.id === id;
     });
+    // console.log(match)
     if (match.length > 0) {
       // Item is already in cart! Increment quantity
       match[0].qty++;
       this.setState({ cartArray: [...this.state.cartArray] })
+      // console.log(this.state.cartArray)
     } else {
       // Item is not in cart, add to cart.
       this.setState({ 
         cartArray: [...this.state.cartArray, { treat, qty: 1 }]})
     }
+    console.log(this.state.cartArray)
   }
 
   componentDidUpdate(prevProps, prevState){
@@ -112,6 +115,9 @@ class App extends Component {
 
   removeItem = (treatObj) => {
     let updatedCart = this.state.cartArray.filter((treat) => {
+      // console.log(treat)
+      // console.log(treat.treat.id)
+      // console.log(treatObj.id)
       return treat.id !== treatObj.id
     })
     this.setState({

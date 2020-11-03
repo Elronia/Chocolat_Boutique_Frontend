@@ -7,10 +7,10 @@ class CartPage extends React.Component {
 
     state = {
       quantity: 1,
-      show: true,
+      show: true
     //   max: 5,
     //   min: 0,
-      cartArray: []
+    //   cartArray: []
     }
   
     increaseItem = () => {
@@ -48,7 +48,7 @@ class CartPage extends React.Component {
     }
 
     render(){
-        console.log(this.props.treat)
+        // console.log(this.props.treat)
         let { name, price, image } = this.props.treat.treat
         
         return(
@@ -58,26 +58,26 @@ class CartPage extends React.Component {
             <Grid.Column width={3}>
                 <h1 className="item">Item</h1>
                 <Image src={image} />
-                <h1 className="cart-desc">{name}</h1>
+                <h4 className="cart-name">{name}</h4>
             </Grid.Column>
            
             <Grid.Column width={3}>
                 <h1 className="item">Price</h1>
                 <div>
-                    <Header as="h1" textAlign="center">
+                    <Header as="h4" textAlign="center">
                         ${price}.00
                     </Header>
                 </div>
             </Grid.Column>
 
-            <Grid.Column width={2}>
+            <Grid.Column width={3}>
                 <h1 className="item">Quantity</h1>
                 <div className="qty-button">
-                <Header as="h1" textAlign="center">
+                <Header as="h4" textAlign="center">
                     <Button floated="left" onClick={this.decreaseItem}>
                         <span role="img" aria-label="minus">➖</span>
                     </Button>
-                    {this.state.quantity}
+                    {this.props.treat.qty}
                     <Button floated="right" onClick={this.increaseItem}>
                         <span role="img" aria-label="plus">➕</span>
                     </Button>
@@ -86,9 +86,9 @@ class CartPage extends React.Component {
             </Grid.Column>
            
             <Grid.Column width={3}>
-                <h1>Subtotal</h1>
-                <div className="subtotal">
-                    <Header as="h1" textAlign="center">
+                <h1 className="total">Total</h1>
+                <div className="price">
+                    <Header as="h4" textAlign="center">
                         ${price}.00
                     </Header>
                 </div>
@@ -96,9 +96,9 @@ class CartPage extends React.Component {
 
             <Grid.Column width={1}>
                 <div className="x">
-                    <Header textAlign="center" onClick={()=>this.props.removeItem(this.props.treat)}>
+                    <Button textAlign="center" onClick={() => this.props.removeItem(this.props.treat)}>
                         Remove
-                    </Header>
+                    </Button>
                 </div>
             </Grid.Column>
             

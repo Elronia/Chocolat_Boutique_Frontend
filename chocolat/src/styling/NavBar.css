@@ -3,3 +3,14 @@
     font-size: 15px;
     padding: 15px;
 } */
+.nav-container {
+    /* flex-grow: -2; */
+    float: right;
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.shopping-bag-icon{
+    color: #a0a0a0;
+}

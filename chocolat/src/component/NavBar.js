@@ -2,7 +2,7 @@ import React from 'react';
 import Search from './Search';
 // import { NavBar } from 'react-router-dom'
 import { NavLink, withRouter } from 'react-router-dom';
-import { Menu, Image } from 'semantic-ui-react';
+import { Menu, Icon, Image } from 'semantic-ui-react';
 import logo from './BoutiqueLogo.png';
 import '../styling/NavBar.css';
 
@@ -57,31 +57,49 @@ class NavBar extends React.Component {
         </Menu.Menu>
             
           
-        <Menu.Menu position='right'>
-            <Menu.Item className="item" style={{width: "15vw"}}
+        <Menu.Menu className='nav-container' position='right'>
+            <Menu.Item className="search-input" style={{width: "15vw"}}
                 name='Search'
                 active={activeItem === 'Search'}
                 onClick={this.handleItemClick}> 
                 <Search searchTerm={this.props.searchTerm}
                     changeSearchTerm={this.props.changeSearchTerm}/>
             </Menu.Item>
-        </Menu.Menu>
-          
+        
+
+            <Menu.Item>
+              <Icon class="shopping-bag-icon" name="Cart" size="large"/>
+              <i class="user icon"></i>
+            </Menu.Item>
             <Menu.Item
                 as={NavLink} to="/account"
                 name='Account'
+                active={activeItem === <i class="fas fa-user"></i>}
                 active={activeItem === 'LoginForm'}
                 onClick={this.handleItemClick}
             />
+            
+            <Menu.Item>
+              <Icon class="shopping-bag-icon" name="Cart" size="large"/>
+              <i class="shopping bag icon"></i>
+            </Menu.Item>
             <Menu.Item
                 as={NavLink} to="/cart"
                 name='Cart'
                 active={activeItem === 'Cart'}
                 onClick={this.handleItemClick}
-                // length = {this.props.cartArray.length} //<span className="span-cart">{this.props.cartArray.length}</span>
-            />
+            />  
+            </Menu.Menu>
         </Menu>
-      </div>
+    </div>
+      // length = {this.props.cartArray.length} //<span className="span-cart">{this.props.cartArray.length}</span>
+            
+       //</div>
+                //<Link className="cart" to="/cart">
+                //<img src={} ></img>
+                //<span class="shopping bag icon">{this.props.cartArray.length}</span>
+            //</Link>
+            //</div>
     )
   }
 
