@@ -105,3 +105,13 @@ p:hover {
     /* margin-top: 440px; */
     /* margin-left: 800px
   }   */
+
+.treat-card{
+  width: 30%;
+  margin: 10px;
+  float: left;
+  min-height: 370px;
+}
+.treat-card img{
+  width: 100%;
+}

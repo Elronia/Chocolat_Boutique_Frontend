@@ -195,7 +195,7 @@ class App extends Component {
                   decreaseItem={this.decreaseItem} />} />
 
           {/* Catch-all for if none of the routes above matches */}
-          <Route path="/checkout" exact render={() => <CheckoutForm/>}/>
+          <Route path="/checkout" exact render={() => <CheckoutForm cartArray={this.state.cartArray}/>}/>
           {/* <Route component={NotFoundPage}/> */}
         </Switch>
 
