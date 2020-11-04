@@ -85,7 +85,8 @@ class NavBar extends React.Component {
             </Menu.Item>
             <Menu.Item
                 as={NavLink} to="/cart"
-                name='Cart'
+                header={true}
+                name={`Cart - ${this.props.treatsAmount}`}
                 active={activeItem === 'Cart'}
                 onClick={this.handleItemClick}
             />  

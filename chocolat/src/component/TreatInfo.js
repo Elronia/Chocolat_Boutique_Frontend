@@ -45,11 +45,13 @@ class TreatInfo extends React.Component {
                         </div>
                     
                         <Grid.Column >
-                            <div>
+                            <div className="description">
                                 <p> {description}</p>
                             </div>
-                            <p className="price">${price}.00</p>
-                      
+                            <div className="price">
+                                <p>${price}.00</p>
+                            </div>
+                            
                             <button className="add-button" onClick={this.handleClick}> Add to Cart </button>
                             {/* onClick={this.handleClick} */}
                         </Grid.Column>

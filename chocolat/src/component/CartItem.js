@@ -12,39 +12,6 @@ class CartPage extends React.Component {
     //   min: 0,
     //   cartArray: []
     }
-  
-    increaseItem = () => {
-        this.setState(prevState => {
-            // if (prevState.quantity < 10) {
-                console.log("prev state", prevState)
-                return {
-                    quantity: prevState.quantity + 1,
-                    
-                }
-            // } else {
-            //     return null
-            // }
-        })  
-        //  this.setState(prevState => {
-        //     console.log("prev state", prevState)
-        //     this.setState({
-        //         quantity: prevState.quantity + 1,
-        //     }),
-        //     console.log("new state", this.state.quantity)
-        // })
-    }
-
-    decreaseItem = () => {
-    this.setState(prevState => {
-        if (prevState.quantity > 0) {
-            return {
-            quantity: prevState.quantity - 1
-            }
-            } else {
-            return null;
-            }
-        })
-    }
 
     toggleClick = () => {
         this.setState({ show: !this.state.show });
@@ -91,12 +58,12 @@ class CartPage extends React.Component {
                 <h1 className="item">Quantity</h1>
                 <div className="qty-button">
                 <Header as="h4" textAlign="center">
-                    <Button floated="left" onClick={this.decreaseItem}>
+                    <Button floated="left" onClick={this.props.decreaseItem}>
                         <span role="img" aria-label="minus">➖</span>
                     </Button>
-                    {this.state.quantity}
-                    {/* {this.props.treat.qty} */}
-                    <Button floated="right" onClick={this.increaseItem}>
+                    
+                    {this.props.treat.qty}
+                    <Button floated="right" onClick={this.props.increaseItem}>
                         <span role="img" aria-label="plus">➕</span>
                     </Button>
                 </Header>
@@ -112,9 +79,14 @@ class CartPage extends React.Component {
                 </div>
             </Grid.Column>
           </Grid.Row>
+         
         </Grid>
-        </div>
         
+                
+          
+        
+        
+        </div>
         )
     }
 }

@@ -49,3 +49,18 @@
  /* .item{
     font-size: 40px;
   }  */
+.checkout-btn-wrapper{
+  width: 100%;
+}
+
+.checkout-btn{
+  float: right;
+  padding: 25px;
+  font-size: 20px;
+  background-color: black;
+  color: hsl(293, 80%, 90%);
+  /* border: none; */
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  margin: 20px;
+}

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { Route, Switch } from 'react-router-dom';
 // import logo from './logo.svg';
 // import '../styling/App.css';
-// import './App.css';
+import './App.css';
 import NavBar from './component/NavBar';
 import Home from './component/Home';
 import HomeCarousel from './component/HomeCarousel';
@@ -15,6 +15,7 @@ import TreatCard from './component/TreatCard';
 import TreatInfo from './component/TreatInfo';
 import CartPage from './component/CartPage';
 import CartItem from './component/CartItem';
+import CheckoutForm from './component/CheckoutForm';
 import Footer from './component/Footer';
 import './component/NotFoundPage';
 
@@ -74,30 +75,45 @@ class App extends Component {
   };
 
   addItemToCart = (id) => {
+    const { cartArray } = this.state;
     // Find the item for this id in this.state.items
-    const itemMatch = this.state.treats.filter((treat) => {
+    const treat = this.state.treats.find((treat) => {
       return treat.id === id;
     });
-    if (!itemMatch.length > 0) {
+    if (!treat) {
       return console.warn(`Item with id ${id} could not be found to add to cart.`);
     }
-    const treat = itemMatch[0];
     // Check if it already exists in the cartArray
-    const match = this.state.cartArray.filter((cartItem) => {
+    const foundTreatIndex = cartArray.findIndex((cartItem) => {
       return cartItem.treat.id === id;
     });
     // console.log(match)
-    if (match.length > 0) {
-      // Item is already in cart! Increment quantity
-      match[0].qty++; 
-      this.setState({ cartArray: [...this.state.cartArray] })
-      // console.log(this.state.cartArray)
+    if (foundTreatIndex !== -1) {
+      this.increaseItem(foundTreatIndex)
     } else {
       // Item is not in cart, add to cart.
       this.setState({ 
-        cartArray: [...this.state.cartArray, { treat, qty: 1 }]})
+        cartArray: [...cartArray, { treat, qty: 1 }]})
     }
+  }
+
+  increaseItem = (i) => {
+    const { cartArray } = this.state;
+    cartArray[i].qty++; 
+    this.setState({ cartArray: [...cartArray] })
+  }
+
+  decreaseItem = (i) => {
+    const { cartArray } = this.state;
+    if (cartArray[i].qty > 1){
+      cartArray[i].qty--; 
+      this.setState({ cartArray: [...cartArray] })
+    }
+  }
+
+  get treatsAmount(){
     console.log(this.state.cartArray)
+    return this.state.cartArray.reduce((acc, prev) => prev.qty + acc, 0)
   }
 
   componentDidUpdate(prevProps, prevState){
@@ -115,10 +131,10 @@ class App extends Component {
 
   removeItem = (treatObj) => {
     let updatedCart = this.state.cartArray.filter((treat) => {
-      // console.log(treat)
+      console.log(treat)
       // console.log(treat.treat.id)
-      // console.log(treatObj.id)
-      return treat.id !== treatObj.id
+      console.log(treatObj)
+      return treat.treat.id !== treatObj.treat.id
     })
     this.setState({
       cartArray: updatedCart
@@ -147,6 +163,7 @@ class App extends Component {
         <NavBar
           searchTerm={this.state.searchTerm}
           changeSearchTerm={this.changeSearchTerm}
+          treatsAmount={this.treatsAmount}
           // loggedIn={loggedIn}
           // handleLogOut={this.handleLogOut}
           // username={this.state.user.username}
@@ -173,9 +190,12 @@ class App extends Component {
             <CartPage cartArray={this.state.cartArray}
                   cartActions={cartActions}
                   removeItem={this.removeItem}
-                  cartTotal={this.state.cartTotal} />} />
+                  cartTotal={this.state.cartTotal}
+                  increaseItem={this.increaseItem}
+                  decreaseItem={this.decreaseItem} />} />
 
           {/* Catch-all for if none of the routes above matches */}
+          <Route path="/checkout" exact render={() => <CheckoutForm/>}/>
           {/* <Route component={NotFoundPage}/> */}
         </Switch>
 
