@@ -13,8 +13,8 @@ import LoginForm from './component/LoginForm';
 import TreatList from './component/TreatList';
 import TreatCard from './component/TreatCard';
 import TreatInfo from './component/TreatInfo';
-import Cart from './component/Cart';
 import CartPage from './component/CartPage';
+import CartItem from './component/CartItem';
 import Footer from './component/Footer';
 import './component/NotFoundPage';
 
@@ -89,7 +89,7 @@ class App extends Component {
     // console.log(match)
     if (match.length > 0) {
       // Item is already in cart! Increment quantity
-      match[0].qty++;
+      match[0].qty++; 
       this.setState({ cartArray: [...this.state.cartArray] })
       // console.log(this.state.cartArray)
     } else {
@@ -170,7 +170,7 @@ class App extends Component {
           <Route path="/account" exact render={() => <LoginForm/>}/>
 
           <Route path="/cart" exact render={() => 
-            <Cart cartArray={this.state.cartArray}
+            <CartPage cartArray={this.state.cartArray}
                   cartActions={cartActions}
                   removeItem={this.removeItem}
                   cartTotal={this.state.cartTotal} />} />

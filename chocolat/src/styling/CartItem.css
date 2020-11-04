@@ -1,0 +1,74 @@
+.flex-cart {
+    display: flex;
+    /* justify-content: space-around; */
+} 
+
+.total-box {
+    display: flex;
+      /* padding: 100px; */
+    padding-left: 100px;
+}
+
+.sub-form{
+    height: 200px;
+    width: 200px;
+}
+    
+.button{
+    display: flex;
+    padding-left: 95px;
+}
+
+.checkout-btn {
+    padding: 25px;
+    font-size: 20px;
+}
+    
+.checkout{
+      /* padding: 40px; */
+    border-radius: 134px;
+}
+    
+.label-font{
+    font-size: 20px;
+}
+
+.item{
+    font-family: "Avenir Next", sans-serif;
+    font-weight: normal;
+    font-size: 16px;
+}
+
+.qty-button{
+    background-color: none;
+    background-color: #f5d2fa;
+    /* opacity: 0.5; */
+}
+    
+.plus-btn, .neg-btn{
+    font-size: 30px;
+    /* border-radius: 50px; */
+    /* padding: 20px; */
+    background-color: none;
+    opacity: 0.5;
+}
+
+.total{
+    font-family: "Avenir Next", sans-serif;
+    font-weight: normal;
+    font-size: 16px;
+}
+
+.price{
+    font-family: "Avenir Next", sans-serif;
+    font-weight: normal;
+    font-size: 16px;
+}
+
+.cart-name{
+    font-family: "Avenir Next", sans-serif;
+    font-weight: normal;
+    font-size: 16px;
+}
+
+

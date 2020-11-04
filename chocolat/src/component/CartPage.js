@@ -1,112 +1,54 @@
 import React from 'react';
-import { Grid, Image, Header, Button } from "semantic-ui-react";
+import CartPage from './CartItem';
 import '../styling/CartPage.css'
 
 
-class CartPage extends React.Component {
+class Cart extends React.Component {
+    // componentDidUpdate(prevProps, prevState){
+    //     // if(prevState.cartArray !== this.props.cartArray){
+    //     //   let total = this.props.cartArray.reduce((sum, product)=>
+    //     //     sum + product.treat.price, 0 );
+    
+    //     // this.setState({
+    //     //   cartTotal: total
+    //     // })
+    //     console.log("prevState", prevState)
+    //     // console.log("State",this.state)
+    //     // } 
+    // }
 
-    state = {
-      quantity: 1,
-      show: true
-    //   max: 5,
-    //   min: 0,
-    //   cartArray: []
-    }
-  
-    increaseItem = () => {
-        this.setState(prevState => {
-            // if (prevState.quantity < 10) {
-                return {
-                    quantity: prevState.quantity + 1
-                }
-            // } else {
-            //     return null
-            // }
-        })
-    }
+    // this.props.cartArray.map((treat, index) => {
+    // })
+    //key={`${treat.id}-${index}`}
 
-    decreaseItem = () => {
-    this.setState(prevState => {
-        if (prevState.quantity > 0) {
-            return {
-            quantity: prevState.quantity - 1
-            }
-            } else {
-            return null;
-            }
-        })
+    turnToItemSection = () => {
+        return this.props.cartArray.map((treat) => (
+          <CartPage key={treat.id} treat={treat} 
+          increaseItem={this.increaseItem}
+            cartArray={this.props.cartArray} 
+            cartActions={this.props.cartActions}
+            removeItem={this.props.removeItem}/>
+        ));
     }
-
-    toggleClick = () => {
-        this.setState({ show: !this.state.show });
-    }
-
-    handleChange = (evt) => {
-        this.setState({
-            quantity: evt.target.value
-        })
-    }
-
-    render(){
-        // console.log(this.props.treat)
-        let { name, price, image } = this.props.treat.treat
-        
-        return(
-        <div> 
-        <Grid>
-          <Grid.Row>
-            <Grid.Column width={3}>
-                <h1 className="item">Item</h1>
-                <Image src={image} />
-                <h4 className="cart-name">{name}</h4>
-            </Grid.Column>
-           
-            <Grid.Column width={3}>
-                <h1 className="item">Price</h1>
-                <div>
-                    <Header as="h4" textAlign="center">
-                        ${price}.00
-                    </Header>
+   
+    render() {
+        return (
+        <>
+            <h1 className="cart-head">SHOPPING CART</h1>
+                { this.props.cartArray.length >= 1 ?  this.turnToItemSection() : <div className="cart"><p>Your cart is currently empty.</p><p>Continue browsing here.</p></div> }
+          
+            <div className="cart-total-cont">
+                <div class="total-box">
+                    {/* <h4>Total: ${this.props.cartTotal}.00</h4>
+                    <hr/>
+                    <h4>Subtotal: ${this.props.cartTotal}.00</h4> */}
                 </div>
-            </Grid.Column>
-
-            <Grid.Column width={3}>
-                <h1 className="item">Quantity</h1>
-                <div className="qty-button">
-                <Header as="h4" textAlign="center">
-                    <Button floated="left" onClick={this.decreaseItem}>
-                        <span role="img" aria-label="minus">➖</span>
-                    </Button>
-                    {this.props.treat.qty}
-                    <Button floated="right" onClick={this.increaseItem}>
-                        <span role="img" aria-label="plus">➕</span>
-                    </Button>
-                </Header>
-                </div>
-            </Grid.Column>
-           
-            <Grid.Column width={3}>
-                <h1 className="total">Total</h1>
-                <div className="price">
-                    <Header as="h4" textAlign="center">
-                        ${price}.00
-                    </Header>
-                </div>
-            </Grid.Column>
-
-            <Grid.Column width={1}>
-                <div className="x">
-                    <Button textAlign="center" onClick={() => this.props.removeItem(this.props.treat)}>
-                        Remove
-                    </Button>
-                </div>
-            </Grid.Column>
-            
-          </Grid.Row>
-        </Grid>
-        </div>
+            </div>
+            {/* <CheckoutModal
+            cartArray={this.props.cartArray}  /> */}
+        </>
         )
     }
 }
 
-export default CartPage;
+export default Cart;

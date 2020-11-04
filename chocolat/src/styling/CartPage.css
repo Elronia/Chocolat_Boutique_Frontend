@@ -1,74 +1,51 @@
-.flex-cart {
-    display: flex;
-    /* justify-content: space-around; */
+.cart-head {
+  font-family: "Avenir Next", sans-serif;
+  font-weight: normal;
+  font-size: 35px;
+  text-align: center;
+}
+
+.cart{
+  font-family: "Avenir Next", sans-serif;
+  font-weight: normal;
+  font-size: 16px;
+  text-align: center;
+  margin: 0px 0px 15px;
+}
+.cart-price,.subtotal{
+    margin-top: 50%;
+    font-size: 30px;
+  }
+  
+  .qty-button{
+    margin-top: 75%;
+  }
+
+.x {
+  margin-top: 190%;
+  font-size: 33px;
+} 
+  
+.cart-head {
+    font-size: px;
+    /* font-family: 'Gotham'; */
+    padding-bottom: 100px;
+}   
+  
+.cart-font{
+    color: white;
 } 
 
-.total-box {
-    display: flex;
-      /* padding: 100px; */
-    padding-left: 100px;
-}
-
-.sub-form{
-    height: 200px;
-    width: 200px;
-}
-    
-.button{
-    display: flex;
-    padding-left: 95px;
-}
-
-.checkout-btn {
-    padding: 25px;
-    font-size: 20px;
-}
-    
-.checkout{
-      /* padding: 40px; */
-    border-radius: 134px;
-}
-    
-.label-font{
-    font-size: 20px;
-}
-
-.item{
-    font-family: "Avenir Next", sans-serif;
-    font-weight: normal;
-    font-size: 16px;
-}
-
-.qty-button{
-    background-color: none;
-    background-color: #f5d2fa;
-    /* opacity: 0.5; */
-}
-    
-.plus-btn, .neg-btn{
-    font-size: 30px;
-    /* border-radius: 50px; */
-    /* padding: 20px; */
-    background-color: none;
-    opacity: 0.5;
-}
-
-.total{
-    font-family: "Avenir Next", sans-serif;
-    font-weight: normal;
-    font-size: 16px;
-}
-
-.price{
-    font-family: "Avenir Next", sans-serif;
-    font-weight: normal;
-    font-size: 16px;
-}
-
-.cart-name{
-    font-family: "Avenir Next", sans-serif;
-    font-weight: normal;
-    font-size: 16px;
-}
-
-
+ .cart-total-cont{
+    border-top: 2px solid black;
+    padding: 30px;
+  }
+  
+   .cart-desc{
+    font-size: 30px; 
+    /* font-family: 'Gotham'; */
+  } 
+  
+ /* .item{
+    font-size: 40px;
+  }  */
