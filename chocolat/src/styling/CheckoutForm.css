@@ -11,11 +11,50 @@
     padding-top: 40px;
 }
 
-.checkout-form .right{
+.checkout-form .left form{
+    width: 90%;
+    display: block;
+    margin: 0 auto;
+}
+
+.checkout-form .left form .input-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.checkout-form .left form input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 15px 10px;
+    border-radius: 6px;
+    margin: 10px 5px;
+}
+
+.checkout-form .left form select {
+    height: 49.5px;
+    margin: 10px 5px;
+    border-radius: 6px;
+    border: 1px solid #000;
+}
+
+.checkout-form .right {
     flex: 0.4;
     min-height: 50vh;
     background-color: #DBD2DA;
     padding-top: 40px;
+    font-family: "Segoe UI";
+}
+
+.checkout-form .right .name {
+    font-size: 18px;
+    font-weight: 500;
+    text-align: left;
+}
+
+.checkout-form .right .price {
+    font-size: 17px;
+    font-weight: 500;
 }
 
 .summary-row{
@@ -31,7 +70,7 @@
 }
 
 .imageContainer img {
-    max-width: 100%;
+    width: 100%;
     border-radius: 5px;
     object-fit: contain;
 }
@@ -41,6 +80,8 @@
     width: 25px;
     border-radius: 50%;
     background-color: grey;
+    color: #fff;
+    line-height: 25px;
     position: absolute;
     top: -12px;
     right: -12px;

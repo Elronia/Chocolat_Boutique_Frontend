@@ -31,14 +31,15 @@ class CartPage extends React.Component {
         <div> 
         <Grid>
           <Grid.Row>
-            <Grid.Column width={3}>
+            <Grid.Column width={2}>
                 <h1 className="item">Item</h1>
                 <Image src={image} />
-                <h4 className="cart-name">{name}</h4>
+                
             </Grid.Column>
 
-            <Grid.Column width={1}>
+            <Grid.Column width={3}>
                 <div className="x">
+                    <h4 className="cart-name">{name}</h4>
                     <Button textAlign="center" onClick={() => this.props.removeItem(this.props.treat)}>
                         Remove
                     </Button>

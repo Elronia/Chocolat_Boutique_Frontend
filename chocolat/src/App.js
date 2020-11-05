@@ -16,6 +16,7 @@ import TreatInfo from './component/TreatInfo';
 import CartPage from './component/CartPage';
 import CartItem from './component/CartItem';
 import CheckoutForm from './component/CheckoutForm';
+import ShippingForm from './component/ShippingForm';
 import Footer from './component/Footer';
 import './component/NotFoundPage';
 
@@ -170,7 +171,10 @@ class App extends Component {
         />
 
         <Switch>
-          <Route path="/" exact component={Home}/>
+          
+          <Route path="/" exact > 
+          <Home/>
+          </Route>
 
           <Route path="/shop" exact render={() => <TreatList 
             treats={filteredTreats}/>} />
@@ -196,6 +200,7 @@ class App extends Component {
 
           {/* Catch-all for if none of the routes above matches */}
           <Route path="/checkout" exact render={() => <CheckoutForm cartArray={this.state.cartArray}/>}/>
+          <Route path="/checkout/shipping" exact render={() => <ShippingForm cartArray={this.state.cartArray}/>}/>
           {/* <Route component={NotFoundPage}/> */}
         </Switch>
 

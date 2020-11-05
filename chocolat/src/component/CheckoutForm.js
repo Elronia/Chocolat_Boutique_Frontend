@@ -1,32 +1,38 @@
 import React from 'react';
-
+import { withRouter } from 'react-router-dom';
 import '../styling/CheckoutForm.css'
 
+
 class CheckoutForm extends React.Component {
-    handleCheckout(){
+    state = {
+            username: "kat",
+            first_name: "Ekaterina",
+            last_name: "Zarudnaya",
+            address: "1577 E 17th Street",
+            city: "Brooklyn",
+            state: "NY",
+            zip: 11230,
+            phone: "212-777-7777",
+            email: "katherine@gmail.com"
+        }
+    
+
+    handleCheckout(evt){
+        evt.preventDefault();
         // console.log("Checkout")
-        fetch("http://localhost:3000/checkout", {
-        method: "POST",
+        fetch("http://localhost:3000/user/1", {
+        method: "PATCH",
         headers: {
         "content-type": "application/json"
         },
-        body: JSON.stringify({
-            // burger_id: burger_id,
-            // order_id: this.state.current_cart.id
-            })
+        body: JSON.stringify(this.state)
         })
-    .then(res => res.json())
-    // .then(newlyCreatedBurgerOrder => {
-    //   let copyOfBurgerOrdersForCart = [...this.state.current_cart.burger_orders, newlyCreatedBurgerOrder]
-    //   let copyOfCart = {
-    //     ...this.state.current_cart, 
-    //     burger_orders: copyOfBurgerOrdersForCart
-    //   }
-    //   this.setState({
-    //     current_cart: copyOfCart
-    //   })
-    // })
+    .then(resp => resp.json())
+    .then(newlyCreatedOrder => {
+        this.props.history.push("/checkout/shipping")
+    })
   }
+
     
 //name="state" value={state}
     render() {
@@ -35,19 +41,21 @@ class CheckoutForm extends React.Component {
             <div className="left">
                 <form>
                     <h2>Contact Information</h2>
-                    <input type="email" placeholder="Email"/>
+                    <div className="input-group">
+                        <input type="email" placeholder="Email"/>
+                    </div>
                     <h2>Shipping address</h2>
-                    <div className="full-name">
-                        <input type="text" placeholder="First Name"/>
+                    <div className="input-group">
+                        <input type="text" placeholder="First Name" value={this.state.first_name} onChange={evt => this.setState({first_name: evt.target.value})}/>
                         <input type="text" placeholder="Last Name"/>
                     </div>
-                    <div>
+                    <div className="input-group">
                         <input type="text" placeholder="Address"/>
                     </div>
-                    <div>
+                    <div className="input-group">
                         <input type="text" placeholder="City"/>
                     </div>
-                    <div>
+                    <div className="input-group">
                         <select className="ui fluid dropdown" >
                             <option value="">State</option>
                             <option value="AL">Alabama</option>
@@ -104,10 +112,10 @@ class CheckoutForm extends React.Component {
                         </select>
                         <input type="text" placeholder="ZIP code"/>
                     </div>
-                    <div>
+                    <div className="input-group">
                         <input type="text" placeholder="Phone"/>
                     </div>
-                    <button className="continue-button">Continue to Shipping</button>
+                    <button className="continue-button" onClick={(evt) => this.handleCheckout(evt)}>Continue to Shipping</button>
                     
                 </form>
             </div>
@@ -130,4 +138,4 @@ class CheckoutForm extends React.Component {
     }
 }
 
-export default CheckoutForm;
+export default withRouter(CheckoutForm);

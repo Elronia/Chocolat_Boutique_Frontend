@@ -66,6 +66,15 @@
     font-size: 16px;
 }
 
+.ui.button{
+    background: transparent;
+}
+
+.ui .column img{
+    display: block;
+    margin: 10px auto;
+}
+
 
 
 

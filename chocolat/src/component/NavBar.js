@@ -15,8 +15,6 @@ class NavBar extends React.Component {
 
     handleItemClick = (evt, { name }) => this.setState({ activeItem: name })
 
-    // handleLogoClick(evt, { name }) => this.setState({ activeItem: name })
-
 
     render() {
         const { activeItem } = this.state
