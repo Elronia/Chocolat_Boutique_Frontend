@@ -64,3 +64,8 @@
   -webkit-border-radius: 2px;
   margin: 20px;
 }
+
+.checkout-btn:hover{
+    background: hsl(293, 80%, 90%);
+    color: black;
+}

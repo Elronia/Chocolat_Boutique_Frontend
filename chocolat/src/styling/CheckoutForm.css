@@ -14,7 +14,7 @@
 .checkout-form .right{
     flex: 0.4;
     min-height: 50vh;
-    background-color: #b19cd9;
+    background-color: #DBD2DA;
     padding-top: 40px;
 }
 
@@ -44,4 +44,11 @@
     position: absolute;
     top: -12px;
     right: -12px;
+}
+
+.continue-button{
+    height: 58px;
+    width: 186px;
+    background-color: #b6afb7;
+    border: none;
 }

@@ -32,7 +32,7 @@ class TreatInfo extends React.Component {
         const { name, price, image, description } = this.state.treat
 
         return (
-            <div>
+            <div className="treat-info-conatiner">
                 <Grid columns='equal'>
                    
                     <Grid.Column width={8}>

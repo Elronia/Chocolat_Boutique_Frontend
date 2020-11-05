@@ -1,3 +1,7 @@
+.treat-info-conatiner{
+    min-height: 85vh;
+}
+
 .product-details-wrapper{
     font-family: "Avenir-Next", sans-serif;
     padding: 40px;
@@ -30,14 +34,17 @@
     width : 300px;
     height : 44px;
     background-color: black;
-    color: hsl(293, 80%, 90%);
+    /* color: hsl(293, 80%, 90%); */
+    color: #dbd2da;
     /* border: none; */
     -moz-border-radius: 2px;
     -webkit-border-radius: 2px;
     margin: 20px;
+    border: none;
 }
 /*This should make them change their color when they are hovered*/
 .add-button:hover {
-    background: hsl(293, 80%, 90%);
+    /* background: hsl(293, 80%, 90%); */
+    background: #DBD2DA;
     color: black;
 }
