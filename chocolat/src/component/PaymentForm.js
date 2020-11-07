@@ -5,18 +5,19 @@ import '../styling/PaymentForm.css';
 class PaymentForm extends React.Component {
     handleCheckout(evt){
         evt.preventDefault();
-        // console.log("Checkout")
-        fetch("http://localhost:3000/order_treats", {
-        method: "POST",
-        headers: {
-        "content-type": "application/json"
-        },
-        body: JSON.stringify({
-        order_treat: {
-            order: {},
-            treat: {},
-        }
-        })
+        console.log(this.props)
+        fetch("http://localhost:3000/checkout", {
+            method: "POST",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify({
+                order: {
+                    total: this.props.cartArray.reduce((acc, item) => acc + item.treat.price, this.props.shippingMethod),
+                    treats: this.props.cartArray.map(({treat, qty}) => ({id: treat.id, qty})),
+                },
+                userId: this.props.user.id
+            })
         })
     .then(resp => resp.json())
     .then(() => {

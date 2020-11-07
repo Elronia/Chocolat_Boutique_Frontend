@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
 import { Route, Switch } from 'react-router-dom';
-// import logo from './logo.svg';
-// import '../styling/App.css';
 import './App.css';
 import NavBar from './component/NavBar';
 import Home from './component/Home';
@@ -34,7 +32,7 @@ class App extends Component {
     cartTotal: 0,
     // Current logged in user
     user: {
-      id: "",
+      id: "1",
       username: "",
       email: ""
     },
@@ -47,8 +45,11 @@ class App extends Component {
 
   // Accessing an array of treats from the backend
   componentDidMount() {
-    const savedStore = JSON.parse(localStorage.getItem('store') || "{}")
-    this.setState(savedStore);
+    const dirtySavedStore = localStorage.getItem('store');
+    if(dirtySavedStore) {
+      const savedStore = JSON.parse(dirtySavedStore)
+      this.setState(savedStore);
+    }
     fetch('http://localhost:3000/treats')
       .then(resp => resp.json())
       .then((treatsArr) => {
@@ -95,7 +96,7 @@ class App extends Component {
     const foundTreatIndex = cartArray.findIndex((cartItem) => {
       return cartItem.treat.id === id;
     });
-    // console.log(match)
+    // console.log(match) 
     if (foundTreatIndex !== -1) {
       this.increaseItem(foundTreatIndex)
     } else {
@@ -231,7 +232,10 @@ class App extends Component {
             cartArray={this.state.cartArray}
             updateShippingMethod={(evt) => this.updateShippingMethod(evt)}
             user={this.state.user}/>}/>
-          <Route path="/payment" exact render={() => <PaymentForm cartArray={this.state.cartArray}/>}/>
+          <Route path="/payment" exact render={() => <PaymentForm 
+            cartArray={this.state.cartArray}
+            user={this.state.user}
+            shippingMethod={this.state.shippingMethod}/>}/>
           {/* <Route component={NotFoundPage}/> */}
         </Switch>
 
