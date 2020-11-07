@@ -16,6 +16,7 @@ class NavBar extends React.Component {
     handleItemClick = (evt, { name }) => this.setState({ activeItem: name })
 
 
+
     render() {
         const { activeItem } = this.state
 
@@ -91,14 +92,6 @@ class NavBar extends React.Component {
             </Menu.Menu>
         </Menu>
     </div>
-      // length = {this.props.cartArray.length} //<span className="span-cart">{this.props.cartArray.length}</span>
-            
-       //</div>
-                //<Link className="cart" to="/cart">
-                //<img src={} ></img>
-                //<span class="shopping bag icon">{this.props.cartArray.length}</span>
-            //</Link>
-            //</div>
     )
   }
 

@@ -17,6 +17,7 @@ import CartPage from './component/CartPage';
 import CartItem from './component/CartItem';
 import CheckoutForm from './component/CheckoutForm';
 import ShippingForm from './component/ShippingForm';
+import PaymentForm from './component/PaymentForm';
 import Footer from './component/Footer';
 import './component/NotFoundPage';
 
@@ -46,6 +47,8 @@ class App extends Component {
 
   // Accessing an array of treats from the backend
   componentDidMount() {
+    const savedStore = JSON.parse(localStorage.getItem('store') || "{}")
+    this.setState(savedStore);
     fetch('http://localhost:3000/treats')
       .then(resp => resp.json())
       .then((treatsArr) => {
@@ -53,6 +56,10 @@ class App extends Component {
           treats: treatsArr
         })
       })
+  }
+
+  saveStore(){
+    localStorage.setItem('store', JSON.stringify(this.state));
   }
 
   // Search Feature 
@@ -95,6 +102,7 @@ class App extends Component {
       // Item is not in cart, add to cart.
       this.setState({ 
         cartArray: [...cartArray, { treat, qty: 1 }]})
+        this.saveStore();
     }
   }
 
@@ -102,6 +110,7 @@ class App extends Component {
     const { cartArray } = this.state;
     cartArray[i].qty++; 
     this.setState({ cartArray: [...cartArray] })
+    this.saveStore();
   }
 
   decreaseItem = (i) => {
@@ -109,6 +118,7 @@ class App extends Component {
     if (cartArray[i].qty > 1){
       cartArray[i].qty--; 
       this.setState({ cartArray: [...cartArray] })
+      this.saveStore();
     }
   }
 
@@ -125,6 +135,7 @@ class App extends Component {
     this.setState({
       cartTotal: total
     })
+    this.saveStore();
     // console.log("prevState", prevState)
     // console.log("State",this.state)
     } 
@@ -132,20 +143,33 @@ class App extends Component {
 
   removeItem = (treatObj) => {
     let updatedCart = this.state.cartArray.filter((treat) => {
-      console.log(treat)
-      // console.log(treat.treat.id)
-      console.log(treatObj)
       return treat.treat.id !== treatObj.treat.id
     })
     this.setState({
       cartArray: updatedCart
     })
+    this.saveStore();
   }
 
   clearItems = () => {
     this.setState({
       cartArray: []
     });
+    this.saveStore();
+  }
+
+  updateUser(user){
+    this.setState({
+      user: {
+        ...this.state.user,
+        ...user
+      }
+    })
+    this.saveStore();
+  }
+
+  updateShippingMethod(evt){
+    this.setState({shippingMethod: +evt.currentTarget.value})
   }
 
 
@@ -173,7 +197,7 @@ class App extends Component {
         <Switch>
           
           <Route path="/" exact > 
-          <Home/>
+            <Home/>
           </Route>
 
           <Route path="/shop" exact render={() => <TreatList 
@@ -184,7 +208,7 @@ class App extends Component {
               return <TreatInfo match={routeProps.match}
                 addItemToCart={this.addItemToCart}/>}} />
 
-          <Route path="/shipping" exact render={() => <ShippingGuidelines/>}/>
+          <Route path="/shipping-guidelines" exact render={() => <ShippingGuidelines/>}/>
 
           <Route path="/about" exact render={() => <AboutPage/>}/>
           
@@ -199,8 +223,15 @@ class App extends Component {
                   decreaseItem={this.decreaseItem} />} />
 
           {/* Catch-all for if none of the routes above matches */}
-          <Route path="/checkout" exact render={() => <CheckoutForm cartArray={this.state.cartArray}/>}/>
-          <Route path="/checkout/shipping" exact render={() => <ShippingForm cartArray={this.state.cartArray}/>}/>
+          <Route path="/checkout" exact render={() => <CheckoutForm 
+            cartArray={this.state.cartArray}
+            user={this.state.user}
+            updateUser={(user) => this.updateUser(user)}/>}/>
+          <Route path="/shipping" exact render={() => <ShippingForm 
+            cartArray={this.state.cartArray}
+            updateShippingMethod={(evt) => this.updateShippingMethod(evt)}
+            user={this.state.user}/>}/>
+          <Route path="/payment" exact render={() => <PaymentForm cartArray={this.state.cartArray}/>}/>
           {/* <Route component={NotFoundPage}/> */}
         </Switch>
 

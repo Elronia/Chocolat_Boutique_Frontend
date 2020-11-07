@@ -1,44 +1,43 @@
-.checkout-form{
+.shipping-form{
     display: flex;
-    justify-content: space-between;
-    
+    justify-content: space-between; 
 }
 
-.checkout-form .left{
+.shipping-form .left{
     background-color: #f2f2f2;
     flex: 0.6;
     min-height: 50vh;
     padding-top: 40px;
 }
 
-.checkout-form .left form{
+.shipping-form .left form{
     width: 90%;
     display: block;
     margin: 0 auto;
 }
 
-.checkout-form .left form .input-group {
+.shipping-form .left form .input-group {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.checkout-form .left form input {
-    width: 100%;
+.shipping-form .left form input {
+    width: 80%;
     box-sizing: border-box;
     padding: 15px 10px;
     border-radius: 6px;
     margin: 10px 5px;
 }
 
-.checkout-form .left form select {
+.shipping-form .left form select {
     height: 49.5px;
     margin: 10px 5px;
     border-radius: 6px;
     border: 1px solid #000;
 }
 
-.checkout-form .right {
+.shipping-form .right {
     flex: 0.4;
     min-height: 50vh;
     background-color: #DBD2DA;
@@ -46,15 +45,15 @@
     font-family: "Segoe UI";
 }
 
-.checkout-form .right .name {
+.shipping-form .right .name {
     font-size: 18px;
     font-weight: 500;
     text-align: left;
 }
 
-.checkout-form .right .price {
+.shipping-form .right .price {
     font-size: 15px;
-    font-weight: normal;
+    font-weight: 100;
 }
 
 .summary-row{

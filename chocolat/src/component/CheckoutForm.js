@@ -4,17 +4,11 @@ import '../styling/CheckoutForm.css'
 
 
 class CheckoutForm extends React.Component {
-    state = {
-            username: "kat",
-            first_name: "Ekaterina",
-            last_name: "Zarudnaya",
-            address: "1577 E 17th Street",
-            city: "Brooklyn",
-            state: "NY",
-            zip: 11230,
-            phone: "212-777-7777",
-            email: "katherine@gmail.com"
-        }
+    state = {}
+
+    componentDidMount() {
+        this.setState(this.props.user)
+    }
     
 
     handleCheckout(evt){
@@ -28,8 +22,9 @@ class CheckoutForm extends React.Component {
         body: JSON.stringify(this.state)
         })
     .then(resp => resp.json())
-    .then(newlyCreatedOrder => {
-        this.props.history.push("/checkout/shipping")
+    .then(() => {
+        this.props.updateUser(this.state);
+        this.props.history.push("/shipping")
     })
   }
 
@@ -47,16 +42,16 @@ class CheckoutForm extends React.Component {
                     <h2>Shipping address</h2>
                     <div className="input-group">
                         <input type="text" placeholder="First Name" value={this.state.first_name} onChange={evt => this.setState({first_name: evt.target.value})}/>
-                        <input type="text" placeholder="Last Name"/>
+                        <input type="text" placeholder="Last Name" value={this.state.last_name} onChange={evt => this.setState({last_name: evt.target.value})}/>
                     </div>
                     <div className="input-group">
-                        <input type="text" placeholder="Address"/>
+                        <input type="text" placeholder="Address" value={this.state.address} onChange={evt => this.setState({address: evt.target.value})}/>
                     </div>
                     <div className="input-group">
-                        <input type="text" placeholder="City"/>
+                        <input type="text" placeholder="City" value={this.state.city} onChange={evt => this.setState({city: evt.target.value})}/>
                     </div>
                     <div className="input-group">
-                        <select className="ui fluid dropdown" >
+                        <select className="ui fluid dropdown" value={this.state.city} onChange={evt => this.setState({city: evt.target.value})}>
                             <option value="">State</option>
                             <option value="AL">Alabama</option>
                             <option value="AK">Alaska</option>
@@ -110,13 +105,12 @@ class CheckoutForm extends React.Component {
                             <option value="WI">Wisconsin</option>
                             <option value="WY">Wyoming</option>
                         </select>
-                        <input type="text" placeholder="ZIP code"/>
+                        <input type="text" placeholder="ZIP code" value={this.state.zip} onChange={evt => this.setState({zip: evt.target.value})}/>
                     </div>
                     <div className="input-group">
-                        <input type="text" placeholder="Phone"/>
+                        <input type="text" placeholder="Phone" value={this.state.phone} onChange={evt => this.setState({phone: evt.target.value})}/>
                     </div>
                     <button className="continue-button" onClick={(evt) => this.handleCheckout(evt)}>Continue to Shipping</button>
-                    
                 </form>
             </div>
             <div className="right">
@@ -129,7 +123,7 @@ class CheckoutForm extends React.Component {
                             <img src={cartItem.treat.image}/>
                         </div>
                         <div className="name">{cartItem.treat.name}</div>
-                        <div className="price">${cartItem.qty*cartItem.treat.price}</div>
+                        <div className="price">${cartItem.qty*cartItem.treat.price}.00</div>
                     </div>
                 ))}
             </div>

@@ -83,10 +83,7 @@ class CartPage extends React.Component {
          
         </Grid>
         
-                
-          
-        
-        
+            
         </div>
         )
     }
