@@ -34,7 +34,7 @@ class NavBar extends React.Component {
                 onClick={this.handleItemClick}
             />
              <Menu.Item
-                as={NavLink} to="/shipping"
+                as={NavLink} to="/shipping-guidelines"
                 name='ShippingGuidelines'
                 active={activeItem === 'ShippingGuidelines'}
                 onClick={this.handleItemClick}
@@ -55,15 +55,16 @@ class NavBar extends React.Component {
             
           
         <Menu.Menu className='nav-container' position='right'>
-            <Menu.Item className="search-input" style={{width: "15vw"}}
-                name='Search'
-                active={activeItem === 'Search'}
-                onClick={this.handleItemClick}> 
-                <Search searchTerm={this.props.searchTerm}
-                    changeSearchTerm={this.props.changeSearchTerm}/>
-            </Menu.Item>
-        
-
+            {activeItem === 'Shop' 
+                ? <Menu.Item className="search-input" style={{width: "15vw"}}
+                    name='Search'
+                    active={activeItem === 'Search'}
+                    onClick={this.handleItemClick}> 
+                    <Search searchTerm={this.props.searchTerm}
+                        changeSearchTerm={this.props.changeSearchTerm}/>
+                </Menu.Item> 
+                : null}
+                
             <Menu.Item>
               <Icon class="shopping-bag-icon" name="Cart" size="large"/>
               <i class="user icon"></i>
