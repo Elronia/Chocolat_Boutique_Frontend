@@ -5,6 +5,10 @@
   text-align: center;
 }
 
+.cart-body{
+  padding-bottom: 50px;
+}
+
 .cart{
   font-family: "Avenir Next", sans-serif;
   font-weight: normal;
@@ -20,7 +24,7 @@
 .cart-head {
     font-size: px;
     /* font-family: 'Gotham'; */
-    padding-bottom: 100px;
+    padding-bottom: 50px;
 }   
   
 .cart-font{

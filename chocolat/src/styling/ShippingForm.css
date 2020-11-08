@@ -6,7 +6,7 @@
 .shipping-form .left{
     background-color: #f2f2f2;
     flex: 0.6;
-    min-height: 50vh;
+    min-height: 670px;
     padding-top: 40px;
 }
 
@@ -23,11 +23,12 @@
 }
 
 .shipping-form .left form input {
-    width: 80%;
     box-sizing: border-box;
+    border: none;
     padding: 15px 10px;
     border-radius: 6px;
-    margin: 10px 5px;
+    flex: 0.8;
+    font-size: 17px;
 }
 
 .shipping-form .left form select {
@@ -92,4 +93,48 @@
     background-color: #b6afb7;
     border: none;
     border-radius: 6px;
+}
+
+.combined-input {
+    background-color: #fff;
+    border: 1px solid grey;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.combined-input .input-group:nth-child(1){
+    border-bottom: 1px solid grey;
+}
+
+.combined-input .input-group label {
+    font-size: 17px;
+    color: grey;
+    flex: 0.2;
+}
+
+.combined-input.shipping-info .input-group input {
+    flex: 0.1;
+}
+
+.combined-input.shipping-info .input-group label {
+    flex: 0.9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.combined-input.shipping-info .input-group label .shipping-cost {
+    color: #333;
+    font-weight: 600;
+}
+
+.combined-input.shipping-info .input-group {
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+
+.shipping-form h2 {
+    font-size: 20px;
+    text-align: left;
+    color: #444;
 }

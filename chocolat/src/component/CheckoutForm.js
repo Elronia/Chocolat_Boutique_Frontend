@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import '../styling/CheckoutForm.css'
 
 
@@ -51,7 +51,7 @@ class CheckoutForm extends React.Component {
                         <input type="text" placeholder="City" value={this.state.city} onChange={evt => this.setState({city: evt.target.value})}/>
                     </div>
                     <div className="input-group">
-                        <select className="ui fluid dropdown" value={this.state.city} onChange={evt => this.setState({city: evt.target.value})}>
+                        <select className="ui fluid dropdown" value={this.state.state} onChange={evt => this.setState({state: evt.target.value})}>
                             <option value="">State</option>
                             <option value="AL">Alabama</option>
                             <option value="AK">Alaska</option>
@@ -110,8 +110,11 @@ class CheckoutForm extends React.Component {
                     <div className="input-group">
                         <input type="text" placeholder="Phone" value={this.state.phone} onChange={evt => this.setState({phone: evt.target.value})}/>
                     </div>
-                    <button className="continue-button" onClick={(evt) => this.handleCheckout(evt)}>Continue to Shipping</button>
-                </form>
+                    <div className="submit-group">
+                        <Link to="/cart"> &lt; Return to cart</Link>
+                        <button className="continue-button" onClick={(evt) => this.handleCheckout(evt)}>Continue to Shipping</button>
+                    </div>
+               </form>
             </div>
             <div className="right">
                 {this.props.cartArray.map((cartItem) => (

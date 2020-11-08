@@ -75,6 +75,10 @@
     margin: 10px auto;
 }
 
+.ui.grid .row{
+    justify-content: space-between;
+    padding: 10px 25px;
+}
 
 
 

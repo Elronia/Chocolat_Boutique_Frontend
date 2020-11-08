@@ -14,6 +14,7 @@ function Cart(props) {
         return (
         <>
             <h1 className="cart-head">SHOPPING CART</h1>
+            <div className="cart-body">
             {props.cartArray.length >= 1 
                 ? props.cartArray.map((treat, index) => (
                     <CartItem 
@@ -30,6 +31,8 @@ function Cart(props) {
                     <p>Continue browsing here.</p>
                 </div> 
             }
+            </div>
+            
           
             <div className="cart-total-cont">
                 <div class="total-box">

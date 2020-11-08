@@ -14,24 +14,31 @@ class ShippingForm extends React.Component{
             <div className="shipping-form">
                 <div className="left">
                     <form>
-                        <div className="input-group">
-                            <input type="contact" placeholder="Contact" value={this.props.user.email}/>
-                        </div>
-                        <div className="input-group">
-                        <input type="text" placeholder="Ship to" value={`${this.props.user.address}, ${this.props.user.city}, ${this.props.user.state}, ${this.props.user.zip}`}/>
+                        <div className="combined-input">
+                            <div className="input-group">
+                                <label>Contact</label>
+                                <input type="contact" value={this.props.user.email}/>
+                            </div>
+                            <div className="input-group">
+                            <label>Ship to</label>
+                            <input type="text" placeholder="Check your address" value={`${this.props.user.address}, ${this.props.user.city}, ${this.props.user.state}, ${this.props.user.zip}`}/>
+                            </div>
                         </div>
                         <h2>Shipping method</h2>
+                        <div className="combined-input shipping-info">
                         <div className="input-group">
-                            <label>
-                                <input type="radio" name="method" value="12.00" onChange={evt => this.props.updateShippingMethod(evt)}/>
-                                UPS 2nd Day Air - $12.00
-                            </label>
+                            <input type="radio" name="method" value="12.00" onChange={evt => this.props.updateShippingMethod(evt)}/>
+                                <label>
+                                    <span>UPS 2nd Day Air</span>
+                                    <span className="shipping-cost">$12.00</span>
+                                </label>
                         </div>
                         <div className="input-group">
                             <label>
                                 <input type="radio" name="method" value="20.00" onChange={evt => this.props.updateShippingMethod(evt)}/>
                                 UPS Next Day Air - $20.00
                             </label>
+                        </div>
                         </div>
                         <button className="continue-button" onClick={(evt) => this.handleCheckout(evt)}>Continue to payment</button>
                     </form>

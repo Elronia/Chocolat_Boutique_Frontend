@@ -9,12 +9,20 @@
     flex: 0.6;
     min-height: 50vh;
     padding-top: 40px;
+    padding-bottom: 50px;
 }
 
 .checkout-form .left form{
     width: 90%;
     display: block;
     margin: 0 auto;
+}
+
+.checkout-form .left form h2 {
+    text-align: left;
+    padding-left: 10px;
+    color: #444;
+    font-size: 20px;
 }
 
 .checkout-form .left form .input-group {
@@ -29,13 +37,21 @@
     padding: 15px 10px;
     border-radius: 6px;
     margin: 10px 5px;
+    border-color: grey;
+    background-color: #fff;
+    border-style: solid;
 }
 
 .checkout-form .left form select {
     height: 49.5px;
     margin: 10px 5px;
     border-radius: 6px;
-    border: 1px solid #000;
+    border: 1px solid grey;
+    color: grey;
+}
+
+.checkout-form .left form select option{
+    color: #000;
 }
 
 .checkout-form .right {
@@ -44,6 +60,7 @@
     background-color: #DBD2DA;
     padding-top: 40px;
     font-family: "Segoe UI";
+    padding-bottom: 50px;
 }
 
 .checkout-form .right .name {
@@ -93,4 +110,16 @@
     background-color: #b6afb7;
     border: none;
     border-radius: 6px;
+}
+
+.submit-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.submit-group a {
+    color: grey !important;
+    font-size: 17px;
 }

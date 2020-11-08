@@ -37,7 +37,7 @@ class App extends Component {
       email: ""
     },
 
-    // Current logged in user's token
+    // Current logged in user's token (boolean)
     token: ""
 
     // For infinite scroll
@@ -235,6 +235,7 @@ class App extends Component {
           <Route path="/payment" exact render={() => <PaymentForm 
             cartArray={this.state.cartArray}
             user={this.state.user}
+            // updateShippingMethod={(evt) => this.updateShippingMethod(evt)}
             shippingMethod={this.state.shippingMethod}/>}/>
           {/* <Route component={NotFoundPage}/> */}
         </Switch>
