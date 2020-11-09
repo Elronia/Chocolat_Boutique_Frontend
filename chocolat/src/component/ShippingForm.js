@@ -1,6 +1,6 @@
 import React from 'react';
 import '../styling/ShippingForm.css';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 
 class ShippingForm extends React.Component{
     handleCheckout(evt){
@@ -34,13 +34,17 @@ class ShippingForm extends React.Component{
                                 </label>
                         </div>
                         <div className="input-group">
+                        <input type="radio" name="method" value="20.00" checked={this.props.shippingMethod===20} onChange={evt => this.props.updateShippingMethod(evt)}/>
                             <label>
-                                <input type="radio" name="method" value="20.00" checked={this.props.shippingMethod===20} onChange={evt => this.props.updateShippingMethod(evt)}/>
-                                UPS Next Day Air - $20.00
+                                <span>UPS Next Day Air</span> 
+                                <span className="shipping-cost">$20.00</span>
                             </label>
                         </div>
                         </div>
-                        <button className="continue-button" disabled={!this.props.shippingMethod} onClick={(evt) => this.handleCheckout(evt)}>Continue to payment</button>
+                        <div className="submit-group">
+                            <Link to="/checkout"> &lt; Return to information</Link>
+                            <button className="continue-button" disabled={!this.props.shippingMethod} onClick={(evt) => this.handleCheckout(evt)}>Continue to payment</button>
+                        </div>
                     </form>
                 </div>
                 <div className="right">

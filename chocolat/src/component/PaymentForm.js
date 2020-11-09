@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import '../styling/PaymentForm.css';
 import StripeCheckout from 'react-stripe-checkout';
 
@@ -59,14 +59,19 @@ class PaymentForm extends React.Component {
             <div className="shipping-form">
                 <div className="left">
                     <form>
-                        <div className="input-group">
-                            <input type="contact" placeholder="Contact" disabled value={this.props.user.email}/>
-                        </div>
-                        <div className="input-group">
-                            <input type="text" placeholder="Ship to" disabled value={`${this.props.user.address}, ${this.props.user.city}, ${this.props.user.state}, ${this.props.user.zip}`}/>
-                        </div>
-                        <div className="input-group">
-                            <input type="ups" placeholder="Method" disabled value={this.props.shippingMethod===12 ? 'UPS 2nd Day Air - $12.00' : 'UPS Next Day Air - $20.00' }/>
+                        <div className="combined-input">
+                            <div className="input-group">
+                                <label>Contact</label>
+                                <input type="contact" placeholder="Contact" disabled value={this.props.user.email}/>
+                            </div>
+                            <div className="input-group">
+                                <label>Ship to</label>
+                                <input type="text" placeholder="Ship to" disabled value={`${this.props.user.address}, ${this.props.user.city}, ${this.props.user.state}, ${this.props.user.zip}`}/>
+                            </div>
+                            <div className="input-group">
+                                <label>Method</label>
+                                <input type="ups" placeholder="Method" disabled value={this.props.shippingMethod===12 ? 'UPS 2nd Day Air - $12.00' : 'UPS Next Day Air - $20.00' }/>
+                            </div>
                         </div>
                         <h2>Payment</h2>
                         <h4>All transactions are secure and encrypted.</h4>
@@ -94,6 +99,7 @@ class PaymentForm extends React.Component {
                         
                         {/* <button className="continue-button" onClick={(evt) => this.handleCheckout(evt)}>Pay now</button> */}
                     </form>
+
                     <StripeCheckout token={(token) => this.onToken(token)} 
                     stripeKey={process.env.STRIPE_API_KEY}
                         // stripeKey={publishableKey}
@@ -101,10 +107,11 @@ class PaymentForm extends React.Component {
                         billingAddress
                         amount={this.props.cartArray.reduce((acc, item) => acc + item.treat.price, this.props.shippingMethod)*100}
                         name={'Boutique de Chocolat'}
-                        email={this.props.user.email}
-                        >
-                        
-                            <button className="payment-button">Pay now</button> 
+                        email={this.props.user.email}>
+                            <div className="submit-group">
+                                <Link to="/shipping"> &lt; Return to shipping</Link>
+                                <button className="payment-button">Pay now</button> 
+                            </div>
                     </StripeCheckout>
                 </div>
                 <div className="right">

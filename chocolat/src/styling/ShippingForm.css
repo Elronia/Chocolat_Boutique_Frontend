@@ -93,6 +93,7 @@
     background-color: #b6afb7;
     border: none;
     border-radius: 6px;
+    margin-top: 50px;/*added*/
 }
 
 .combined-input {

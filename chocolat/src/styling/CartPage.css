@@ -7,6 +7,7 @@
 
 .cart-body{
   padding-bottom: 50px;
+  /* min-height: 670px; */
 }
 
 .cart{
@@ -16,10 +17,11 @@
   text-align: center;
   margin: 0px 0px 15px;
 }
+
 .cart-price,.subtotal{
     margin-top: 50%;
     font-size: 30px;
-  }
+}
   
 .cart-head {
     font-size: px;
@@ -31,17 +33,17 @@
     color: white;
 } 
 
- .cart-total-cont{
+.cart-total-cont{
     border-top: 2px solid black;
     padding: 30px;
   }
   
-   .cart-desc{
+  .cart-desc{
     font-size: 30px; 
     /* font-family: 'Gotham'; */
   } 
   
- /* .item{
+/* .item{
     font-size: 40px;
   }  */
 .checkout-btn-wrapper{
