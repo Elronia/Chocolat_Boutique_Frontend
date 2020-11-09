@@ -13,7 +13,15 @@ class NavBar extends React.Component {
         activeItem: 'home'
     }
 
-    handleItemClick = (evt, { name }) => this.setState({ activeItem: name })
+    componentDidMount() {
+        this.setState({
+            activeItem: this.props.history.location.pathname.slice(1)
+        })
+    }
+
+    handleItemClick = (evt, { name }) => {
+        this.setState({ activeItem: name })
+    }
 
     render() {
         const { activeItem } = this.state
@@ -55,7 +63,7 @@ class NavBar extends React.Component {
             
           
         <Menu.Menu className='nav-container' position='right'>
-            {activeItem === 'Shop' 
+            {activeItem.toLowerCase() === 'shop' 
                 ? <Menu.Item className="search-input" style={{width: "15vw"}}
                     name='Search'
                     active={activeItem === 'Search'}
@@ -110,4 +118,4 @@ class NavBar extends React.Component {
 }
 
 
-export default NavBar;
+export default withRouter(NavBar);

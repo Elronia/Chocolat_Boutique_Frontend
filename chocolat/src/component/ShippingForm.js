@@ -17,17 +17,17 @@ class ShippingForm extends React.Component{
                         <div className="combined-input">
                             <div className="input-group">
                                 <label>Contact</label>
-                                <input type="contact" value={this.props.user.email}/>
+                                <input type="contact" disabled={true} value={this.props.user.email}/>
                             </div>
                             <div className="input-group">
-                            <label>Ship to</label>
-                            <input type="text" placeholder="Check your address" value={`${this.props.user.address}, ${this.props.user.city}, ${this.props.user.state}, ${this.props.user.zip}`}/>
+                                <label>Ship to</label>
+                                <input type="text" placeholder="Check your address" disabled={true} value={`${this.props.user.address}, ${this.props.user.city}, ${this.props.user.state}, ${this.props.user.zip}`}/>
                             </div>
                         </div>
                         <h2>Shipping method</h2>
                         <div className="combined-input shipping-info">
                         <div className="input-group">
-                            <input type="radio" name="method" value="12.00" onChange={evt => this.props.updateShippingMethod(evt)}/>
+                            <input type="radio" name="method" value="12.00" checked={this.props.shippingMethod===12} onChange={evt => this.props.updateShippingMethod(evt)}/>
                                 <label>
                                     <span>UPS 2nd Day Air</span>
                                     <span className="shipping-cost">$12.00</span>
@@ -35,12 +35,12 @@ class ShippingForm extends React.Component{
                         </div>
                         <div className="input-group">
                             <label>
-                                <input type="radio" name="method" value="20.00" onChange={evt => this.props.updateShippingMethod(evt)}/>
+                                <input type="radio" name="method" value="20.00" checked={this.props.shippingMethod===20} onChange={evt => this.props.updateShippingMethod(evt)}/>
                                 UPS Next Day Air - $20.00
                             </label>
                         </div>
                         </div>
-                        <button className="continue-button" onClick={(evt) => this.handleCheckout(evt)}>Continue to payment</button>
+                        <button className="continue-button" disabled={!this.props.shippingMethod} onClick={(evt) => this.handleCheckout(evt)}>Continue to payment</button>
                     </form>
                 </div>
                 <div className="right">

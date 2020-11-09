@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, withRouter } from 'react-router-dom';
 import './App.css';
 import NavBar from './component/NavBar';
 import Home from './component/Home';
@@ -32,9 +32,9 @@ class App extends Component {
     cartTotal: 0,
     // Current logged in user
     user: {
-      id: "1",
-      username: "",
-      email: ""
+      // id: "1",
+      // username: "",
+      // email: ""
     },
 
     // Current logged in user's token (boolean)
@@ -45,6 +45,7 @@ class App extends Component {
 
   // Accessing an array of treats from the backend
   componentDidMount() {
+    
     const dirtySavedStore = localStorage.getItem('store');
     if(dirtySavedStore) {
       const savedStore = JSON.parse(dirtySavedStore)
@@ -77,8 +78,10 @@ class App extends Component {
       alert(result.error);
       return false;
     } else {
-      this.setUser(result);
-      localStorage.token = result.token;
+      console.log(result)
+      this.setState({user: result.user});
+      this.saveStore();
+      // localStorage.token = result.token;
       return true;
     }
   };
@@ -213,7 +216,7 @@ class App extends Component {
 
           <Route path="/about" exact render={() => <AboutPage/>}/>
           
-          <Route path="/account" exact render={() => <LoginForm/>}/>
+          <Route path="/account" exact render={() => <LoginForm handleResponse={this.handleResponse}/>}/>
 
           <Route path="/cart" exact render={() => 
             <CartPage cartArray={this.state.cartArray}
@@ -231,6 +234,7 @@ class App extends Component {
           <Route path="/shipping" exact render={() => <ShippingForm 
             cartArray={this.state.cartArray}
             updateShippingMethod={(evt) => this.updateShippingMethod(evt)}
+            shippingMethod={this.state.shippingMethod}
             user={this.state.user}/>}/>
           <Route path="/payment" exact render={() => <PaymentForm 
             cartArray={this.state.cartArray}
@@ -268,4 +272,4 @@ class App extends Component {
 //   );
 // }
 
-export default App;
+export default withRouter(App);

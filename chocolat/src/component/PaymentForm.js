@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import '../styling/PaymentForm.css';
 import StripeCheckout from 'react-stripe-checkout';
 
-const publishableKey = "pk_test_51HWLziCxwnP4LVfkWrPMRvKgMxpnlR5AkHAW4iQuuwlz8Exc8hnz9bkaNt0qbOBrz5Yyc7Pc5pmt6bfLrf9Z54IM00aCZkSZOo"
+
 class PaymentForm extends React.Component {
     handleCheckout(evt=null){
         if (evt) {
@@ -60,17 +60,17 @@ class PaymentForm extends React.Component {
                 <div className="left">
                     <form>
                         <div className="input-group">
-                            <input type="contact" placeholder="Contact" value={this.props.user.email}/>
+                            <input type="contact" placeholder="Contact" disabled value={this.props.user.email}/>
                         </div>
                         <div className="input-group">
-                            <input type="text" placeholder="Ship to" value={`${this.props.user.address}, ${this.props.user.city}, ${this.props.user.state}, ${this.props.user.zip}`}/>
+                            <input type="text" placeholder="Ship to" disabled value={`${this.props.user.address}, ${this.props.user.city}, ${this.props.user.state}, ${this.props.user.zip}`}/>
                         </div>
                         <div className="input-group">
-                            <input type="ups" placeholder="Method"/>
+                            <input type="ups" placeholder="Method" disabled value={this.props.shippingMethod===12 ? 'UPS 2nd Day Air - $12.00' : 'UPS Next Day Air - $20.00' }/>
                         </div>
                         <h2>Payment</h2>
                         <h4>All transactions are secure and encrypted.</h4>
-                        <b>Credit card</b>
+                        {/* <b>Credit card</b>
                         <div className="input-group">
                             <input type="contact" placeholder="Card number"/>
                         </div>
@@ -90,16 +90,21 @@ class PaymentForm extends React.Component {
                         <label>
                             <input type="radio" name="method" value="billing address" onChange={evt => this.props.updateShippingMethod(evt)}/>
                             Use a different billing address
-                        </label>
+                        </label> */}
                         
                         {/* <button className="continue-button" onClick={(evt) => this.handleCheckout(evt)}>Pay now</button> */}
                     </form>
                     <StripeCheckout token={(token) => this.onToken(token)} 
-                    // stripeKey={process.env.STRIPE_API_KEY}
-                        stripeKey={publishableKey}
+                    stripeKey={process.env.STRIPE_API_KEY}
+                        // stripeKey={publishableKey}
                         shippingAddress
-                        billingAddress>
-                            <button className="payment-button" onClick={(evt) => this.handleCheckout(evt)}>Pay now</button> 
+                        billingAddress
+                        amount={this.props.cartArray.reduce((acc, item) => acc + item.treat.price, this.props.shippingMethod)*100}
+                        name={'Boutique de Chocolat'}
+                        email={this.props.user.email}
+                        >
+                        
+                            <button className="payment-button">Pay now</button> 
                     </StripeCheckout>
                 </div>
                 <div className="right">

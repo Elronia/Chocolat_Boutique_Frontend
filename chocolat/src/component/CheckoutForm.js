@@ -12,9 +12,10 @@ class CheckoutForm extends React.Component {
     
 
     handleCheckout(evt){
+        console.log(evt)
         evt.preventDefault();
         // console.log("Checkout")
-        fetch("http://localhost:3000/user/1", {
+        fetch(`http://localhost:3000/user/${this.props.user.id}`, {
         method: "PATCH",
         headers: {
         "content-type": "application/json"
@@ -28,6 +29,22 @@ class CheckoutForm extends React.Component {
     })
   }
 
+  get isFormValid(){
+    //   const invalidField = document.querySelector('form input:invalid');
+    //   console.log(invalidField)
+    //   return !invalidField
+    return (
+        this.state.email && 
+        this.state.first_name &&
+        this.state.last_name &&
+        this.state.address &&
+        this.state.city &&
+        this.state.state &&
+        this.state.zip &&
+        this.state.phone
+    )
+  }
+
     
 //name="state" value={state}
     render() {
@@ -37,22 +54,22 @@ class CheckoutForm extends React.Component {
                 <form>
                     <h2>Contact Information</h2>
                     <div className="input-group">
-                        <input type="email" placeholder="Email"/>
+                        <input type="email" placeholder="Email" required  value={this.state.email} onChange={evt => this.setState({email: evt.target.value})}/>
                     </div>
                     <h2>Shipping address</h2>
                     <div className="input-group">
-                        <input type="text" placeholder="First Name" value={this.state.first_name} onChange={evt => this.setState({first_name: evt.target.value})}/>
-                        <input type="text" placeholder="Last Name" value={this.state.last_name} onChange={evt => this.setState({last_name: evt.target.value})}/>
+                        <input type="text" placeholder="First Name" required value={this.state.first_name} onChange={evt => this.setState({first_name: evt.target.value})}/>
+                        <input type="text" placeholder="Last Name" required value={this.state.last_name} onChange={evt => this.setState({last_name: evt.target.value})}/>
                     </div>
                     <div className="input-group">
-                        <input type="text" placeholder="Address" value={this.state.address} onChange={evt => this.setState({address: evt.target.value})}/>
+                        <input type="text" placeholder="Address" required value={this.state.address} onChange={evt => this.setState({address: evt.target.value})}/>
                     </div>
                     <div className="input-group">
-                        <input type="text" placeholder="City" value={this.state.city} onChange={evt => this.setState({city: evt.target.value})}/>
+                        <input type="text" placeholder="City" required value={this.state.city} onChange={evt => this.setState({city: evt.target.value})}/>
                     </div>
                     <div className="input-group">
-                        <select className="ui fluid dropdown" value={this.state.state} onChange={evt => this.setState({state: evt.target.value})}>
-                            <option value="">State</option>
+                        <select className="ui fluid dropdown" placeholder="State" required value={this.state.state} onChange={evt => this.setState({state: evt.target.value})}>
+                            {/* <option value="">State</option> */}
                             <option value="AL">Alabama</option>
                             <option value="AK">Alaska</option>
                             <option value="AZ">Arizona</option>
@@ -105,14 +122,14 @@ class CheckoutForm extends React.Component {
                             <option value="WI">Wisconsin</option>
                             <option value="WY">Wyoming</option>
                         </select>
-                        <input type="text" placeholder="ZIP code" value={this.state.zip} onChange={evt => this.setState({zip: evt.target.value})}/>
+                        <input type="text" placeholder="ZIP code" required value={this.state.zip} onChange={evt => this.setState({zip: evt.target.value})}/>
                     </div>
                     <div className="input-group">
-                        <input type="text" placeholder="Phone" value={this.state.phone} onChange={evt => this.setState({phone: evt.target.value})}/>
+                        <input type="text" placeholder="Phone" required value={this.state.phone} onChange={evt => this.setState({phone: evt.target.value})}/>
                     </div>
                     <div className="submit-group">
                         <Link to="/cart"> &lt; Return to cart</Link>
-                        <button className="continue-button" onClick={(evt) => this.handleCheckout(evt)}>Continue to Shipping</button>
+                        <button className="continue-button" disabled={!this.isFormValid} onClick={(evt) => this.handleCheckout(evt)}>Continue to Shipping</button>
                     </div>
                </form>
             </div>
