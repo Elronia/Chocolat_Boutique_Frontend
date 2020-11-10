@@ -39,11 +39,11 @@ class Footer extends React.Component {
                             </ul>
                                 </div>
                             {/* Column3 */}
-                            <div className="column">
+                            {/* <div className="column">
                                 <b>Join our mailing list</b>
 
                                 {/* <button className="footer-button">Subscribe</button> */}
-                            </div>
+                            {/* </div>  */}
                             <div className="column">
                                 <b>Stay connected</b>
                                 <Facebook />

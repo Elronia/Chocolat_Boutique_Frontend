@@ -9,26 +9,13 @@ import '../styling/NavBar.css';
 
 class NavBar extends React.Component {
 
-    state = { 
-        activeItem: 'home'
-    }
-
-    componentDidMount() {
-        this.setState({
-            activeItem: this.props.history.location.pathname.slice(1)
-        })
-    }
-
-    handleItemClick = (evt, { name }) => {
-        this.setState({ activeItem: name })
-    }
-
     get isLoggedIn() {
         return !!(localStorage.token && this.props.user.id)
     }
 
     render() {
-        const { activeItem } = this.state
+        const { activeItem="" } = this.props
+        console.log(activeItem)
 
         return (
         <div>
@@ -37,25 +24,25 @@ class NavBar extends React.Component {
                 as={NavLink} to="/"
                 name='home'
                 active={activeItem === 'home'}
-                onClick={this.handleItemClick}
+                onClick={this.props.handleItemClick}
             />
             <Menu.Item
                 as={NavLink} to="/shop"
                 name='Shop'
                 active={activeItem === 'Shop'}
-                onClick={this.handleItemClick}
+                onClick={this.props.handleItemClick}
             />
              <Menu.Item
                 as={NavLink} to="/shipping-guidelines"
                 name='ShippingGuidelines'
                 active={activeItem === 'ShippingGuidelines'}
-                onClick={this.handleItemClick}
+                onClick={this.props.handleItemClick}
             /> 
             <Menu.Item
                 as={NavLink} to="/about"
                 name='About'
                 active={activeItem === 'About'}
-                onClick={this.handleItemClick}
+                onClick={this.props.handleItemClick}
             /> 
 
         <Menu.Menu position='right'>
@@ -70,8 +57,8 @@ class NavBar extends React.Component {
             {activeItem.toLowerCase() === 'shop' 
                 ? <Menu.Item className="search-input" style={{width: "15vw"}}
                     name='Search'
-                    active={activeItem === 'Search'}
-                    onClick={this.handleItemClick}> 
+                    // active={activeItem === 'Search'}
+                    > 
                     <Search searchTerm={this.props.searchTerm}
                         changeSearchTerm={this.props.changeSearchTerm}/>
                 </Menu.Item> 
@@ -89,7 +76,7 @@ class NavBar extends React.Component {
                 name='Sign In'
                 active={activeItem === <i class="fas fa-user"></i>}
                 active={activeItem === 'LoginForm'}
-                onClick={this.handleItemClick}
+                onClick={this.props.handleItemClick}
             />}
             
             <Menu.Item>
@@ -101,7 +88,7 @@ class NavBar extends React.Component {
                 header={true}
                 name={`Cart - ${this.props.treatsAmount}`}
                 active={activeItem === 'Cart'}
-                onClick={this.handleItemClick}
+                onClick={this.props.handleItemClick}
             />  
             </Menu.Menu>
         </Menu>

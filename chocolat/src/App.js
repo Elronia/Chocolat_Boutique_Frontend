@@ -8,8 +8,7 @@ import ShippingGuidelines from './component/ShippingGuidelines';
 import AboutPage from './component/AboutPage';
 import Search from './component/Search';
 import LoginForm from './component/LoginForm';
-// import CreateAccountPage from './component/CreateAccountPage';
-// import CreateAccountForm from './component/CreateAccountPage';
+import CreateAccountForm from './component/CreateAccountForm';
 import TreatList from './component/TreatList';
 import TreatCard from './component/TreatCard';
 import TreatInfo from './component/TreatInfo';
@@ -39,6 +38,8 @@ class App extends Component {
       // email: ""
     },
 
+    activeItem: "home",
+
     // Current logged in user's token (boolean)
     token: ""
 
@@ -47,7 +48,11 @@ class App extends Component {
 
   // Accessing an array of treats from the backend
   componentDidMount() {
-    
+    setTimeout(() => {
+      this.setState({
+        activeItem: this.props.history.location.pathname.slice(1)
+      })
+    }, 100)
     const dirtySavedStore = localStorage.getItem('store');
     if(dirtySavedStore) {
       const savedStore = JSON.parse(dirtySavedStore)
@@ -87,7 +92,7 @@ class App extends Component {
       return true;
     }
   };
-
+  
   handleLogOut() {
     console.log(this)
     this.setState({
@@ -98,6 +103,7 @@ class App extends Component {
     this.saveStore();
     localStorage.clear();
     this.props.history.push('/');
+    this.handleItemClick({}, {name: "home"});
   }
 
   addItemToCart = (id) => {
@@ -186,6 +192,14 @@ class App extends Component {
     this.saveStore();
   }
 
+  handleItemClick = (evt, { name }) => {
+    this.setState({ activeItem: name })
+  }
+
+  updateActiveMenuItem(evt, activeItem) {
+    
+  }
+
   updateShippingMethod(evt){
     this.setState({shippingMethod: +evt.currentTarget.value})
   }
@@ -210,6 +224,8 @@ class App extends Component {
           // loggedIn={loggedIn}
           handleLogOut={() => this.handleLogOut()}
           user={this.state.user}
+          handleItemClick={this.handleItemClick}
+          activeItem={this.state.activeItem}
         />
 
         <Switch>
@@ -219,6 +235,8 @@ class App extends Component {
           </Route>
 
           <Route path="/shop" exact render={() => <TreatList 
+            handleItemClick={this.handleItemClick}
+        
             treats={filteredTreats}/>} />
 
           {/* ITEM DETAIL */}
@@ -230,7 +248,17 @@ class App extends Component {
 
           <Route path="/about" exact render={() => <AboutPage/>}/>
           
-          <Route path="/account" exact render={() => <LoginForm handleResponse={this.handleResponse}/>}/>
+          <Route path="/account" exact render={() => <LoginForm handleResponse={this.handleResponse}
+            handleItemClick={this.handleItemClick}/>}/>
+          
+          <Route path="/create-account" exact render={() => 
+            <CreateAccountForm
+              // user={this.state.user}
+              handleSubmit={this.handleSubmit}
+              handleInput={this.handleInput}
+              updateUser={(user) => this.updateUser(user)}
+              handleItemClick={this.handleItemClick}
+            />}/>
 
           <Route path="/cart" exact render={() => 
             <CartPage cartArray={this.state.cartArray}

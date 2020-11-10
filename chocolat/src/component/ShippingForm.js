@@ -59,7 +59,7 @@ class ShippingForm extends React.Component{
                             <img src={cartItem.treat.image}/>
                         </div>
                         <div className="name">{cartItem.treat.name}</div>
-                        <div className="price">${cartItem.qty*cartItem.treat.price}.00</div>
+                        <div className="subtotal-price">${cartItem.qty*cartItem.treat.price}.00</div>
                     </div>
                 ))}
                 </div>

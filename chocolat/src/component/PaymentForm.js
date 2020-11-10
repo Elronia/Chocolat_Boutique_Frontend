@@ -75,8 +75,8 @@ class PaymentForm extends React.Component {
                                 <input type="ups" placeholder="Method" disabled value={this.props.shippingMethod===12 ? 'UPS 2nd Day Air - $12.00' : 'UPS Next Day Air - $20.00' }/>
                             </div>
                         </div>
-                        <h2>Payment</h2>
-                        <h4>All transactions are secure and encrypted.</h4>
+                        {/* <h2>Payment</h2>
+                        <h4>All transactions are secure and encrypted.</h4> */}
                         {/* <b>Credit card</b>
                         <div className="input-group">
                             <input type="contact" placeholder="Card number"/>
@@ -89,23 +89,23 @@ class PaymentForm extends React.Component {
                             <input type="ups" placeholder="Security code"/>
                         </div>*/}
                         <h2>Billing address</h2>
-                        <b>Select the address that matches your card or payment method.</b>
+                        <h4>Select the address that matches your card or payment method.</h4>
                         <div className="combined-input shipping-info">
-                        <div className="input-group">
-                        
-                            <input type="radio" name="method" value="shipping address" onChange={evt => this.props.updateShippingMethod(evt)}/>
-                            <label>Same as shipping address</label>
+                            <div className="input-group">
+                                <input type="radio" name="method" value="shipping address"/>
+                                <label>Same as shipping address</label>
                             </div>
-                        
-                        <label>
-                            <input type="radio" name="method" value="billing address" onChange={evt => this.props.updateShippingMethod(evt)}/>
-                            Use a different billing address
-                        </label> 
+                            <div className="input-group">
+                                <input type="radio" name="method" value="billing address"/>
+                                <label>Use a different billing address</label> 
+                            </div>
                         </div>
                         
                         {/* <button className="continue-button" onClick={(evt) => this.handleCheckout(evt)}>Pay now</button> */}
                     </form>
+                    <div className="submit-group">
                     <Link to="/shipping"> &lt; Return to shipping</Link>
+                    
                     <StripeCheckout token={(token) => this.onToken(token)} 
                     stripeKey={process.env.REACT_APP_STRIPE_API_KEY}
                         shippingAddress
@@ -117,6 +117,7 @@ class PaymentForm extends React.Component {
                                 <button className="payment-button">Pay now</button> 
                             </div>
                     </StripeCheckout>
+                    </div>
                 </div>
                 <div className="right">
                     {this.props.cartArray.map((cartItem) => (
@@ -128,7 +129,7 @@ class PaymentForm extends React.Component {
                                 <img src={cartItem.treat.image}/>
                             </div>
                             <div className="name">{cartItem.treat.name}</div>
-                            <div className="price">${cartItem.qty*cartItem.treat.price}.00</div>
+                            <div className="subtotal-price">${cartItem.qty*cartItem.treat.price}.00</div>
                         </div>
                     ))}
                 </div>

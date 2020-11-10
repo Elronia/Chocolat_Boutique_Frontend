@@ -1,4 +1,17 @@
 
+.payment-form .left form h2 {
+    text-align: left;
+    padding-left: 10px;
+    color: #444;
+    font-size: 20px;
+}
+
+.payment-form .left form h4 {
+    text-align: left;
+    padding-left: 10px;
+    color: #444;
+    font-size: 12px;
+}
 
 .payment-button{
     height: 58px;
@@ -6,4 +19,5 @@
     background-color: #b6afb7;
     border: none;
     border-radius: 6px;
+    margin-top: 50px;/*added*/
 }

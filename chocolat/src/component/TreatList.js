@@ -13,8 +13,8 @@ const TreatList = (props) => {
                         treats={treatsObj}	
                         onPageChange={props.onPageChange}
                         cartActions={props.cartActions}
+                        handleItemClick={props.handleItemClick}
                     />
-                                	
                 ))}
                </div>
                 </div>)

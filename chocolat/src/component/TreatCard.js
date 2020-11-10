@@ -14,7 +14,7 @@ class TreatCard extends React.Component {
         let { id, name, price, image } = this.props.treats
 
         return(
-            <Link className="treat-card" to={`/treats/${id}`}>
+            <Link className="treat-card" to={`/treats/${id}`} onClick={(evt) => this.props.handleItemClick(evt, {name: "treat"})}>
                 <img src={image} width="350" height="250"/>
                 <p className="info">{name}</p>
                 <p className="info">{`Price: $` + price + `.00`}</p>

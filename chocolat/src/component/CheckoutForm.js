@@ -7,14 +7,16 @@ import CheckoutNav from './CheckoutNav';
 class CheckoutForm extends React.Component {
     state = {}
 
-    componentDidMount() {
-        this.setState(this.props.user)
-    }
+    // componentDidMount() {
+    //     console.log(this.props.user)
+    //     this.setState(this.props.user)
+    // }
     
     get isLoggedIn() {
         return !!(localStorage.token && this.props.user.id)
     }
 
+// Upon submission of the form, create a newUser object, which has all info from this.state (except passwordConfirm, which would be redundant)
     handleCheckout(evt){
         evt.preventDefault();
         // console.log("Checkout")
@@ -23,14 +25,14 @@ class CheckoutForm extends React.Component {
             headers: {
             "content-type": "application/json"
             },
-            body: JSON.stringify(this.state)
+            body: JSON.stringify(this.props.user)
         })
         .then(resp => resp.json())
         .then((resp) => {
             console.log(resp)
             this.props.updateUser(resp.user);
             localStorage.token = resp.token;
-            this.props.history.push("/shipping")
+            this.props.history.push("/shipping");
         })
     }
 
@@ -39,14 +41,14 @@ class CheckoutForm extends React.Component {
     //   console.log(invalidField)
     //   return !invalidField
     return (
-        this.state.email && 
-        this.state.first_name &&
-        this.state.last_name &&
-        this.state.address &&
-        this.state.city &&
-        this.state.state &&
-        this.state.zip &&
-        this.state.phone &&
+        this.props.user.email && 
+        this.props.user.first_name &&
+        this.props.user.last_name &&
+        this.props.user.address &&
+        this.props.user.city &&
+        this.props.user.state &&
+        this.props.user.zip &&
+        this.props.user.phone &&
         (this.isLoggedIn 
             ? true 
             : this.state.username && 
@@ -69,21 +71,21 @@ class CheckoutForm extends React.Component {
                         <Link to="/account">Log in</Link>
                     </div>}
                     <div className="input-group">
-                        <input type="email" placeholder="Email" required  value={this.state.email} onChange={evt => this.setState({email: evt.target.value})}/>
+                        <input type="email" placeholder="Email" required  value={this.props.user.email} onChange={evt => this.props.updateUser({email: evt.target.value})}/>
                     </div>
                     <h2>Shipping address</h2>
                     <div className="input-group">
-                        <input type="text" placeholder="First Name" required value={this.state.first_name} onChange={evt => this.setState({first_name: evt.target.value})}/>
-                        <input type="text" placeholder="Last Name" required value={this.state.last_name} onChange={evt => this.setState({last_name: evt.target.value})}/>
+                        <input type="text" placeholder="First Name" required value={this.props.user.first_name} onChange={evt => this.props.updateUser({first_name: evt.target.value})}/>
+                        <input type="text" placeholder="Last Name" required value={this.props.user.last_name} onChange={evt => this.props.updateUser({last_name: evt.target.value})}/>
                     </div>
                     <div className="input-group">
-                        <input type="text" placeholder="Address" required value={this.state.address} onChange={evt => this.setState({address: evt.target.value})}/>
+                        <input type="text" placeholder="Address" required value={this.props.user.address} onChange={evt => this.props.updateUser({address: evt.target.value})}/>
                     </div>
                     <div className="input-group">
-                        <input type="text" placeholder="City" required value={this.state.city} onChange={evt => this.setState({city: evt.target.value})}/>
+                        <input type="text" placeholder="City" required value={this.props.user.city} onChange={evt => this.props.updateUser({city: evt.target.value})}/>
                     </div>
                     <div className="input-group">
-                        <select className="ui fluid dropdown" placeholder="State" required value={this.state.state} onChange={evt => this.setState({state: evt.target.value})}>
+                        <select className="ui fluid dropdown" placeholder="State" required value={this.props.user.state} onChange={evt => this.props.updateUser({state: evt.target.value})}>
                             {/* <option value="">State</option> */}
                             <option value="AL">Alabama</option>
                             <option value="AK">Alaska</option>
@@ -137,10 +139,10 @@ class CheckoutForm extends React.Component {
                             <option value="WI">Wisconsin</option>
                             <option value="WY">Wyoming</option>
                         </select>
-                        <input type="text" placeholder="ZIP code" required value={this.state.zip} onChange={evt => this.setState({zip: evt.target.value})}/>
+                        <input type="text" placeholder="ZIP code" required value={this.props.user.zip} onChange={evt => this.props.updateUser({zip: evt.target.value})}/>
                     </div>
                     <div className="input-group">
-                        <input type="text" placeholder="Phone" required value={this.state.phone} onChange={evt => this.setState({phone: evt.target.value})}/>
+                        <input type="text" placeholder="Phone" required value={this.props.user.phone} onChange={evt => this.props.updateUser({phone: evt.target.value})}/>
                     </div>
                     {!this.isLoggedIn 
                     ? <><h2>Account information</h2>

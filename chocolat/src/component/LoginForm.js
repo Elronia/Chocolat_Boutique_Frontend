@@ -1,6 +1,6 @@
 import React from "react";
 import '../styling/LoginForm.css';
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 // import BackButton from "../component/BackButton";
 
 class LoginForm extends React.Component {
@@ -33,6 +33,7 @@ class LoginForm extends React.Component {
         // Once result comes back, we handle the result by setting this.state.user and this.state.token in App.js accordingly, as well as storing the token we got back in localStorage so as to avoid logging the user out with page refresh; after that we bring the user to /home (/treats)
         if (this.props.handleResponse(result)) {
           this.props.history.push("/");
+          this.props.handleItemClick({}, {name: "home"});
         }
         return true;
       });
@@ -69,9 +70,9 @@ class LoginForm extends React.Component {
             Sign In
           </button>
           <div>
-            <button className="ui button" type="submit">
+            <Link to="/create-account" className="ui button">
               Create account
-            </button>
+            </Link>
           </div>
         </form>
 

@@ -4,6 +4,7 @@
   margin-bottom: 20px;
   width: 300px;
   padding-top: 30px;
+  min-height: 50vh;
 }
   
 #log-in-form .header {
