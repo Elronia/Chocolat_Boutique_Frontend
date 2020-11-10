@@ -18,7 +18,7 @@
   
 #log-in-form .ui.button {
   color: white;
-  background-color: #f5d2fa;
+  background-color: hsl(291, 27%, 80%);
   font-size: 17px;
 }
 
@@ -26,15 +26,15 @@
   width : 300px;
   height : 44px;
   background-color: black;
-  color: hsl(293, 80%, 90%);
+  color: #DBD2DA;
   font-family: "Avenir-Next", sans-serif;
   font-size: 17px;
-    /* border: none; */
+  border: none;
     /* margin: 20px; */
 }
 /*This should make them change their color when they are hovered*/
 .signin-button:hover {
-  background: hsl(293, 80%, 90%);
+  background: #DBD2DA;
   color: black;
   -moz-border-radius: 2px;
   -webkit-border-radius: 2px;

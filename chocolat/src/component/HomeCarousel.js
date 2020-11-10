@@ -10,23 +10,28 @@ class HomeCarousel extends Component {
             <div className="slider-container">
             <Carousel className="carousel-style" showArrows={true} infiniteLoop useKeyboardArrows autoPlay> 
                 <div>
-                    <img src="https://res.cloudinary.com/dn1e07eul/image/upload/v1602955504/Chocolat/choc01_poises.jpg" />
+                    <img src="https://res.cloudinary.com/elronia/image/upload/v1604979246/Carousel/Bon_Bon_Candies_Width_nlolmo.jpg" />
+                    <p className="legend"><h1>CONFECTIONS CRAFTED WITH INTERNATIONAL INGREDIENTS</h1>Our signature bon bons</p>
+                </div>
+                <div>
+                    <img src="https://res.cloudinary.com/elronia/image/upload/v1604981987/Carousel/Caramel_Candy_Final_selbup.jpg" />
+                    <p className="legend"><h1>INVENTIVE FLAVORS PAIRED WITH EXCEPTIONAL TECHNIQUE</h1>Award winning chocolates</p>
+                </div>
+                <div>
+                    <img src="https://res.cloudinary.com/elronia/image/upload/v1604981610/Carousel/largeboxsquarever1_V3_aptvnn.jpg" />
                     <p className="legend"><h1>HANDCRAFTED PERFECTION</h1>Signature's Chef Selection</p>
                 </div>
                 <div>
-                    <img src="https://res.cloudinary.com/dn1e07eul/image/upload/v1602955506/Chocolat/choc17_quwptj.jpg" />
-                    <p className="legend">Chocolate Travel Cake</p>
-                </div>
-                <div>
-                    <img src="https://res.cloudinary.com/dn1e07eul/image/upload/v1602955506/Chocolat/choc16_xxcf45.jpg" />
+                    <img src="https://res.cloudinary.com/elronia/image/upload/v1604982678/Carousel/Pistachio_Cake_Final_gjyxw5.jpg" />
                     <p className="legend">Pistashio Travel Cake</p>
                 </div>
                 <div>
-                    <img src="https://res.cloudinary.com/dn1e07eul/image/upload/v1602956034/Chocolat/choc21_atrmd7.jpg" />
-                    <p className="legend"><h1>UNSURPASSED QUALITY</h1>Assorted chocolate Bars</p>
+                    <img src="https://res.cloudinary.com/elronia/image/upload/v1604980333/Carousel/Chocolate_Travel_Cake_Final_ocojrx.jpg" />
+                    <p className="legend">Chocolate Travel Cake</p>
                 </div>
+                
                 <div>
-                    <img src="https://res.cloudinary.com/dn1e07eul/image/upload/v1602955507/Chocolat/choc19_tyxdt6.jpg" />
+                    <img src="https://res.cloudinary.com/elronia/image/upload/v1604980849/Carousel/40_Milk_Chocolate_Bar_Final_veyfkm.jpg" />
                     <p className="legend">40% Milk Chocolate Bars</p>
                 </div>
             </Carousel>

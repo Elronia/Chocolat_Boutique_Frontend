@@ -43,14 +43,14 @@
     width : 105px;
     height : 41px;
     background-color: black;
-    color: hsl(293, 80%, 90%);
-    /* border: none; */
+    color: #DBD2DA;
+    border: none;
     -moz-border-radius: 2px;
     -webkit-border-radius: 2px;
     margin: 100px;
 }
 /*This should make them change their color when they are hovered*/
 .footer-button:hover {
-    background: hsl(293, 80%, 90%);
+    background: #DBD2DA;
     color: black;
 }

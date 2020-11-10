@@ -40,4 +40,13 @@
 .carousel .slide img {
     max-height: 700px;  /* change this to whatever you want */
     width: auto;
-} 
+}  
+
+/* .carousel .slide .img {
+    display: block;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
+    font-family: 'object-fit: contain, object-position: 50% 50%';
+} */

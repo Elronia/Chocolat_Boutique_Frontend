@@ -1,7 +1,11 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import '../styling/Footer.css';
+import { IconName } from 'react-feather';
 
+const Camera = require('react-feather/dist/icons/camera').default;
+const Facebook = require('react-feather/dist/icons/facebook').default;
+const Twitter = require('react-feather/dist/icons/twitter').default;
 
 class Footer extends React.Component {
 
@@ -37,7 +41,14 @@ class Footer extends React.Component {
                             {/* Column3 */}
                             <div className="column">
                                 <b>Join our mailing list</b>
-                                <button className="footer-button">Subscribe</button>
+
+                                {/* <button className="footer-button">Subscribe</button> */}
+                            </div>
+                            <div className="column">
+                                <b>Stay connected</b>
+                                <Facebook />
+                                <Twitter/>
+                                <Camera />
                             </div>
                         </div>
                     </div>

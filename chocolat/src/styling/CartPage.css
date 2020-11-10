@@ -55,14 +55,14 @@
   padding: 25px;
   font-size: 20px;
   background-color: black;
-  color: hsl(293, 80%, 90%);
-  /* border: none; */
+  color: #DBD2DA;
+  border: none;
   -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
   margin: 20px;
 }
 
 .checkout-btn:hover{
-    background: hsl(293, 80%, 90%);
+    background: #DBD2DA;
     color: black;
 }

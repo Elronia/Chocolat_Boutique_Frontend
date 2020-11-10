@@ -40,8 +40,8 @@ a, p{
 }
 
 body {
-  /* background-color: #f5d2fa; */
-  background-color: #C4B6C3;
+  /* background-color: #f5d2fa; #f5d2fa; #DBD2DA;  #C4B6C3; #EAE6F0  #d6b8d5;  hsl(291, 27%, 80%);*/
+  background-color: hsl(291, 27%, 80%);
 }
 
 .clearfix{
