@@ -1,6 +1,7 @@
 import React from 'react';
 import '../styling/ShippingForm.css';
 import { withRouter, Link } from 'react-router-dom';
+import CheckoutNav from './CheckoutNav';
 
 class ShippingForm extends React.Component{
     handleCheckout(evt){
@@ -13,6 +14,7 @@ class ShippingForm extends React.Component{
         return (
             <div className="shipping-form">
                 <div className="left">
+                    <CheckoutNav page="shipping"/>
                     <form>
                         <div className="combined-input">
                             <div className="input-group">

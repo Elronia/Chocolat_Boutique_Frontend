@@ -32,7 +32,7 @@ class LoginForm extends React.Component {
       .then((result) => {
         // Once result comes back, we handle the result by setting this.state.user and this.state.token in App.js accordingly, as well as storing the token we got back in localStorage so as to avoid logging the user out with page refresh; after that we bring the user to /home (/treats)
         if (this.props.handleResponse(result)) {
-          this.props.history.push("/home");
+          this.props.history.push("/");
         }
         return true;
       });
@@ -43,7 +43,7 @@ class LoginForm extends React.Component {
 
     return (
       <>
-        <form className="ui form" id="log-in-form" onSubmit={this.handleSubmit}>
+        <form className="ui form" id="log-in-form" onSubmit={(evt) => this.handleSubmit(evt)}>
           <h4 className="ui dividing header">LOGIN</h4>
           <div className="field">
             <label>Username</label>

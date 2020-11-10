@@ -65,7 +65,7 @@
 }
 
 .imageContainer{
-    flex: 0.2;
+    flex: 0.3;
     position: relative;
 }
 
@@ -103,8 +103,12 @@
     padding: 10px;
 }
 
-.combined-input .input-group:nth-child(1){
+.combined-input .input-group {
     border-bottom: 1px solid grey;
+}
+
+.combined-input .input-group:last-child {
+    border-bottom: 0;
 }
 
 .combined-input .input-group label {

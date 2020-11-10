@@ -23,6 +23,10 @@ class NavBar extends React.Component {
         this.setState({ activeItem: name })
     }
 
+    get isLoggedIn() {
+        return !!(localStorage.token && this.props.user.id)
+    }
+
     render() {
         const { activeItem } = this.state
 
@@ -77,13 +81,16 @@ class NavBar extends React.Component {
               <Icon class="shopping-bag-icon" name="Cart" size="large"/>
               <i class="user icon"></i>
             </Menu.Item>
-            <Menu.Item
+            {this.isLoggedIn ? <Menu.Item
+                name='Sign Out'
+                onClick={(evt) => this.props.handleLogOut(evt)}
+            /> : <Menu.Item
                 as={NavLink} to="/account"
-                name='Account'
+                name='Sign In'
                 active={activeItem === <i class="fas fa-user"></i>}
                 active={activeItem === 'LoginForm'}
                 onClick={this.handleItemClick}
-            />
+            />}
             
             <Menu.Item>
               <Icon class="shopping-bag-icon" name="Cart" size="large"/>

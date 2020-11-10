@@ -1,6 +1,7 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
-import '../styling/CheckoutForm.css'
+import '../styling/CheckoutForm.css';
+import CheckoutNav from './CheckoutNav';
 
 
 class CheckoutForm extends React.Component {
@@ -10,24 +11,28 @@ class CheckoutForm extends React.Component {
         this.setState(this.props.user)
     }
     
+    get isLoggedIn() {
+        return !!(localStorage.token && this.props.user.id)
+    }
 
     handleCheckout(evt){
-        console.log(evt)
         evt.preventDefault();
         // console.log("Checkout")
-        fetch(`http://localhost:3000/user/${this.props.user.id}`, {
-        method: "PATCH",
-        headers: {
-        "content-type": "application/json"
-        },
-        body: JSON.stringify(this.state)
+        fetch('http://localhost:3000/' + (this.isLoggedIn ? `user/${this.props.user.id}` : 'users'), {
+            method: this.isLoggedIn ? "PATCH" : "POST",
+            headers: {
+            "content-type": "application/json"
+            },
+            body: JSON.stringify(this.state)
         })
-    .then(resp => resp.json())
-    .then(() => {
-        this.props.updateUser(this.state);
-        this.props.history.push("/shipping")
-    })
-  }
+        .then(resp => resp.json())
+        .then((resp) => {
+            console.log(resp)
+            this.props.updateUser(resp.user);
+            localStorage.token = resp.token;
+            this.props.history.push("/shipping")
+        })
+    }
 
   get isFormValid(){
     //   const invalidField = document.querySelector('form input:invalid');
@@ -41,7 +46,13 @@ class CheckoutForm extends React.Component {
         this.state.city &&
         this.state.state &&
         this.state.zip &&
-        this.state.phone
+        this.state.phone &&
+        (this.isLoggedIn 
+            ? true 
+            : this.state.username && 
+            this.state.password && 
+            this.state.confirmPassword && 
+            this.state.password === this.state.confirmPassword)
     )
   }
 
@@ -51,8 +62,12 @@ class CheckoutForm extends React.Component {
         return (
         <div className="checkout-form">
             <div className="left">
+            <CheckoutNav page="checkout"/>
                 <form>
                     <h2>Contact Information</h2>
+                    {this.isLoggedIn ? null : <div className="login-message">Already have an account? 
+                        <Link to="/account">Log in</Link>
+                    </div>}
                     <div className="input-group">
                         <input type="email" placeholder="Email" required  value={this.state.email} onChange={evt => this.setState({email: evt.target.value})}/>
                     </div>
@@ -127,6 +142,14 @@ class CheckoutForm extends React.Component {
                     <div className="input-group">
                         <input type="text" placeholder="Phone" required value={this.state.phone} onChange={evt => this.setState({phone: evt.target.value})}/>
                     </div>
+                    {!this.isLoggedIn 
+                    ? <><h2>Account information</h2>
+                    <div className="input-group">
+                        <input type="text" placeholder="Username" required value={this.state.username} onChange={evt => this.setState({username: evt.target.value})}/>
+                        <input type="password" placeholder="Password" required value={this.state.password} onChange={evt => this.setState({password: evt.target.value})}/>
+                        <input type="password" placeholder="Confirm password" required value={this.state.confirmPassword} onChange={evt => this.setState({confirmPassword: evt.target.value})}/>
+                    </div></>
+                    : null}
                     <div className="submit-group">
                         <Link to="/cart"> &lt; Return to cart</Link>
                         <button className="continue-button" disabled={!this.isFormValid} onClick={(evt) => this.handleCheckout(evt)}>Continue to Shipping</button>
@@ -143,7 +166,7 @@ class CheckoutForm extends React.Component {
                             <img src={cartItem.treat.image}/>
                         </div>
                         <div className="name">{cartItem.treat.name}</div>
-                        <div className="price">${cartItem.qty*cartItem.treat.price}.00</div>
+                        <div className="subtotal-price">${cartItem.qty*cartItem.treat.price}.00</div>
                     </div>
                 ))}
             </div>

@@ -10,6 +10,7 @@
     min-height: 50vh;
     padding-top: 40px;
     padding-bottom: 50px;
+    position: relative; /*added*/
 }
 
 .checkout-form .left form{
@@ -54,6 +55,12 @@
     color: #000;
 }
 
+.login-message {
+    position: absolute;
+    right: 42px;
+    top: 45px;
+}
+
 .checkout-form .right {
     flex: 0.4;
     min-height: 50vh;
@@ -69,9 +76,9 @@
     text-align: left;
 }
 
-.checkout-form .right .price {
-    font-size: 15px;
-    font-weight: normal;
+.checkout-form .right .subtotal-price {
+    font-size: 17px !important;
+    font-weight: 700;
 }
 
 .summary-row{
@@ -82,7 +89,7 @@
 }
 
 .imageContainer{
-    flex: 0.2;
+    flex: 0.3;
     position: relative;
 }
 

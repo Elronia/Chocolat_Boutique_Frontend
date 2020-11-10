@@ -2,6 +2,7 @@ import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import '../styling/PaymentForm.css';
 import StripeCheckout from 'react-stripe-checkout';
+import CheckoutNav from './CheckoutNav';
 
 
 class PaymentForm extends React.Component {
@@ -10,7 +11,7 @@ class PaymentForm extends React.Component {
             evt.preventDefault();
         }
         
-        console.log(this.props)
+        // console.log(this.props)
         fetch("http://localhost:3000/checkout", {
             method: "POST",
             headers: {
@@ -58,6 +59,7 @@ class PaymentForm extends React.Component {
         return(
             <div className="shipping-form">
                 <div className="left">
+                <CheckoutNav page="payment"/>
                     <form>
                         <div className="combined-input">
                             <div className="input-group">
@@ -85,31 +87,33 @@ class PaymentForm extends React.Component {
                         <div className="input-group">
                             <input type="ups" placeholder="Expiration date (MM / YY)"/>
                             <input type="ups" placeholder="Security code"/>
-                        </div>
+                        </div>*/}
                         <h2>Billing address</h2>
                         <b>Select the address that matches your card or payment method.</b>
-                        <label>
+                        <div className="combined-input shipping-info">
+                        <div className="input-group">
+                        
                             <input type="radio" name="method" value="shipping address" onChange={evt => this.props.updateShippingMethod(evt)}/>
-                            Same as shipping address
-                        </label>
+                            <label>Same as shipping address</label>
+                            </div>
+                        
                         <label>
                             <input type="radio" name="method" value="billing address" onChange={evt => this.props.updateShippingMethod(evt)}/>
                             Use a different billing address
-                        </label> */}
+                        </label> 
+                        </div>
                         
                         {/* <button className="continue-button" onClick={(evt) => this.handleCheckout(evt)}>Pay now</button> */}
                     </form>
-
+                    <Link to="/shipping"> &lt; Return to shipping</Link>
                     <StripeCheckout token={(token) => this.onToken(token)} 
-                    stripeKey={process.env.STRIPE_API_KEY}
-                        // stripeKey={publishableKey}
+                    stripeKey={process.env.REACT_APP_STRIPE_API_KEY}
                         shippingAddress
                         billingAddress
                         amount={this.props.cartArray.reduce((acc, item) => acc + item.treat.price, this.props.shippingMethod)*100}
                         name={'Boutique de Chocolat'}
                         email={this.props.user.email}>
                             <div className="submit-group">
-                                <Link to="/shipping"> &lt; Return to shipping</Link>
                                 <button className="payment-button">Pay now</button> 
                             </div>
                     </StripeCheckout>

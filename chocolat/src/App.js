@@ -8,6 +8,8 @@ import ShippingGuidelines from './component/ShippingGuidelines';
 import AboutPage from './component/AboutPage';
 import Search from './component/Search';
 import LoginForm from './component/LoginForm';
+// import CreateAccountPage from './component/CreateAccountPage';
+// import CreateAccountForm from './component/CreateAccountPage';
 import TreatList from './component/TreatList';
 import TreatCard from './component/TreatCard';
 import TreatInfo from './component/TreatInfo';
@@ -78,13 +80,25 @@ class App extends Component {
       alert(result.error);
       return false;
     } else {
-      console.log(result)
+      // console.log(result)
       this.setState({user: result.user});
       this.saveStore();
-      // localStorage.token = result.token;
+      localStorage.token = result.token;
       return true;
     }
   };
+
+  handleLogOut() {
+    console.log(this)
+    this.setState({
+      user: {},
+      cartArray: [], 
+      cartTotal: 0
+    });
+    this.saveStore();
+    localStorage.clear();
+    this.props.history.push('/');
+  }
 
   addItemToCart = (id) => {
     const { cartArray } = this.state;
@@ -194,8 +208,8 @@ class App extends Component {
           changeSearchTerm={this.changeSearchTerm}
           treatsAmount={this.treatsAmount}
           // loggedIn={loggedIn}
-          // handleLogOut={this.handleLogOut}
-          // username={this.state.user.username}
+          handleLogOut={() => this.handleLogOut()}
+          user={this.state.user}
         />
 
         <Switch>
