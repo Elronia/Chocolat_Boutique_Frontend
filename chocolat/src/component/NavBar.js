@@ -9,106 +9,97 @@ import '../styling/NavBar.css';
 
 class NavBar extends React.Component {
 
+    //checks if user is logged in by token and id
     get isLoggedIn() {
         return !!(localStorage.token && this.props.user.id)
     }
 
     render() {
+        //get activeItem from global state
         const { activeItem="" } = this.props
-        console.log(activeItem)
+        // console.log(activeItem)
 
         return (
         <div>
             <Menu pointing secondary>
+                <Menu.Menu>
             <Menu.Item className="item"
                 as={NavLink} to="/"
                 name='home'
                 active={activeItem === 'home'}
-                onClick={this.props.handleItemClick}
+                onClick={this.props.updateActiveMenuItem}
             />
             <Menu.Item
                 as={NavLink} to="/shop"
                 name='Shop'
                 active={activeItem === 'Shop'}
-                onClick={this.props.handleItemClick}
+                onClick={this.props.updateActiveMenuItem}
             />
              <Menu.Item
                 as={NavLink} to="/shipping-guidelines"
                 name='ShippingGuidelines'
                 active={activeItem === 'ShippingGuidelines'}
-                onClick={this.props.handleItemClick}
+                onClick={this.props.updateActiveMenuItem}
             /> 
             <Menu.Item
                 as={NavLink} to="/about"
                 name='About'
                 active={activeItem === 'About'}
-                onClick={this.props.handleItemClick}
+                onClick={this.props.updateActiveMenuItem}
             /> 
+            </Menu.Menu>
 
-        <Menu.Menu position='right'>
+        <Menu.Menu>
             <Menu.Item>
                 <Image as={NavLink} to="/"
                     src={logo} size="medium" onClick={this.handleLogoClick}/>
             </Menu.Item>
         </Menu.Menu>
             
-          
-        <Menu.Menu className='nav-container' position='right'>
+        <Menu.Menu>
+            {/* shows search activeItem === 'shop' */}
+            <Menu.Item className="search-input" style={{width: "15vw"}}>
             {activeItem.toLowerCase() === 'shop' 
-                ? <Menu.Item className="search-input" style={{width: "15vw"}}
-                    name='Search'
-                    // active={activeItem === 'Search'}
-                    > 
-                    <Search searchTerm={this.props.searchTerm}
+                ? 
+                        <Search searchTerm={this.props.searchTerm}
                         changeSearchTerm={this.props.changeSearchTerm}/>
-                </Menu.Item> 
+                     
                 : null}
+            </Menu.Item>
                 
             <Menu.Item>
-              <Icon class="shopping-bag-icon" name="Cart" size="large"/>
-              <i class="user icon"></i>
+              
             </Menu.Item>
             {this.isLoggedIn ? <Menu.Item
-                name='Sign Out'
-                onClick={(evt) => this.props.handleLogOut(evt)}
-            /> : <Menu.Item
+                className="signin-out"
+                onClick={(evt) => this.props.handleLogOut(evt)}> 
+                <i class="user icon"></i><span>Sign Out</span>
+                </Menu.Item>
+                : <Menu.Item
                 as={NavLink} to="/account"
-                name='Sign In'
-                active={activeItem === <i class="fas fa-user"></i>}
-                active={activeItem === 'LoginForm'}
-                onClick={this.props.handleItemClick}
-            />}
+                className="signin-out"
+                // active={activeItem === <i class="fas fa-user"></i>}
+                // active={activeItem === 'LoginForm'}
+                // onClick={this.props.updateActiveMenuItem}
+            >
+                <i class="user icon"></i><span>Sign In</span>
+                </Menu.Item>}
             
-            <Menu.Item>
-              <Icon class="shopping-bag-icon" name="Cart" size="large"/>
-              <i class="shopping bag icon"></i>
-            </Menu.Item>
             <Menu.Item
+                className="signin-out"
                 as={NavLink} to="/cart"
-                header={true}
-                name={`Cart - ${this.props.treatsAmount}`}
-                active={activeItem === 'Cart'}
-                onClick={this.props.handleItemClick}
-            />  
+                // header={true}
+                // active={activeItem === 'Cart'}
+                onClick={this.props.updateActiveMenuItem}
+            >  
+            <i class="shopping bag icon"></i><span>Cart - {this.props.treatsAmount}</span>
+            </Menu.Item>
             </Menu.Menu>
         </Menu>
     </div>
     )
   }
 
-        // render() {
-        //   return (
-        //     // <NavBar></NavBar>  
-        //     // <NavLink className="item" to="/" exact>Home</NavLink>
-        //     <nav className="NavBarItems">
-        //         <h1 className="navbar-logo"></h1>
-        //         <div className="menu-icon"></div>
-        //         <ul>
-        //             <li><a href=""></a></li>
-        //         </ul>
-        //     </nav>
-        //   )
-        // }
 }
 
 

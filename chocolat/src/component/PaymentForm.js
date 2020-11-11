@@ -6,11 +6,8 @@ import CheckoutNav from './CheckoutNav';
 
 
 class PaymentForm extends React.Component {
-    handleCheckout(evt=null){
-        if (evt) {
-            evt.preventDefault();
-        }
-        
+    //send order data to the backend
+    handleCheckout(){
         // console.log(this.props)
         fetch("http://localhost:3000/checkout", {
             method: "POST",
@@ -19,9 +16,12 @@ class PaymentForm extends React.Component {
             },
             body: JSON.stringify({
                 order: {
-                    total: this.props.cartArray.reduce((acc, item) => acc + item.treat.price, this.props.shippingMethod),
+                    //count total using reduce: shipping cost plus prices of all treats in the cart, acc - accumulator
+                    total: this.props.cartArray.reduce((acc, item) => acc + item.treat.price*item.qty, this.props.shippingCost),
+                    //transforming cartArray into array of objects {id, qty}
                     treats: this.props.cartArray.map(({treat, qty}) => ({id: treat.id, qty})),
                 },
+                //gets user id from global state through props
                 userId: this.props.user.id
             })
         })
@@ -33,6 +33,7 @@ class PaymentForm extends React.Component {
     })
     }
 
+    //handles stripe charge success event
     onToken(token){
         fetch("http://localhost:3000/payment", {
             method: "POST",
@@ -41,16 +42,17 @@ class PaymentForm extends React.Component {
             },
             body: JSON.stringify({
                 charge: {
+                    //send token and total to the backend, then backend performs stripe charges
                     token: token.id
                 },
-                total: this.props.cartArray.reduce((acc, item) => acc + item.treat.price, this.props.shippingMethod),
+                //total price charged by stripe
+                total: this.props.cartArray.reduce((acc, item) => acc + item.treat.price, this.props.shippingCost),
             })
         })
     .then(resp => resp.json())
     .then((data) => {
+        //send order data to the backend
         this.handleCheckout()
-        // this.props.updateUser(this.state);
-        // this.props.history.push("/shipping")
     })
     }
 
@@ -72,7 +74,7 @@ class PaymentForm extends React.Component {
                             </div>
                             <div className="input-group">
                                 <label>Method</label>
-                                <input type="ups" placeholder="Method" disabled value={this.props.shippingMethod===12 ? 'UPS 2nd Day Air - $12.00' : 'UPS Next Day Air - $20.00' }/>
+                                <input type="ups" placeholder="Method" disabled value={this.props.shippingCost===12 ? 'UPS 2nd Day Air - $12.00' : 'UPS Next Day Air - $20.00' }/>
                             </div>
                         </div>
                         {/* <h2>Payment</h2>
@@ -101,19 +103,23 @@ class PaymentForm extends React.Component {
                             </div>
                         </div>
                         
-                        {/* <button className="continue-button" onClick={(evt) => this.handleCheckout(evt)}>Pay now</button> */}
                     </form>
                     <div className="submit-group">
                     <Link to="/shipping"> &lt; Return to shipping</Link>
-                    
-                    <StripeCheckout token={(token) => this.onToken(token)} 
-                    stripeKey={process.env.REACT_APP_STRIPE_API_KEY}
+                    {/* shows stripe component */}
+                    <StripeCheckout 
+                        token={(token) => this.onToken(token)} 
+                        stripeKey={process.env.REACT_APP_STRIPE_API_KEY}
                         shippingAddress
                         billingAddress
-                        amount={this.props.cartArray.reduce((acc, item) => acc + item.treat.price, this.props.shippingMethod)*100}
+                        amount={this.props.cartArray.reduce(
+                            (acc, item) => acc + item.treat.price, 
+                            this.props.shippingCost
+                        )*100}
                         name={'Boutique de Chocolat'}
-                        email={this.props.user.email}>
-                            <button className="payment-button">Pay now</button> 
+                        email={this.props.user.email}
+                    >
+                        <button className="payment-button">Pay now</button> 
                     </StripeCheckout>
                     </div>
                 </div>

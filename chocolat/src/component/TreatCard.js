@@ -11,25 +11,18 @@ class TreatCard extends React.Component {
     }
     
     render() {
+        //getting properties and saving into variables
         let { id, name, price, image } = this.props.treats
 
         return(
-            <Link className="treat-card" to={`/treats/${id}`} onClick={(evt) => this.props.handleItemClick(evt, {name: "treat"})}>
+            <Link 
+                className="treat-card" 
+                to={`/treats/${id}`} 
+                onClick={(evt) => this.props.updateActiveMenuItem(evt, {name: "treat"})}>
                 <img src={image} width="350" height="250"/>
                 <p className="info">{name}</p>
                 <p className="info">{`Price: $` + price + `.00`}</p>
             </Link> 
-                
-            // <Grid centered columns={2}>
-            //     <Grid.Column>
-            //         <Link to={`/treats/${id}`}>
-            //             <Image src={image} size="massive"/>
-            //             {/* onClick={() => this.props.onPageChange("item-detail")} */}
-            //         </Link>
-            //             <p className="name">{name}</p>
-            //             <p className="price">${price}.00</p>
-            //     </Grid.Column>
-            // </Grid>
         )
     }
 }

@@ -9,7 +9,7 @@ class TreatInfo extends React.Component {
         treat: {}
     }
 
-
+    // Getting treat data on page load
     componentDidMount() {
         const id = this.props.match.params.id
         fetch(`http://localhost:3000/treats/${id}`)
@@ -21,10 +21,10 @@ class TreatInfo extends React.Component {
             })
     }
     
-      handleClick = () => {
-          const { addItemToCart } = this.props
-          addItemToCart(this.state.treat.id)
-      }
+    handleClick = () => {
+        const { addItemToCart } = this.props
+        addItemToCart(this.state.treat.id)
+    }
 
     render() {
         const { treat } = this.state
@@ -32,19 +32,17 @@ class TreatInfo extends React.Component {
         const { name, price, image, description } = this.state.treat
 
         return (
-            <div className="treat-info-conatiner">
-                <Grid columns='equal'>
+            <div className="treat-info-container">
                    
-                    <Grid.Column width={8}>
+                    <div className="product-details-image">
                         <img src={image} />  
-                    </Grid.Column>
+                    </div>
                     
                     <div className="product-details-wrapper">
                         <div >
                             <h1 className="treat-name"> {name} </h1> 
                         </div>
                     
-                        <Grid.Column >
                             <div className="description">
                                 <p> {description}</p>
                             </div>
@@ -54,10 +52,9 @@ class TreatInfo extends React.Component {
                             
                             <button className="add-button" onClick={this.handleClick}> Add to Cart </button>
                             {/* onClick={this.handleClick} */}
-                        </Grid.Column>
+                        
                     </div>
                     
-                </Grid>
 
             </div>     
         )

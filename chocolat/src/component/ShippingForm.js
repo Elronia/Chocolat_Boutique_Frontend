@@ -4,7 +4,9 @@ import { withRouter, Link } from 'react-router-dom';
 import CheckoutNav from './CheckoutNav';
 
 class ShippingForm extends React.Component{
+    //navigate to payment form
     handleCheckout(evt){
+        //prevent from reloading page
         evt.preventDefault();
         this.props.history.push("/payment")
     }
@@ -29,14 +31,14 @@ class ShippingForm extends React.Component{
                         <h2>Shipping method</h2>
                         <div className="combined-input shipping-info">
                         <div className="input-group">
-                            <input type="radio" name="method" value="12.00" checked={this.props.shippingMethod===12} onChange={evt => this.props.updateShippingMethod(evt)}/>
+                            <input type="radio" name="method" value="12.00" checked={this.props.shippingCost===12} onChange={evt => this.props.updateShippingCost(evt)}/>
                                 <label>
                                     <span>UPS 2nd Day Air</span>
                                     <span className="shipping-cost">$12.00</span>
                                 </label>
                         </div>
                         <div className="input-group">
-                        <input type="radio" name="method" value="20.00" checked={this.props.shippingMethod===20} onChange={evt => this.props.updateShippingMethod(evt)}/>
+                        <input type="radio" name="method" value="20.00" checked={this.props.shippingCost===20} onChange={evt => this.props.updateShippingCost(evt)}/>
                             <label>
                                 <span>UPS Next Day Air</span> 
                                 <span className="shipping-cost">$20.00</span>
@@ -45,7 +47,7 @@ class ShippingForm extends React.Component{
                         </div>
                         <div className="submit-group">
                             <Link to="/checkout"> &lt; Return to information</Link>
-                            <button className="continue-button" disabled={!this.props.shippingMethod} onClick={(evt) => this.handleCheckout(evt)}>Continue to payment</button>
+                            <button className="continue-button" disabled={!this.props.shippingCost} onClick={(evt) => this.handleCheckout(evt)}>Continue to payment</button>
                         </div>
                     </form>
                 </div>

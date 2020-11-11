@@ -1,16 +1,16 @@
 import React from 'react';
 import CartItem from './CartItem';
 import '../styling/CartPage.css'
-import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 function Cart(props) {
-    const history = useHistory();
-    const handleCheckout = () => {
-        console.log("Checkout")
-        // fetch('http://localhost:3000/checkout')
-        history.push("/checkout");
-    }
+    // const history = useHistory();
+    // const handleCheckout = () => {
+    //     // console.log("Checkout")
+    //     // fetch('http://localhost:3000/checkout')
+    //     history.push("/checkout");
+    // }
         return (
         <>
             <h1 className="cart-head">SHOPPING CART</h1>
@@ -36,14 +36,17 @@ function Cart(props) {
           
             <div className="cart-total-cont">
                 <div class="total-box">
-                    {/* <h4>Total: ${props.cartTotal}.00</h4>
+                    {/* <h4>Total: ${props.cartTotal}.00</h4> */}
                     <hr/>
-                    <h4>Subtotal: ${props.cartTotal}.00</h4> */}
+                    <h4>Subtotal: ${props.cartTotal}.00</h4>
                 </div>
             </div>
 
             { props.cartArray.length >= 1 ?  <div className="checkout-btn-wrapper">
-                <button className="checkout-btn" onClick={() => handleCheckout()}>Check Out</button>
+                <Link to="/checkout">
+                    <button className="checkout-btn">Check Out</button>
+                </Link>
+                
                 <div className="clearfix"></div>
             </div> : null }
         </>

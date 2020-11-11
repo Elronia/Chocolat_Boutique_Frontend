@@ -27,8 +27,9 @@ a, p{
 }
 
 .App-link {
-  color: #f5d2fa;
-}
+  color: hsl(291, 27%, 80%);
+  /* color: #f5d2fa;*/
+} 
 
 @keyframes App-logo-spin {
   from {

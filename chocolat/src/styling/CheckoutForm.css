@@ -47,7 +47,10 @@
     margin: 10px 5px;
     border-radius: 6px;
     border: 1px solid grey;
-    /* color: grey; */
+}
+
+.checkout-form .left form select:invalid {
+    color: grey;
 }
 
 .checkout-form .left form select option{

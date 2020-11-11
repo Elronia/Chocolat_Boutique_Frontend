@@ -18,7 +18,7 @@ import CheckoutForm from './component/CheckoutForm';
 import ShippingForm from './component/ShippingForm';
 import PaymentForm from './component/PaymentForm';
 import Footer from './component/Footer';
-import './component/NotFoundPage';
+import NotFoundPage from './component/NotFoundPage';
 
 
 class App extends Component {
@@ -46,18 +46,20 @@ class App extends Component {
     // For infinite scroll
   };
 
-  // Accessing an array of treats from the backend
   componentDidMount() {
+    // wait for router to load and setting navbar active item (0.1sec)
     setTimeout(() => {
       this.setState({
         activeItem: this.props.history.location.pathname.slice(1)
       })
     }, 100)
-    const dirtySavedStore = localStorage.getItem('store');
-    if(dirtySavedStore) {
-      const savedStore = JSON.parse(dirtySavedStore)
+    // load saved stored data of the whole application
+    const unparsedSavedStore = localStorage.getItem('store');
+    if(unparsedSavedStore) {
+      const savedStore = JSON.parse(unparsedSavedStore)
       this.setState(savedStore);
     }
+    // Accessing an array of treats from the backend
     fetch('http://localhost:3000/treats')
       .then(resp => resp.json())
       .then((treatsArr) => {
@@ -66,7 +68,7 @@ class App extends Component {
         })
       })
   }
-
+  // saves all the data from the whole application 
   saveStore(){
     localStorage.setItem('store', JSON.stringify(this.state));
   }
@@ -80,7 +82,7 @@ class App extends Component {
   }
 
   // Handles the response of fetch to backend that sends back a result in the form of a { user: {}, token: "..."} object; if we get back an error object in the form of {error: ...}, then alert the user and return false, if not, set this.state.user to the user that we get back, and set this.state.token to the token we get back, then return true
-  handleResponse = (result) => {
+  handleLogin = (result) => {
     if (result.error) {
       alert(result.error);
       return false;
@@ -92,9 +94,8 @@ class App extends Component {
       return true;
     }
   };
-  
+  //removes user's data and navigates him to Home page
   handleLogOut() {
-    console.log(this)
     this.setState({
       user: {},
       cartArray: [], 
@@ -103,12 +104,13 @@ class App extends Component {
     this.saveStore();
     localStorage.clear();
     this.props.history.push('/');
-    this.handleItemClick({}, {name: "home"});
+    this.updateActiveMenuItem({}, {name: "home"});
   }
 
   addItemToCart = (id) => {
     const { cartArray } = this.state;
-    // Find the item for this id in this.state.items
+    //const cartArray = this.state.cartArray;
+    // Find the item for this id in this.state.treats
     const treat = this.state.treats.find((treat) => {
       return treat.id === id;
     });
@@ -119,7 +121,8 @@ class App extends Component {
     const foundTreatIndex = cartArray.findIndex((cartItem) => {
       return cartItem.treat.id === id;
     });
-    // console.log(match) 
+    // console.log(match)
+    //increase quantity in the cart 
     if (foundTreatIndex !== -1) {
       this.increaseItem(foundTreatIndex)
     } else {
@@ -130,9 +133,11 @@ class App extends Component {
     }
   }
 
+  //increases the quantity
   increaseItem = (i) => {
     const { cartArray } = this.state;
     cartArray[i].qty++; 
+    //updates the state
     this.setState({ cartArray: [...cartArray] })
     this.saveStore();
   }
@@ -146,13 +151,17 @@ class App extends Component {
     }
   }
 
+  //gets the quantity of all the treats in the cart
   get treatsAmount(){
-    console.log(this.state.cartArray)
+    // console.log(this.state.cartArray)
+    // counts the quantity of all items and returns just one number
     return this.state.cartArray.reduce((acc, prev) => prev.qty + acc, 0)
   }
 
+  //is called after each setState
   componentDidUpdate(prevProps, prevState){
     if(prevState.cartArray !== this.state.cartArray){
+      //total of all all items in the cart
       let total = this.state.cartArray.reduce((sum, product)=>
         sum + product.treat.price, 0 );
 
@@ -166,15 +175,19 @@ class App extends Component {
   }
 
   removeItem = (treatObj) => {
+    //returns only those items that don't correspond treat object (treatObj.treat.id)
     let updatedCart = this.state.cartArray.filter((treat) => {
       return treat.treat.id !== treatObj.treat.id
     })
+    //update the state
     this.setState({
       cartArray: updatedCart
     })
+    //saves global state into local storage
     this.saveStore();
   }
 
+  // removes all the treats from the cart
   clearItems = () => {
     this.setState({
       cartArray: []
@@ -182,8 +195,10 @@ class App extends Component {
     this.saveStore();
   }
 
+  //updates user data
   updateUser(user){
     this.setState({
+      //merge new user data into current user state (this.state.user)
       user: {
         ...this.state.user,
         ...user
@@ -192,25 +207,26 @@ class App extends Component {
     this.saveStore();
   }
 
-  handleItemClick = (evt, { name }) => {
+  //when clicking navbar menu updates active item
+  updateActiveMenuItem = (evt, { name }) => {
     this.setState({ activeItem: name })
   }
 
-  updateActiveMenuItem(evt, activeItem) {
-    
-  }
-
-  updateShippingMethod(evt){
-    this.setState({shippingMethod: +evt.currentTarget.value})
+  //updates shipping cost in global state as a number
+  updateShippingCost(evt){
+    this.setState({shippingCost: +evt.currentTarget.value})
   }
 
 
   render() {
     // console.log(this.props)
+
+    //performs search of treats by name 
     let filteredTreats = this.state.treats.filter((treatObj) => {
       return treatObj.name.toLowerCase().includes(this.state.searchTerm.toLowerCase())
     })
 
+    //collects all cart actions in a single object
     const cartActions = { addItemToCart: this.addItemToCart, deleteItemFromCart: this.deleteItemFromCart, calculateCartTotal: this.calculateCartTotal, addItemToCartDetail: this.addItemToCartDetail, clearItems: this.clearItems }
     
     return (
@@ -224,7 +240,7 @@ class App extends Component {
           // loggedIn={loggedIn}
           handleLogOut={() => this.handleLogOut()}
           user={this.state.user}
-          handleItemClick={this.handleItemClick}
+          updateActiveMenuItem={this.updateActiveMenuItem}
           activeItem={this.state.activeItem}
         />
 
@@ -235,7 +251,7 @@ class App extends Component {
           </Route>
 
           <Route path="/shop" exact render={() => <TreatList 
-            handleItemClick={this.handleItemClick}
+            updateActiveMenuItem={this.updateActiveMenuItem}
         
             treats={filteredTreats}/>} />
 
@@ -248,8 +264,8 @@ class App extends Component {
 
           <Route path="/about" exact render={() => <AboutPage/>}/>
           
-          <Route path="/account" exact render={() => <LoginForm handleResponse={this.handleResponse}
-            handleItemClick={this.handleItemClick}/>}/>
+          <Route path="/account" exact render={() => <LoginForm handleLogin={this.handleLogin}
+            updateActiveMenuItem={this.updateActiveMenuItem}/>}/>
           
           <Route path="/create-account" exact render={() => 
             <CreateAccountForm
@@ -257,7 +273,7 @@ class App extends Component {
               handleSubmit={this.handleSubmit}
               handleInput={this.handleInput}
               updateUser={(user) => this.updateUser(user)}
-              handleItemClick={this.handleItemClick}
+              updateActiveMenuItem={this.updateActiveMenuItem}
             />}/>
 
           <Route path="/cart" exact render={() => 
@@ -275,15 +291,15 @@ class App extends Component {
             updateUser={(user) => this.updateUser(user)}/>}/>
           <Route path="/shipping" exact render={() => <ShippingForm 
             cartArray={this.state.cartArray}
-            updateShippingMethod={(evt) => this.updateShippingMethod(evt)}
-            shippingMethod={this.state.shippingMethod}
+            updateShippingCost={(evt) => this.updateShippingCost(evt)}
+            shippingCost={this.state.shippingCost}
             user={this.state.user}/>}/>
           <Route path="/payment" exact render={() => <PaymentForm 
             cartArray={this.state.cartArray}
             user={this.state.user}
-            // updateShippingMethod={(evt) => this.updateShippingMethod(evt)}
-            shippingMethod={this.state.shippingMethod}/>}/>
-          {/* <Route component={NotFoundPage}/> */}
+            // updateShippingCost={(evt) => this.updateShippingCost(evt)}
+            shippingCost={this.state.shippingCost}/>}/>
+          <Route component={NotFoundPage}/>
         </Switch>
 
         <Footer/>
@@ -292,26 +308,5 @@ class App extends Component {
   }
 
 }
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
 
 export default withRouter(App);

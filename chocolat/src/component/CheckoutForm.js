@@ -29,17 +29,18 @@ class CheckoutForm extends React.Component {
         })
         .then(resp => resp.json())
         .then((resp) => {
-            console.log(resp)
+            // console.log(resp)
+            //update user data in global state
             this.props.updateUser(resp.user);
+            //save user token to local storage in order to remember the current user
             localStorage.token = resp.token;
+            //navigate to shipping form page
             this.props.history.push("/shipping");
         })
     }
 
+    //checks if checkout form is valid
   get isFormValid(){
-    //   const invalidField = document.querySelector('form input:invalid');
-    //   console.log(invalidField)
-    //   return !invalidField
     return (
         this.props.user.email && 
         this.props.user.first_name &&
@@ -51,6 +52,7 @@ class CheckoutForm extends React.Component {
         this.props.user.phone &&
         (this.isLoggedIn 
             ? true 
+            //validate creating account specific fields
             : this.state.username && 
             this.state.password && 
             this.state.confirmPassword && 
@@ -58,8 +60,6 @@ class CheckoutForm extends React.Component {
     )
   }
 
-    
-//name="state" value={state}
     render() {
         return (
         <div className="checkout-form">
@@ -72,7 +72,6 @@ class CheckoutForm extends React.Component {
                         <Link to="/account">Log in</Link>
                         </div>}
                     </div>
-                    
                     
                     <div className="input-group">
                         <input type="email" placeholder="Email" required  value={this.props.user.email} onChange={evt => this.props.updateUser({email: evt.target.value})}/>
@@ -90,7 +89,7 @@ class CheckoutForm extends React.Component {
                     </div>
                     <div className="input-group">
                         <select className="ui fluid dropdown" placeholder="State" required value={this.props.user.state} onChange={evt => this.props.updateUser({state: evt.target.value})}>
-                            {/* <option value="">State</option> */}
+                            <option value="" disabled selected hidden>State</option>
                             <option value="AL">Alabama</option>
                             <option value="AK">Alaska</option>
                             <option value="AZ">Arizona</option>

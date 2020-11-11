@@ -6,16 +6,13 @@ import '../styling/CartItem.css'
 class CartPage extends React.Component {
 
     state = {
-      quantity: 1,
-      show: true
-    //   max: 5,
-    //   min: 0,
-    //   cartArray: []
+      quantity: 1
+    //   show: true
     }
 
-    toggleClick = () => {
-        this.setState({ show: !this.state.show });
-    }
+    // toggleClick = () => {
+    //     this.setState({ show: !this.state.show });
+    // }
 
     handleChange = (evt) => {
         this.setState({

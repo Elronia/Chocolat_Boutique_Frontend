@@ -8,7 +8,7 @@ class HomeCarousel extends Component {
     render() {   //showArrows={true} onChange={onChange} onClickItem={onClickItem} onClickThumb={onClickThumb}
         return (
             <div className="slider-container">
-            <Carousel className="carousel-style" showArrows={true} infiniteLoop useKeyboardArrows autoPlay> 
+            <Carousel className="carousel-style" showArrows={true} infiniteLoop useKeyboardArrows autoPlay={true}> 
                 <div>
                     <img src="https://res.cloudinary.com/elronia/image/upload/v1604979246/Carousel/Bon_Bon_Candies_Width_nlolmo.jpg" />
                     <p className="legend"><h1>CONFECTIONS CRAFTED WITH INTERNATIONAL INGREDIENTS</h1>Our signature bon bons</p>

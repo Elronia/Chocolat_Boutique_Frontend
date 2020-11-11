@@ -10,7 +10,7 @@ class LoginForm extends React.Component {
     // token: ""
   };
 
-  // For form control, set the state for username/password on each change detected
+  // For form control, set the state for fields on each change detected
   handleInput = (evt) => {
     this.setState({ [evt.target.name]: evt.target.value });
   };
@@ -30,10 +30,12 @@ class LoginForm extends React.Component {
     })
       .then((response) => response.json())
       .then((result) => {
-        // Once result comes back, we handle the result by setting this.state.user and this.state.token in App.js accordingly, as well as storing the token we got back in localStorage so as to avoid logging the user out with page refresh; after that we bring the user to /home (/treats)
-        if (this.props.handleResponse(result)) {
+        // Once result comes back, we handle the result by setting this.state.user and this.state.token in App.js accordingly, as well as storing the token we got back in localStorage so as to avoid logging the user out with page refresh; after that we bring the user to /home
+        if (this.props.handleLogin(result)) {
+          //navigate to home page
           this.props.history.push("/");
-          this.props.handleItemClick({}, {name: "home"});
+          //sets home menu item as active
+          this.props.updateActiveMenuItem({}, {name: "home"});
         }
         return true;
       });

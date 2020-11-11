@@ -1,18 +1,26 @@
-.treat-info-conatiner{
-    min-height: 85vh;
+.treat-info-container{
+    /* min-height: 85vh; */
+    padding: 100px 75px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.product-details-image {
+    flex: 0.4;
 }
 
 .product-details-wrapper{
-    font-family: "Avenir-Next", sans-serif;
+    font-family: "Roboto", sans-serif;
     padding: 40px;
     max-width: 700px;
-    max-height: 960px;
     margin-left: auto;
-    /* border: 3px solid #73AD21; */
+    flex: 0.4;
+    background: white;
+    box-sizing: border-box;
 }
 
 .treat-name {
-    font-family: "Avenir-Next", sans-serif;
+    font-family: "Roboto", sans-serif;
     font-size: 22px;
 }
 
@@ -22,7 +30,7 @@
 
 .price {
     /* padding-top: 510px; */
-    font-family: "Avenir-Next", sans-serif;
+    font-family: "Roboto", sans-serif;
     font-size: 28px !important;
     font-weight: bold !important;
     /* display: flex; */
@@ -34,17 +42,25 @@
     width : 300px;
     height : 44px;
     background-color: black;
-    /* color: hsl(293, 80%, 90%); */
-    color: #dbd2da;
-    /* border: none; */
-    -moz-border-radius: 2px;
-    -webkit-border-radius: 2px;
-    margin: 20px;
+    color: hsl(293, 80%, 90%);
+    /* color: #dbd2da; */
     border: none;
+    -moz-border-radius: 2px; 
+    -webkit-border-radius: 2px; 
+    margin: 20px;
 }
 /*This should make them change their color when they are hovered*/
 .add-button:hover {
     /* background: hsl(293, 80%, 90%); */
-    background: #DBD2DA;
+    background:#b6afb7;
     color: black;
+}
+
+.add-button:focus {
+    outline: none;
+}
+
+.product-details-image img {
+    width: 100%;
+    object-fit: contain;
 }

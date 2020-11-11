@@ -32,8 +32,20 @@ class CreateAccountForm extends React.Component {
             this.props.updateUser(resp.user);
             localStorage.token = resp.token;
             this.props.history.push("/");
-            this.props.handleItemClick({}, {name: "home"});
+            this.props.updateActiveMenuItem({}, {name: "home"});
         })
+    }
+
+    get isFormValid(){
+      return (
+          this.state.email && 
+          this.state.first_name &&
+          this.state.last_name &&
+          this.state.username && 
+          this.state.password && 
+          this.state.passwordConfirm && 
+          this.state.password === this.state.passwordConfirm
+      )
     }
 
     render(){
@@ -115,13 +127,7 @@ class CreateAccountForm extends React.Component {
           />
         </div>
   
-        <input type="Submit" value="Submit" className="ui submit button" />
-  
-        {/* <div id="edit-password">
-          {location.pathname === "/edit" ? (
-            <Link to="/edit-password">Reset Password</Link>
-          ) : null} */}
-        {/* </div> */}
+        <input type="Submit" value="Submit" className="ui submit button" disabled={!this.isFormValid}/>
       </form>
     );
   }

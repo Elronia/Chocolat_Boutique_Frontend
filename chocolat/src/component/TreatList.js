@@ -7,13 +7,13 @@ const TreatList = (props) => {
         return(<div className="container">
                <h1 className="collection-header">OUR CHOCOLATE COLLECTION</h1>	
                <div className="treat-card-container">
-               {props.treats.map((treatsObj) => (	//iterate(treatsObj)
+               {props.treats.map((treatsObj) => (	//iterate(treatsObj), 
                     <TreatCard 
                         key={treatsObj.id}
                         treats={treatsObj}	
                         onPageChange={props.onPageChange}
                         cartActions={props.cartActions}
-                        handleItemClick={props.handleItemClick}
+                        updateActiveMenuItem={props.updateActiveMenuItem}
                     />
                 ))}
                </div>

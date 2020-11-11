@@ -1,11 +1,9 @@
 /* .item{
-    font-family: "Avenir-Next", sans-serif;
+    font-family: "Roboto", sans-serif;
     font-size: 15px;
     padding: 15px;
 } */
 .nav-container {
-    /* flex-grow: -2; */
-    float: right;
     list-style: none;
     padding-left: 0;
     margin: 0;
@@ -13,4 +11,25 @@
 
 .shopping-bag-icon{
     color: #a0a0a0;
+}
+
+.ui.menu.secondary {
+    justify-content: space-between;
+}
+
+.ui.image img {
+    margin: 0 auto;
+}
+
+.ui.secondary.pointing.menu .item.signin-out {
+    /* align-self: flex-start; */
+    padding-left: 0;
+}
+
+.ui.menu:after {
+    display: none;
+}
+
+.item.signin-out:hover i, .item.signin-out:hover span {
+    color: white;
 }
