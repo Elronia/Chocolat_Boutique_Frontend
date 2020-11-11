@@ -54,12 +54,6 @@
     color: #000;
 }
 
-.login-message {
-    position: absolute;
-    right: 42px;
-    top: 45px;
-}
-
 .checkout-form .right {
     flex: 0.4;
     min-height: 50vh;
@@ -128,4 +122,22 @@
 .submit-group a {
     color: grey !important;
     font-size: 17px;
+}
+
+.checkout-signin {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.checkout-signin h2 {
+    margin: 0;
+}
+
+.login-message a {
+    margin-left: 5px;
+}
+
+.login-message {
+    font-size: 15px;
 }

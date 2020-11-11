@@ -46,15 +46,15 @@
     font-family: "Segoe UI";
 }
 
-.checkout-form .right .name {
+.shipping-form .right .name {
     font-size: 18px;
     font-weight: 500;
     text-align: left;
 }
 
-.shipping-form .right .price {
-    font-size: 15px;
-    font-weight: 100;
+.shipping-form .right .subtotal-price {
+    font-size: 17px !important;
+    font-weight: 700;
 }
 
 .summary-row{

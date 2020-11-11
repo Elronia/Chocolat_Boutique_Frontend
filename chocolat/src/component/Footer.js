@@ -17,22 +17,30 @@ class Footer extends React.Component {
                         <div className="row">
                             {/* Column1 */}
                             <div className="column">
-                                <b className="contact">Contact us</b>
-                                <p className="contact">support@kreutherchocolate.com</p>
-                                <p className="contact">212.201.1985</p>
-                                <b className="contact">Headquarters</b>
-                                <p>1114 Avenue of the Americas
-                                New York, NY 10036</p>
+                                <ul className="contact-container">
+                                <li>
+                                    <b>Contact us</b>
+                                    <p className="contact">support@chocolatdeboutique.com</p>
+                                    <p className="contact">212.333.5577</p>
+                                </li>
+                                <li>
+                                    <b>Headquarters</b>
+                                    <p className="contact">1114 Avenue of the Americas</p>
+                                    <p className="contact">New York, NY 10036</p>
+                                </li>
+                                </ul>
                             </div>
                             {/* Column2 */}
                             <div className="column">
-                            <ul className="list-unstyled">
-                                <b>More</b>
+                            <ul className="link-container">
+                                <li>
+                                    <b>More</b>
+                                </li>
                                 <li className="footer-li">Shop location update</li>
                                 <li className="footer-li">FAQs</li>
-                                <Link to="/shipping">
-                                <li className="footer-li">Shipping Policy</li>
-                                </Link>
+                                <li className="footer-li">
+                                    <Link to="/shipping-guidelines">Shipping Policy</Link>
+                                </li>
                                 <li className="footer-li">Refund Policy</li>
                                 <li className="footer-li">Privacy Policy</li>
                                 <li className="footer-li">Terms of Use</li>
@@ -45,10 +53,12 @@ class Footer extends React.Component {
                                 {/* <button className="footer-button">Subscribe</button> */}
                             {/* </div>  */}
                             <div className="column">
-                                <b>Stay connected</b>
-                                <Facebook />
-                                <Twitter/>
-                                <Camera />
+                                <b className="social-title">Stay connected</b>
+                                <div className="social-links">
+                                    <Facebook fill="#000"/>
+                                    <Twitter fill="#000"/>
+                                    <Camera/>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -66,10 +66,14 @@ class CheckoutForm extends React.Component {
             <div className="left">
             <CheckoutNav page="checkout"/>
                 <form>
-                    <h2>Contact Information</h2>
-                    {this.isLoggedIn ? null : <div className="login-message">Already have an account? 
+                    <div className="checkout-signin">
+                        <h2>Contact Information</h2>
+                        {this.isLoggedIn ? null : <div className="login-message">Already have an account? 
                         <Link to="/account">Log in</Link>
-                    </div>}
+                        </div>}
+                    </div>
+                    
+                    
                     <div className="input-group">
                         <input type="email" placeholder="Email" required  value={this.props.user.email} onChange={evt => this.props.updateUser({email: evt.target.value})}/>
                     </div>

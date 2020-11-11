@@ -1,0 +1,33 @@
+.checkout-nav {
+    display: block;
+    margin: 15px auto;
+    padding-left: 45px;
+}
+
+.checkout-nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    align-items: center; 
+}
+
+.checkout-nav ul li {
+    color: #444;
+    font-size: 17px;
+}
+
+.checkout-nav ul li:after {
+    content: "\003E";
+    font-size: 17px;
+    color: #444;
+    margin: 0 0.5em;
+}
+
+.checkout-nav ul li:last-child:after {
+    display: none;
+}
+
+.checkout-nav ul li.active {
+    color: #333;
+    font-weight: 600;
+}

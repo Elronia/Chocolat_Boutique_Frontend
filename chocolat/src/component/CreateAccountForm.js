@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter} from 'react-router-dom';
+import '../styling/CreateAccountForm.css';
 
 class CreateAccountForm extends React.Component {
   state = {
@@ -46,26 +47,26 @@ class CreateAccountForm extends React.Component {
         onSubmit={(evt) => this.handleSubmit(evt)}>
 
         <h4 className="ui dividing header">
-          Create an account
+          CREATE ACCOUNT
         </h4>
 
         <div className="field">
-          <label>First name</label>
+          <label>First Name</label>
           <input
             type="text"
             name="first_name"
-            placeholder="John"
+            placeholder="First Name"
             value={first_name}
             required
           />
         </div>
   
         <div className="field">
-          <label>Last name</label>
+          <label>Last Name</label>
           <input
             type="text"
             name="last_name"
-            placeholder="Smith"
+            placeholder="Last Name"
             value={last_name}
             required
           />
@@ -83,7 +84,7 @@ class CreateAccountForm extends React.Component {
         </div>
   
         <div className="field">
-          <label>E-mail</label>
+          <label>Email</label>
           <input
             type="email"
             name="email"

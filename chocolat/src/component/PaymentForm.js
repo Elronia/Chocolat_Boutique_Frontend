@@ -113,9 +113,7 @@ class PaymentForm extends React.Component {
                         amount={this.props.cartArray.reduce((acc, item) => acc + item.treat.price, this.props.shippingMethod)*100}
                         name={'Boutique de Chocolat'}
                         email={this.props.user.email}>
-                            <div className="submit-group">
-                                <button className="payment-button">Pay now</button> 
-                            </div>
+                            <button className="payment-button">Pay now</button> 
                     </StripeCheckout>
                     </div>
                 </div>

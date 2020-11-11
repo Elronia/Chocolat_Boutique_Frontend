@@ -19,5 +19,17 @@
     background-color: #b6afb7;
     border: none;
     border-radius: 6px;
-    margin-top: 50px;/*added*/
+}
+
+.submit-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 25px;
+    padding: 0 45px;
+}
+
+form h4 {
+    text-align: left;
+    margin-top: 0;
 }
