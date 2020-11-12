@@ -36,18 +36,24 @@
 .cart-total-cont{
     border-top: 2px solid black;
     padding: 30px;
-  }
+}
   
-  .cart-desc{
-    font-size: 30px; 
-    /* font-family: 'Gotham'; */
-  } 
+.cart-desc{
+  font-size: 30px; 
+  /* font-family: 'Gotham'; */
+} 
   
 /* .item{
     font-size: 40px;
   }  */
 .checkout-btn-wrapper{
   width: 100%;
+}
+
+.cart-total-cont .total-box h4 {
+  font-family: "Roboto", sans-serif;
+  font-weight: normal;
+  font-size: 18px;
 }
 
 .checkout-btn{
