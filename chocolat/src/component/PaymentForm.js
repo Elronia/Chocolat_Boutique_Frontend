@@ -6,6 +6,7 @@ import CheckoutNav from './CheckoutNav';
 
 
 class PaymentForm extends React.Component {
+    state = {}
     //send order data to the backend
     handleCheckout(){
         // console.log(this.props)
@@ -28,6 +29,7 @@ class PaymentForm extends React.Component {
     .then(resp => resp.json())
     .then(() => {
         alert("Thank you for your purchase! Your order will be shipped soon.")
+        this.props.clearCart()
         // this.props.updateUser(this.state);
         // this.props.history.push("/shipping")
     })
@@ -94,11 +96,11 @@ class PaymentForm extends React.Component {
                         <h4>Select the address that matches your card or payment method.</h4>
                         <div className="combined-input shipping-info">
                             <div className="input-group">
-                                <input type="radio" name="method" value="shipping address"/>
+                                <input type="radio" name="method" value="shipping address" onChange={(evt) => this.setState({billingAddress: "as shipping"})}/>
                                 <label>Same as shipping address</label>
                             </div>
                             <div className="input-group">
-                                <input type="radio" name="method" value="billing address"/>
+                                <input type="radio" name="method" value="billing address" onChange={(evt) => this.setState({billingAddress: "other"})}/>
                                 <label>Use a different billing address</label> 
                             </div>
                         </div>
@@ -119,7 +121,7 @@ class PaymentForm extends React.Component {
                         name={'Boutique de Chocolat'}
                         email={this.props.user.email}
                     >
-                        <button className="payment-button">Pay now</button> 
+                        <button className="payment-button" disabled={!this.state.billingAddress}>Pay now</button> 
                     </StripeCheckout>
                     </div>
                 </div>

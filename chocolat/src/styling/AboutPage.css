@@ -1,5 +1,5 @@
 .header {
-  font-family: "Roboto", sans-serif;
+  font-family: "Roboto", sans-serif !important;
   font-weight: normal;
   font-size: 35px;
 }
@@ -9,6 +9,7 @@
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 20px;
+    font-family: "Roboto", sans-serif;
 }
   
 #about-container .segment {
@@ -28,8 +29,7 @@
   
 #about-container .emphasized {
   font-size: 20px;
-  font-weight: normal;
-  /* font-style: italic; */
+  font-weight: lighter;
   margin-left: 25px;
   margin-right: 25px;
   text-align: center;

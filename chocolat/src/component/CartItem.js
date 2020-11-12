@@ -72,7 +72,7 @@ class CartPage extends React.Component {
                 <h1 className="total">Total</h1>
                 <div className="price">
                     <Header as="h4" textAlign="center">
-                        ${price}.00
+                        ${price*this.props.treat.qty}.00
                     </Header>
                 </div>
             </Grid.Column>

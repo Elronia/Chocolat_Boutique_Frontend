@@ -1,5 +1,5 @@
 .header {
-  font-family: "Roboto", sans-serif;
+  font-family: "Roboto", sans-serif !important;
   font-weight: normal;
   font-size: 35px;
 }
@@ -24,11 +24,13 @@
     font-size: 16px;
     text-align: left;
     margin-bottom: 10px;
+    font-weight: lighter;
   }
   
   #shipping-container .emphasized {
+    font-family: "Roboto", sans-serif;
     font-size: 20px;
-    font-weight: normal;
+    
     /* font-style: italic; */
     margin-left: 25px;
     margin-right: 25px;
@@ -36,9 +38,9 @@
     font-weight: 450;
   }
   
-  #shipping-container .back-btn {
+  /* #shipping-container .back-btn {
     text-align: center;
-  }
+  } */
 
 
   

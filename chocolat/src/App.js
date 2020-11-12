@@ -159,7 +159,7 @@ class App extends Component {
     if(prevState.cartArray !== this.state.cartArray){
       //total of all all items in the cart
       let total = this.state.cartArray.reduce((sum, product)=>
-        sum + product.treat.price, 0 );
+        sum + (product.treat.price*product.qty), 0 );
 
     this.setState({
       cartTotal: total
@@ -211,6 +211,10 @@ class App extends Component {
   //updates shipping cost in global state as a number
   updateShippingCost(evt){
     this.setState({shippingCost: +evt.currentTarget.value})
+  }
+
+  clearCart(){
+    this.setState({cartArray: []})
   }
 
 
@@ -293,6 +297,7 @@ class App extends Component {
           <Route path="/payment" exact render={() => <PaymentForm 
             cartArray={this.state.cartArray}
             user={this.state.user}
+            clearCart={() => this.clearCart()}
             // updateShippingCost={(evt) => this.updateShippingCost(evt)}
             shippingCost={this.state.shippingCost}/>}/>
           <Route component={NotFoundPage}/>
