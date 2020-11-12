@@ -33,3 +33,11 @@
 .item.signin-out:hover i, .item.signin-out:hover span {
     color: white;
 }
+
+.item:hover i, .item.signin-out:hover span {
+    color: white;
+}
+
+.item:hover span.link{
+    color: white;
+}

@@ -58,9 +58,9 @@ class CreateAccountForm extends React.Component {
         onChange={(evt) => this.handleInput(evt)}
         onSubmit={(evt) => this.handleSubmit(evt)}>
 
-        <h4 className="ui dividing header">
+        <h2 className="ui dividing header">
           CREATE ACCOUNT
-        </h4>
+        </h2>
 
         <div className="field">
           <label>First Name</label>

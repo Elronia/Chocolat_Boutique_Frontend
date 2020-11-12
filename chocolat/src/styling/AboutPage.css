@@ -5,7 +5,7 @@
 }
 
 #about-container {
-    width: 97%;
+    width: 960px;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 20px;
@@ -13,7 +13,7 @@
   
 #about-container .segment {
   padding: 35px;
-  background-color: #f5d2fa;
+  background-color: hsl(291, 27%, 80%);
 }
   
 #about-container h1 {

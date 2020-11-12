@@ -1,6 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Grid } from 'semantic-ui-react';
 import '../styling/TreatInfo.css';
 
 class TreatInfo extends React.Component {

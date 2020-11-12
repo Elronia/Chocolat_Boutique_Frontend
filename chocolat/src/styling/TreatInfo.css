@@ -24,8 +24,11 @@
     font-size: 22px;
 }
 
-.description{
+.description {
     font-size: 16px;
+    text-align: left;
+    /* width: 500px; */
+    padding: 40px;
 }
 
 .price {
@@ -42,7 +45,7 @@
     width : 300px;
     height : 44px;
     background-color: black;
-    color: hsl(293, 80%, 90%);
+    color: #DBD2DA;
     /* color: #dbd2da; */
     border: none;
     -moz-border-radius: 2px; 
@@ -52,7 +55,7 @@
 /*This should make them change their color when they are hovered*/
 .add-button:hover {
     /* background: hsl(293, 80%, 90%); */
-    background:#b6afb7;
+    background:#DBD2DA;
     color: black;
 }
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import '../styling/Footer.css';
-import { IconName } from 'react-feather';
+
 
 const Camera = require('react-feather/dist/icons/camera').default;
 const Facebook = require('react-feather/dist/icons/facebook').default;
