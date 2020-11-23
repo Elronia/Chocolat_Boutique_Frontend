@@ -1,5 +1,5 @@
 # Chocolat_Boutique_Frontend
-Boutique de Chocolat is an e-commerce application that allows users to purchase handcrafted chocolate treats.
+Boutique de Chocolat is an e-commerce application that allows users to purchase handcrafted chocolate treats. Application is built for demonstrational purpose.
 ## Getting Started
 1. Install [Rails Backend API](https://github.com/Elronia/Chocolat_Boutique_Backend)
 2. Install [Node.js and npm](https://www.npmjs.com/get-npm)
