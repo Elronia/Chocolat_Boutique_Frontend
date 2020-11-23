@@ -10,3 +10,17 @@ Boutique de Chocolat is an e-commerce application that allows users to purchase 
     ```$ npm install```
 5. Make sure the Rails server is running and then run the app
     ```$ npm start```
+## Tech Stack
+* React.js
+* Ruby on Rails API (Backend: https://github.com/Elronia/Chocolat_Boutique_Backend)
+* PostgreSQL
+* HTML/CSS
+* Flexbox
+* Semantic UI
+* Active Record
+## Tools
+* [Rack CORS](https://github.com/cyu/rack-cors)
+* [ActiveModel::Serializer](https://github.com/rails-api/active_model_serializers)
+* [BCrypt](https://github.com/codahale/bcrypt-ruby)
+* [React Router](https://reacttraining.com/react-router/web/guides/quick-start)
+* [JWT](https://github.com/jwt/ruby-jwt)
