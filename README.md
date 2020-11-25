@@ -15,10 +15,13 @@ Boutique de Chocolat is an e-commerce application that allows users to purchase 
 * React.js
 * Ruby on Rails API (Backend: https://github.com/Elronia/Chocolat_Boutique_Backend)
 * PostgreSQL
+* Active Record
 * HTML/CSS
 * Flexbox
 * Semantic UI
-* Active Record
+* Cloudinary
+* Stripe API
+
 ## Tools
 * [Rack CORS](https://github.com/cyu/rack-cors)
 * [ActiveModel::Serializer](https://github.com/rails-api/active_model_serializers)
