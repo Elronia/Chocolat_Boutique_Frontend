@@ -1,5 +1,5 @@
 # Chocolat_Boutique_Frontend
-Boutique de Chocolat is an e-commerce application that allows users to purchase handcrafted chocolate treats. Application is built with React on the frontend and Ruby on Rails on the backend.
+Boutique de Chocolat is an e-commerce application that allows users to purchase handcrafted chocolate treats. Application is built with React on the frontend and Ruby on Rails on the backend. Application is built for demonstrational purpose.
 
 ## Getting Started
 1. Install [Rails Backend API](https://github.com/Elronia/Chocolat_Boutique_Backend)
