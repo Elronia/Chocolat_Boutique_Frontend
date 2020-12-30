@@ -17,7 +17,7 @@ const AboutPage = () => {
           </p>   
           <h1>BOUTIQUE de CHOCOLAT as STORYTELLING</h1>
           <p>
-            Boutique de Chocolat is a full-stack web application built using Rails API backend and React for the frontend.  
+            Boutique de Chocolat is a full-stack web application built using Rails API backend and React for&nbsp;the&nbsp;frontend.  
           </p>
           <p>
             Clicking on the Logo in the center of the navigation bar redirects you to the Homepage where you can see the collection of selected fine handcrafted chocolates.
@@ -32,7 +32,7 @@ const AboutPage = () => {
             On the Cart page, you can change the quantity, remove the item, or proceed to Checkout.
           </p>
           <p>
-            For Checkout, you will need to create an account. In case you have one you just need to sign in. Creating an account is available from either the Checkout form (if you aren’t signed in) or from the Sign In page.
+            For Checkout, you will need to create an account. In case you have one you just need to sign in. Creating an account is available from either the Checkout form (if you aren’t signed in) or from the&nbsp;Sign&nbsp;In&nbsp;page.
           </p>
           <p>
             To be able to complete the purchase you will need to provide your shipping address, choose the shipping method, and billing information for the Stripe form (do not enter the real card info).

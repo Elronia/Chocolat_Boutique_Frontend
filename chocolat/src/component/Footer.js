@@ -25,27 +25,31 @@ class Footer extends React.Component {
                                 </li>
                                 <li>
                                     <b>Headquarters</b>
-                                    <p className="contact">111 Avenue of the Americas</p>
-                                    <p className="contact">New York, NY 10036</p>
+                                    {/* <p className="contact">111 Avenue of the Americas</p>
+                                    <p className="contact">New York, NY 10036</p> */}
+                                    <p className="contact">Boutique de Chocolat by Ekaterina Zarudnaya &copy; 2020</p>
                                 </li>
                                 </ul>
                             </div>
                             {/* Column2 */}
                             <div className="column">
-                            <ul className="link-container">
-                                <li>
-                                    <b>More</b>
-                                </li>
-                                <li className="footer-li">Shop location update</li>
-                                <li className="footer-li">FAQs</li>
-                                <li className="footer-li">
-                                    <Link to="/shipping-guidelines">Shipping Policy</Link>
-                                </li>
-                                <li className="footer-li">Refund Policy</li>
-                                <li className="footer-li">Privacy Policy</li>
-                                <li className="footer-li">Terms of Use</li>
-                            </ul>
-                                </div>
+                                <ul className="link-container">
+                                    <li>
+                                        <b>More</b>
+                                    </li>
+                                    {/* <li className="footer-li">Shop location update</li>
+                                    <li className="footer-li">FAQs</li> */}
+                                    <li className="footer-li">
+                                        <Link to="/about">About</Link>
+                                    </li>
+                                    <li className="footer-li">
+                                        <Link to="/shipping-guidelines">Shipping Policy</Link>
+                                    </li>
+                                    {/* <li className="footer-li">Refund Policy</li> */}
+                                    <li className="footer-li">Privacy Policy</li>
+                                    <li className="footer-li">Terms of Use</li>
+                                </ul>
+                            </div>
                             {/* Column3 */}
                             {/* <div className="column">
                                 <b>Join our mailing list</b>
