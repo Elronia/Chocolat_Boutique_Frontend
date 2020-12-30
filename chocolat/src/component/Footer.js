@@ -25,7 +25,7 @@ class Footer extends React.Component {
                                 </li>
                                 <li>
                                     <b>Headquarters</b>
-                                    <p className="contact">1114 Avenue of the Americas</p>
+                                    <p className="contact">111 Avenue of the Americas</p>
                                     <p className="contact">New York, NY 10036</p>
                                 </li>
                                 </ul>

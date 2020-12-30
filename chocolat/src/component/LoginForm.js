@@ -47,7 +47,7 @@ class LoginForm extends React.Component {
     return (
       <>
         <form className="ui form" id="log-in-form" onSubmit={(evt) => this.handleSubmit(evt)}>
-          <h2 className="ui dividing header">LOGIN</h2>
+          <h2 className="ui dividing header">SIGN IN</h2>
           <div className="field">
             <label>Username</label>
             <input

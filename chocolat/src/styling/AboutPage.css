@@ -19,6 +19,8 @@
   
 #about-container h1 {
   text-align: center;
+  font-family: "Roboto", sans-serif;
+  font-weight: normal;
 }
   
 #about-container div {
@@ -34,6 +36,8 @@
   margin-right: 25px;
   text-align: center;
   font-weight: 450;
+  font-family: "Roboto", sans-serif !important;
+  font-weight: normal;
 }
 
 .ui header {
