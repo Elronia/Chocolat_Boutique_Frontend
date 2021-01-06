@@ -14,7 +14,7 @@ Boutique de Chocolat is an e-commerce application that allows users to purchase 
     
 ## Project Images 📷
 ### Home Page
-![Home Page](https://res.cloudinary.com/elronia/image/upload/v1606948282/Gallery_Project3/Screen_Shot_2020-11-20_at_1.51.25_PM_wd3h45.png)
+![Home Page](https://media.giphy.com/media/mkRp4DQNQdSsfV32p2/giphy.gif)
 
 ## Tech Stack
 * React.js
