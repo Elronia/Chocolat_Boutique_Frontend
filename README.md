@@ -20,7 +20,7 @@ Boutique de Chocolat is an e-commerce application that allows users to purchase 
 ### Search Functionality 🔍
 ![Search](https://media.giphy.com/media/bvNocfyiXHKSW1qeF5/giphy.gif)
 ### Cart Functionality 🛒
-![Cart](https://media.giphy.com/media/Jo7xUhqr8Zngxo1VNZ/giphy.gif)
+![Cart](https://media.giphy.com/media/Vt5K80VNscvnoaoL1J/giphy.gif)
 
 ## Tech Stack
 * React.js
