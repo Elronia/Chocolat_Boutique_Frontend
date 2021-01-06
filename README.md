@@ -22,7 +22,7 @@ Boutique de Chocolat is an e-commerce application that allows users to purchase 
 ### Cart Functionality 🛒
 ![Cart](https://media.giphy.com/media/Vt5K80VNscvnoaoL1J/giphy.gif)
 ### Creating User Account
-
+![Account](https://media.giphy.com/media/P8ehnYmBDqCzeGYjQd/giphy.gif)
 ### Cart Checkout
 ![Checkout Address](https://media.giphy.com/media/7cZM7MsTqzopLpPWfH/giphy.gif)
 
